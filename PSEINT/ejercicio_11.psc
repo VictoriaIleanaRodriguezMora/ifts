@@ -5,5 +5,5 @@ Algoritmo ejercicio_11
 	Escribir "ingrese la potencia"
 	Leer userExponente
 	resultado = (userBase ^ userExponente)
-	Escribir "el resultado de ", userBase, "a la ", userEponente, " es ", resultado 
+	Escribir "el resultado de elevar ", userBase, "a la ", userExponente, " es ", resultado
 FinAlgoritmo
