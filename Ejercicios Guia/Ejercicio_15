@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.17">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1500" dy="813" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1050" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -8,48 +8,45 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="HyeaFEMjUW6T8iGra4bA-1" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;inicio&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=22;labelBorderColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="228" y="70" width="120" height="60" as="geometry" />
+          <mxGeometry x="320" y="70" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="HyeaFEMjUW6T8iGra4bA-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=22;fontColor=default;labelBorderColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="HyeaFEMjUW6T8iGra4bA-3" target="HyeaFEMjUW6T8iGra4bA-13" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="295" y="225" as="targetPoint" />
+            <mxPoint x="387" y="225" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="HyeaFEMjUW6T8iGra4bA-3" value="&lt;span style=&quot;font-size: 22px;&quot; id=&quot;docs-internal-guid-a7cf92bb-7fff-4733-2777-8e73bcc97a13&quot;&gt;&lt;p style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-a3e77db3-7fff-0b95-abb1-9a0f173d323a&quot; style=&quot;font-size: 22px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot;&gt;&lt;span style=&quot;font-size: 22px; font-family: Lato, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;Definir nroA, nroB Como Entero&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=22;fontColor=default;labelBorderColor=none;fillColor=default;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="80" y="150" width="416" height="44" as="geometry" />
+          <mxGeometry x="172" y="150" width="416" height="44" as="geometry" />
         </mxCell>
-        <mxCell id="HyeaFEMjUW6T8iGra4bA-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=22;fontColor=default;labelBorderColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="HyeaFEMjUW6T8iGra4bA-12" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="290" y="371" as="sourcePoint" />
-            <mxPoint x="290" y="437" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="HyeaFEMjUW6T8iGra4bA-8" value="&lt;span style=&quot;font-size: 22px;&quot; id=&quot;docs-internal-guid-a7cf92bb-7fff-4733-2777-8e73bcc97a13&quot;&gt;&lt;p style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-8e448e3d-7fff-988c-356d-b307d0269999&quot; style=&quot;font-size: 22px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot;&gt;&lt;span id=&quot;docs-internal-guid-50a65181-7fff-8417-4e22-e44dc631bb1d&quot; style=&quot;font-size: 22px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot;&gt;&lt;span style=&quot;font-size: 22px; font-family: Lato, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;“El nroB es mayor al nroA”&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=22;fontColor=default;labelBorderColor=none;fillColor=default;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="135" y="351" width="310" height="44" as="geometry" />
-        </mxCell>
-        <mxCell id="HyeaFEMjUW6T8iGra4bA-12" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;fin&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=22;labelBorderColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="230" y="430" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="HyeaFEMjUW6T8iGra4bA-14" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=22;startSize=8;endSize=8;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="HyeaFEMjUW6T8iGra4bA-13" target="HyeaFEMjUW6T8iGra4bA-8" edge="1">
+        <mxCell id="8gAqBr13fPeSlQdKWnyj-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="HyeaFEMjUW6T8iGra4bA-8" target="HyeaFEMjUW6T8iGra4bA-12">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="HyeaFEMjUW6T8iGra4bA-16" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=22;startSize=8;endSize=8;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="HyeaFEMjUW6T8iGra4bA-13" target="HyeaFEMjUW6T8iGra4bA-15" edge="1">
+        <mxCell id="HyeaFEMjUW6T8iGra4bA-8" value="&lt;span style=&quot;font-size: 22px;&quot; id=&quot;docs-internal-guid-a7cf92bb-7fff-4733-2777-8e73bcc97a13&quot;&gt;&lt;p style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-8e448e3d-7fff-988c-356d-b307d0269999&quot; style=&quot;font-size: 22px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot;&gt;&lt;span id=&quot;docs-internal-guid-50a65181-7fff-8417-4e22-e44dc631bb1d&quot; style=&quot;font-size: 22px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot;&gt;&lt;span style=&quot;font-size: 22px; font-family: Lato, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;“El nroB es mayor al nroA”&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=22;fontColor=default;labelBorderColor=none;fillColor=default;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="138" y="310" width="182" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="HyeaFEMjUW6T8iGra4bA-12" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;fin&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=22;labelBorderColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="320" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8gAqBr13fPeSlQdKWnyj-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="HyeaFEMjUW6T8iGra4bA-13" target="HyeaFEMjUW6T8iGra4bA-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8gAqBr13fPeSlQdKWnyj-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="HyeaFEMjUW6T8iGra4bA-13" target="HyeaFEMjUW6T8iGra4bA-15">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="HyeaFEMjUW6T8iGra4bA-13" value="&lt;span id=&quot;docs-internal-guid-0b644caf-7fff-6183-42be-5c40648022ed&quot; style=&quot;font-size: 22px;&quot;&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot;&gt;&lt;span style=&quot;font-size: 22px; font-family: Lato, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;nroA &amp;gt; nroB&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;fontSize=22;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="185" y="221" width="210" height="80" as="geometry" />
+          <mxGeometry x="277" y="221" width="210" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="BZVNJPppXDSua-A5vR23-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=22;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="HyeaFEMjUW6T8iGra4bA-15" target="HyeaFEMjUW6T8iGra4bA-12">
+        <mxCell id="8gAqBr13fPeSlQdKWnyj-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="HyeaFEMjUW6T8iGra4bA-15" target="HyeaFEMjUW6T8iGra4bA-12">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="HyeaFEMjUW6T8iGra4bA-15" value="&lt;span style=&quot;font-size: 22px;&quot; id=&quot;docs-internal-guid-a7cf92bb-7fff-4733-2777-8e73bcc97a13&quot;&gt;&lt;p style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-8e448e3d-7fff-988c-356d-b307d0269999&quot; style=&quot;font-size: 22px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot;&gt;&lt;span id=&quot;docs-internal-guid-50a65181-7fff-8417-4e22-e44dc631bb1d&quot; style=&quot;font-size: 22px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot;&gt;&lt;span id=&quot;docs-internal-guid-66b43951-7fff-cfb6-56a1-509a07bb0cc9&quot; style=&quot;font-size: 22px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 22px;&quot;&gt;&lt;span style=&quot;font-size: 22px; font-family: Lato, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;“El nroA es mayor al nroB”&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=22;fontColor=default;labelBorderColor=none;fillColor=default;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="465" y="239" width="265" height="44" as="geometry" />
+          <mxGeometry x="440" y="310" width="195" height="60" as="geometry" />
         </mxCell>
         <mxCell id="HyeaFEMjUW6T8iGra4bA-17" value="SI" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=22;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="405" y="216" width="40" height="40" as="geometry" />
+          <mxGeometry x="497" y="216" width="40" height="40" as="geometry" />
         </mxCell>
         <mxCell id="HyeaFEMjUW6T8iGra4bA-18" value="NO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=22;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="228" y="306" width="60" height="40" as="geometry" />
+          <mxGeometry x="227" y="216" width="60" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
