@@ -1,68 +1,68 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.8.0">
   <diagram name="Página-1" id="wLx6VgqrCSCbB1vkNKGE">
-    <mxGraphModel dx="2257" dy="1827" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3330" dy="1005" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.522;entryY=0.038;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-3" target="Ie-rOIcjCOkiSCogKrDe-43" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="800" y="280" as="targetPoint" />
+            <mxPoint x="807" y="400" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-3" target="Ie-rOIcjCOkiSCogKrDe-56" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-3" value="&lt;span id=&quot;docs-internal-guid-66ab798b-7fff-4203-50f9-7aa6f144250b&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;rangoInferior &amp;lt; rangoSuperior&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=28;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" parent="1" vertex="1">
-          <mxGeometry x="124" y="170" width="425" height="100" as="geometry" />
+          <mxGeometry x="131" y="290" width="425" height="100" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-4" value="FIN" style="ellipse;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
-          <mxGeometry x="230" y="996" width="112" height="60" as="geometry" />
+          <mxGeometry x="237" y="1116" width="112" height="34" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-10" target="Ie-rOIcjCOkiSCogKrDe-28" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-10" value="&lt;span id=&quot;docs-internal-guid-b319577f-7fff-0c8a-b756-786e2fa02dd5&quot;&gt;&lt;p style=&quot;line-height:1.38;margin-top:12pt;margin-bottom:12pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;rangoInferior, rangoSuperior, contador Como Entero&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;glass=0;strokeWidth=1;shadow=0;" parent="1" vertex="1">
-          <mxGeometry x="172.6" y="-52" width="312.81" height="80" as="geometry" />
+          <mxGeometry x="179.6" y="68" width="312.81" height="80" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-27" target="Ie-rOIcjCOkiSCogKrDe-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-27" value="INICIO" style="ellipse;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
-          <mxGeometry x="282.005" y="-120" width="90" height="50" as="geometry" />
+          <mxGeometry x="289.005" width="90" height="50" as="geometry" />
         </mxCell>
         <mxCell id="CXr7_AYU05z-mExEjDNm-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Ie-rOIcjCOkiSCogKrDe-28" target="Ie-rOIcjCOkiSCogKrDe-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-28" value="&lt;span id=&quot;docs-internal-guid-b319577f-7fff-0c8a-b756-786e2fa02dd5&quot;&gt;&lt;p style=&quot;line-height: 60%; margin-top: 12pt; margin-bottom: 12pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;&amp;nbsp;&amp;nbsp;rangoInferior &lt;span id=&quot;docs-internal-guid-6debfc21-7fff-f456-295d-a451064eab3e&quot;&gt;&lt;span style=&quot;font-size: 22pt; font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline;&quot;&gt;←&lt;/span&gt;&lt;/span&gt; 500&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 60%; margin-top: 12pt; margin-bottom: 12pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;background-color: transparent; font-family: Raleway, sans-serif; white-space-collapse: preserve;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;rangoSuperior &lt;/span&gt;&lt;span id=&quot;docs-internal-guid-6debfc21-7fff-f456-295d-a451064eab3e&quot;&gt;&lt;span style=&quot;font-size: 22pt; font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;←&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; font-family: Raleway, sans-serif; white-space-collapse: preserve;&quot;&gt; 700&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 60%; margin-top: 12pt; margin-bottom: 12pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-5782e479-7fff-a09f-a81a-afea3d57d637&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 60%; margin-top: 12pt; margin-bottom: 12pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;contador &lt;span id=&quot;docs-internal-guid-6debfc21-7fff-f456-295d-a451064eab3e&quot;&gt;&lt;span style=&quot;font-size: 22pt; font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline;&quot;&gt;←&lt;/span&gt;&lt;/span&gt; 0&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;glass=0;strokeWidth=1;shadow=0;" parent="1" vertex="1">
-          <mxGeometry x="167.005" y="54" width="320" height="90" as="geometry" />
+          <mxGeometry x="174.005" y="174" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-37" target="Ie-rOIcjCOkiSCogKrDe-39" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="CXr7_AYU05z-mExEjDNm-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Ie-rOIcjCOkiSCogKrDe-37">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="575" y="830" as="targetPoint" />
+            <mxPoint x="582" y="950" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="773" y="518" />
-              <mxPoint x="773" y="830" />
-              <mxPoint x="575" y="830" />
+              <mxPoint x="780" y="638" />
+              <mxPoint x="780" y="950" />
+              <mxPoint x="582" y="950" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-37" value="&lt;span id=&quot;docs-internal-guid-7c3c287a-7fff-3d96-75f3-ac7e1ffbf0cc&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;rangoInferior MOD 2 &amp;lt;&amp;gt; 0&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=28;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" parent="1" vertex="1">
-          <mxGeometry x="397" y="468" width="356" height="100" as="geometry" />
+          <mxGeometry x="404" y="588" width="356" height="100" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.499;exitY=0.871;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-39" target="Ie-rOIcjCOkiSCogKrDe-40" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-39" value="&lt;span id=&quot;docs-internal-guid-f223e772-7fff-e70d-2893-a90af354141a&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Escribir rangoInferior, &quot; es impar&quot;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" parent="1" vertex="1">
-          <mxGeometry x="390" y="603" width="370" height="60" as="geometry" />
+          <mxGeometry x="397" y="723" width="370" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-40" target="Ie-rOIcjCOkiSCogKrDe-46" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-40" value="&lt;span id=&quot;docs-internal-guid-4478a63c-7fff-7cc4-2797-e451db6ae739&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;contador &lt;span id=&quot;docs-internal-guid-6debfc21-7fff-f456-295d-a451064eab3e&quot;&gt;&lt;span style=&quot;font-size: 22pt; font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline;&quot;&gt;←&lt;/span&gt;&lt;/span&gt; contador + 1&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;glass=0;strokeWidth=1;shadow=0;" parent="1" vertex="1">
-          <mxGeometry x="435.25" y="677" width="279.5" height="40" as="geometry" />
+          <mxGeometry x="442.25" y="797" width="279.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-43" target="Ie-rOIcjCOkiSCogKrDe-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -70,58 +70,58 @@
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-43" target="Ie-rOIcjCOkiSCogKrDe-72" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="339" y="370" />
-              <mxPoint x="339" y="870" />
-              <mxPoint x="557" y="870" />
+              <mxPoint x="346" y="490" />
+              <mxPoint x="346" y="990" />
+              <mxPoint x="564" y="990" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-43" value="&lt;span id=&quot;docs-internal-guid-6ddc4545-7fff-9ba6-9f6f-2a40581411a5&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;rangoInferior &amp;lt;= rangoSuperior&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=28;align=center;strokeWidth=1;spacing=6;spacingTop=-4;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
-          <mxGeometry x="359" y="310" width="432" height="120" as="geometry" />
+          <mxGeometry x="366" y="430" width="432" height="120" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-45" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;SI&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="574" y="566" width="50" height="40" as="geometry" />
+          <mxGeometry x="581" y="686" width="50" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-46" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="590" y="270" as="targetPoint" />
+            <mxPoint x="597" y="390" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="575" y="850" />
-              <mxPoint x="810" y="850" />
-              <mxPoint x="810" y="270" />
+              <mxPoint x="582" y="970" />
+              <mxPoint x="817" y="970" />
+              <mxPoint x="817" y="390" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-46" value="&lt;span id=&quot;docs-internal-guid-2f925811-7fff-3314-c8c5-8c2c53f412e3&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;rangoInferior &lt;span id=&quot;docs-internal-guid-6debfc21-7fff-f456-295d-a451064eab3e&quot;&gt;&lt;span style=&quot;font-size: 22pt; font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline;&quot;&gt;←&lt;/span&gt;&lt;/span&gt; rangoInferior + 1&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;glass=0;strokeWidth=1;shadow=0;" parent="1" vertex="1">
-          <mxGeometry x="480.25" y="738" width="189.5" height="70" as="geometry" />
+          <mxGeometry x="487.25" y="858" width="189.5" height="70" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-50" target="Ie-rOIcjCOkiSCogKrDe-52" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="CXr7_AYU05z-mExEjDNm-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Ie-rOIcjCOkiSCogKrDe-50">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="40" y="830" as="targetPoint" />
+            <mxPoint x="47" y="950" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-160" y="518" />
-              <mxPoint x="-160" y="830" />
-              <mxPoint x="40" y="830" />
+              <mxPoint x="-153" y="638" />
+              <mxPoint x="-153" y="950" />
+              <mxPoint x="47" y="950" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-50" value="&lt;span id=&quot;docs-internal-guid-7c3c287a-7fff-3d96-75f3-ac7e1ffbf0cc&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;rangoInferior % 2 &amp;lt;&amp;gt; 0&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=28;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" parent="1" vertex="1">
-          <mxGeometry x="-140" y="468" width="346" height="100" as="geometry" />
+          <mxGeometry x="-133" y="588" width="346" height="100" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.499;exitY=0.871;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-52" target="Ie-rOIcjCOkiSCogKrDe-54" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-52" value="&lt;span id=&quot;docs-internal-guid-f223e772-7fff-e70d-2893-a90af354141a&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Escribir rangoInferior, &quot; es impar&quot;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" parent="1" vertex="1">
-          <mxGeometry x="-150" y="597" width="370" height="60" as="geometry" />
+          <mxGeometry x="-143" y="717" width="370" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-54" target="Ie-rOIcjCOkiSCogKrDe-59" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-54" value="&lt;span id=&quot;docs-internal-guid-4478a63c-7fff-7cc4-2797-e451db6ae739&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;contador &lt;span id=&quot;docs-internal-guid-6debfc21-7fff-f456-295d-a451064eab3e&quot;&gt;&lt;span style=&quot;font-size: 22pt; font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline;&quot;&gt;←&lt;/span&gt;&lt;/span&gt; contador + 1&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;glass=0;strokeWidth=1;shadow=0;" parent="1" vertex="1">
-          <mxGeometry x="-104.75" y="674" width="279.5" height="40" as="geometry" />
+          <mxGeometry x="-97.75" y="794" width="279.5" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-56" target="Ie-rOIcjCOkiSCogKrDe-50" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -129,79 +129,79 @@
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-56" target="Ie-rOIcjCOkiSCogKrDe-66" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="271" y="370" />
-              <mxPoint x="271" y="870" />
-              <mxPoint x="35" y="870" />
+              <mxPoint x="278" y="490" />
+              <mxPoint x="278" y="990" />
+              <mxPoint x="42" y="990" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-56" value="&lt;span id=&quot;docs-internal-guid-6ddc4545-7fff-9ba6-9f6f-2a40581411a5&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;rangoInferior &amp;gt;= rangoSuperior&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=28;align=center;strokeWidth=1;spacing=6;spacingTop=-4;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
-          <mxGeometry x="-181" y="310" width="432" height="120" as="geometry" />
+          <mxGeometry x="-174" y="430" width="432" height="120" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-57" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;SI&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="40" y="560" width="50" height="40" as="geometry" />
+          <mxGeometry x="47" y="680" width="50" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="Ie-rOIcjCOkiSCogKrDe-59" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="35" y="850" />
-              <mxPoint x="-200" y="850" />
-              <mxPoint x="-200" y="270" />
+              <mxPoint x="42" y="970" />
+              <mxPoint x="-193" y="970" />
+              <mxPoint x="-193" y="390" />
             </Array>
-            <mxPoint x="30" y="270" as="targetPoint" />
+            <mxPoint x="37" y="390" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-59" value="&lt;span id=&quot;docs-internal-guid-2f925811-7fff-3314-c8c5-8c2c53f412e3&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;rangoInferior &lt;span id=&quot;docs-internal-guid-6debfc21-7fff-f456-295d-a451064eab3e&quot;&gt;&lt;span style=&quot;font-size: 22pt; font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline;&quot;&gt;←&lt;/span&gt;&lt;/span&gt; rangoInferior - 1&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;glass=0;strokeWidth=1;shadow=0;" parent="1" vertex="1">
-          <mxGeometry x="-59.75" y="738" width="189.5" height="70" as="geometry" />
+          <mxGeometry x="-52.75" y="858" width="189.5" height="70" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-60" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;SI&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="549" y="180" width="50" height="40" as="geometry" />
+          <mxGeometry x="556" y="300" width="50" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-62" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;NO&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="55.75" y="180" width="60" height="40" as="geometry" />
+          <mxGeometry x="62.75" y="300" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-63" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;SI&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="580" y="430" width="50" height="40" as="geometry" />
+          <mxGeometry x="587" y="550" width="50" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-64" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;SI&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="40" y="430" width="50" height="40" as="geometry" />
+          <mxGeometry x="47" y="550" width="50" height="40" as="geometry" />
         </mxCell>
         <mxCell id="CXr7_AYU05z-mExEjDNm-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.487;exitY=0.893;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ie-rOIcjCOkiSCogKrDe-66" target="Ie-rOIcjCOkiSCogKrDe-4">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="30" y="980" />
-              <mxPoint x="286" y="980" />
+              <mxPoint x="37" y="1100" />
+              <mxPoint x="293" y="1100" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-66" value="&lt;span id=&quot;docs-internal-guid-ae4bb54f-7fff-0cd6-a61f-ab470dabca5d&quot;&gt;&lt;p style=&quot;line-height:1.38;margin-top:12pt;margin-bottom:12pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Escribir &quot;Cantidad de números impares: &quot;, contador&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" parent="1" vertex="1">
-          <mxGeometry x="-150" y="884" width="370" height="90" as="geometry" />
+          <mxGeometry x="-143" y="1004" width="370" height="90" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-70" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;NO&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="206" y="330" width="60" height="40" as="geometry" />
+          <mxGeometry x="213" y="450" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-71" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;NO&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="312" y="330" width="60" height="40" as="geometry" />
+          <mxGeometry x="319" y="450" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ie-rOIcjCOkiSCogKrDe-72" value="&lt;span id=&quot;docs-internal-guid-ae4bb54f-7fff-0cd6-a61f-ab470dabca5d&quot;&gt;&lt;p style=&quot;line-height:1.38;margin-top:12pt;margin-bottom:12pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: Raleway, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Escribir &quot;Cantidad de números impares: &quot;, contador&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" parent="1" vertex="1">
-          <mxGeometry x="372" y="884" width="370" height="84" as="geometry" />
+          <mxGeometry x="379" y="1004" width="370" height="84" as="geometry" />
         </mxCell>
         <mxCell id="CXr7_AYU05z-mExEjDNm-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.489;exitY=0.871;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ie-rOIcjCOkiSCogKrDe-72" target="Ie-rOIcjCOkiSCogKrDe-4">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="550" y="1020" as="sourcePoint" />
-            <mxPoint x="286" y="1070" as="targetPoint" />
+            <mxPoint x="557" y="1140" as="sourcePoint" />
+            <mxPoint x="293" y="1190" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="550" y="957" />
-              <mxPoint x="550" y="980" />
-              <mxPoint x="286" y="980" />
+              <mxPoint x="557" y="1077" />
+              <mxPoint x="557" y="1100" />
+              <mxPoint x="293" y="1100" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="CXr7_AYU05z-mExEjDNm-6" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;NO&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="-170" y="470" width="60" height="40" as="geometry" />
+          <mxGeometry x="-163" y="590" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="CXr7_AYU05z-mExEjDNm-10" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;NO&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="731" y="480" width="60" height="40" as="geometry" />
+          <mxGeometry x="738" y="600" width="60" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
