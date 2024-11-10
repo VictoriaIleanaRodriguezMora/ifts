@@ -1,7 +1,14 @@
-montoCompra = float(input("Ingrese el monto de la compra: "))
-if montoCompra >= 300:
-    montoConDescuento = montoCompra * 0.85  # Aplica un descuento del 15%
-    print("El nuevo monto con el descuento es: $", montoConDescuento)
+try:
+    hs_trabajadas = int(input("Ingrese las horas de trabajo: "))
+    monto_por_hs = int(input("Ingrese el monto por hora de trabajo: "))
+except ValueError:
+    print("Por favor, ingrese valores numéricos válidos.")
+    hs_trabajadas = 0
+    monto_por_hs = 0
+if hs_trabajadas > 160:
+    hs_extras = hs_trabajadas - 160
+    sueldo_total = (hs_extras * (monto_por_hs * 2)) + (160 * monto_por_hs)
 else:
-    print("No se aplica descuento, el monto es: $", montoCompra)
-    
+    sueldo_total = hs_trabajadas * monto_por_hs
+
+print("El sueldo es: ${sueldo_total}")
