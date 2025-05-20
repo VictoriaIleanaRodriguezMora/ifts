@@ -1,11 +1,91 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.5">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="1042" dy="574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="2850" dy="765" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="A6qmrVI5I13Jj1zC-Mew-1" value="Ejercicio nro 2 - Diagrama de Clases UML&#xa;Nos requieren modelar un sistema de gestión educativa para una facultad. En una primera etapa,&#xa;debemos crear la estructura del software a partir de un Diagrama de Clases UML.&#xa;El sistema debe permitir registrar las carreras que dicta la facultad, las materias de cada carrera,&#xa;los profesores y los alumnos.&#xa;Tanto de los profesores como de los alumnos se necesita conocer su nombre, apellido, dni,&#xa;domicilio y edad.&#xa;De los estudiantes en particular, es necesario registrar su número de matrícula, la carrera a la que&#xa;está inscripto, las materias aprobadas y las materias que se encuentra cursando.&#xa;Del profesor, su número de legajo, su antigüedad docente, la carrera y las materias que dicta.&#xa;De la carrera, es necesario registrar el código, el nombre y el título otorgado.&#xa;De las materias, el código, el nombre, a qué carrera corresponde y la modalidad de cursado, que&#xa;puede ser presencial o virtual.&#xa;Además, nos piden poder obtener el promedio de notas de cada alumno respecto de las materias&#xa;ya aprobadas.&#xa;Asimismo, el sistema debe permitir que cada alumno pueda inscribirse a rendir el examen final de&#xa;las materias que se encuentra cursando.&#xa;Para poder anotarse a la mesa de examen los requisitos son: tener aprobados con nota igual o&#xa;mayor a cuatro cada uno de los exámenes parciales y tener un promedio de asistencia igual o&#xa;mayor al 75 %.&#xa;En caso de obtener una nota igual o mayor a cuatro en el examen final, la materia debe registrarse&#xa;como aprobada." style="text;whiteSpace=wrap;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry y="110" width="560" height="370" as="geometry" />
+          <mxGeometry x="-800" y="10" width="800" height="510" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-5" value="Carrera" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="240" y="270" width="587" height="274" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-6" value="+ n_pedido: int&#xa;+ fecha: date&#xa;+ estado: bool&#xa;+ n_cliente: Cliente&#xa;+ detalles: List&lt;DetallePedido&gt;&#xa;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-5">
+          <mxGeometry y="30" width="587" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-7" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-5">
+          <mxGeometry y="164" width="587" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-8" value="+ confirmar_pedido(): bool&#xa;+ agregar_articulo(articulo: Articulo, cantidad: int): DetallePedido&#xa;+ calcular_total(): float" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-5">
+          <mxGeometry y="194" width="587" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-12" value="Profesor" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=35;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="500" y="625" width="320" height="358" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-13" value="+ nombre: str&#xa;+ apellido: str&#xa;+ dni: str&#xa;+ domicilio: str&#xa;+ edad: tinyint&#xa;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-12">
+          <mxGeometry y="35" width="320" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-14" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-12">
+          <mxGeometry y="220" width="320" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-15" value="+ sumar_cantidad(articulo: Articulo): bool&#xa;+ restar_cantidad(articulo: Articulo): bool" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-12">
+          <mxGeometry y="228" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-16" value="" style="endArrow=diamondThin;shadow=0;strokeWidth=3;rounded=0;curved=0;endFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;fontSize=20;startSize=8;endSize=14;exitX=0.51;exitY=-0.005;exitDx=0;exitDy=0;entryX=0.722;entryY=0.995;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="A6qmrVI5I13Jj1zC-Mew-12" target="A6qmrVI5I13Jj1zC-Mew-8">
+          <mxGeometry x="0.5" y="41" relative="1" as="geometry">
+            <mxPoint x="622" y="585" as="sourcePoint" />
+            <mxPoint x="666.69" y="604.6799999999998" as="targetPoint" />
+            <mxPoint x="-40" y="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-17" value="1" style="resizable=0;align=right;verticalAlign=bottom;labelBackgroundColor=none;fontSize=20;" connectable="0" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-16">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="33" y="40" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-18" value="N" style="resizable=0;align=right;verticalAlign=bottom;labelBackgroundColor=none;fontSize=20;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="700" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-19" value="Alumno" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="87" y="590" width="276" height="194" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-20" value="+ nombre: str&#xa;+ apellido: str&#xa;+ dni: str&#xa;+ domicilio: str&#xa;+ edad: tinyint" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-19">
+          <mxGeometry y="30" width="276" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-21" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-19">
+          <mxGeometry y="170" width="276" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-22" value="" style="endArrow=none;shadow=0;strokeWidth=3;rounded=0;curved=0;endFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;fontSize=20;startSize=8;endSize=14;exitX=-0.001;exitY=0.194;exitDx=0;exitDy=0;entryX=1.002;entryY=1.01;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;startFill=0;" edge="1" parent="1" source="A6qmrVI5I13Jj1zC-Mew-15" target="A6qmrVI5I13Jj1zC-Mew-20">
+          <mxGeometry x="0.5" y="41" relative="1" as="geometry">
+            <mxPoint x="430" y="744" as="sourcePoint" />
+            <mxPoint x="431" y="645" as="targetPoint" />
+            <mxPoint x="-40" y="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-23" value="1" style="resizable=0;align=right;verticalAlign=bottom;labelBackgroundColor=none;fontSize=20;" connectable="0" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-22">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="23" y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-24" value="N" style="resizable=0;align=right;verticalAlign=bottom;labelBackgroundColor=none;fontSize=20;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="487" y="725" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-27" value="Final" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="-290" y="590" width="356" height="194" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-28" value="+ nota_primer_parcial: tinyint&#xa;+ nota_segundo_parcial: tinyint&#xa;+ dni: str&#xa;+ domicilio: str&#xa;+ edad: tinyint" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-27">
+          <mxGeometry y="30" width="356" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-29" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;fontSize=20;" vertex="1" parent="A6qmrVI5I13Jj1zC-Mew-27">
+          <mxGeometry y="170" width="356" height="8" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
