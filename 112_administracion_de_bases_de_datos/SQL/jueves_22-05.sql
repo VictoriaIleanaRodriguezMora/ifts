@@ -38,12 +38,19 @@ comparando con productos
 
 JOIN subcategorias
 ON categorias.idCategoria = subcategorias.idCategoria*/
-
 ;
  
  
+ # CRUD
+ -- INSERT INTO categorias (idCategoria, nombreCategoria) VALUES (3, "Comestibles");
+ -- INSERT INTO categorias (nombreCategoria) VALUES ("Juguetes");
  
+ # Esto funciona pero es + seguro actualizar por ID
+ -- UPDATE categorias SET nombreCategoria = "Adornos" WHERE nombreCategoria = "Juguetes";
  
+ -- SELECT * FROM categorias;
+ # Si en vez de OR pongo AND, no va a borrar nada, pq nunca un id es = a 3 y 4 a la vez
+ -- DELETE FROM categorias WHERE idCategoria = 3 OR idCategoria = 4;
  
 
 
