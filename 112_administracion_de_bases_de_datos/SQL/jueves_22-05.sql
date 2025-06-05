@@ -52,7 +52,45 @@ ON categorias.idCategoria = subcategorias.idCategoria*/
  # Si en vez de OR pongo AND, no va a borrar nada, pq nunca un id es = a 3 y 4 a la vez
  -- DELETE FROM categorias WHERE idCategoria = 3 OR idCategoria = 4;
  
+# EJERCICIOS
+# 1. Obtener todos los productos de la categoria "Electronica"
+-- SELECT * FROM productos; Productos NO tiene un campo nombreCategoria
+-- SELECT * FROM productos WHERE nombreCategoria = "Electronica" Entonces esto es incorrecto
 
+/* ¿Qué JOIN hago? ¿Qué es lo que quiero?
+Quiero los productos que su categoria sea electronica. Solo quiero los que coincida
+la categoria, los demas no los quiero. Tampoco quiero ver otras categorias.
+Por eso seria INNER
+*/
+/* -- RESOLUCION EJ 1
+SELECT nombreProducto, nombreCategoria FROM productos
+INNER JOIN categorias
+ON productos.idCategoria = categorias.idCategoria
+WHERE nombreCategoria = "Electronica"
+;
+*/
+-- Sin el WHERE, me trae todas los productos y categorias que tengan un id en comun, sino, no.
 
+# 2. Obtener todos los detalles de ventas con idVenta = 1
+-- SELECT nombreProducto, precioVenta, cantidad, nombreCliente, apellidoCliente
+SELECT *
+	FROM ventas_detalle 
+INNER JOIN productos
+	ON ventas_detalle.idProducto = productos.idProducto
+INNER JOIN ventas 
+	ON ventas.idVenta = ventas_detalle.idVenta
+INNER JOIN clientes -- ¿Con qué lo vinculo? Tengo que vincularlo con la tabla detalle, porque detalle_ventas, no tiene nada para vincular con clientes
+-- Traje a clientes, porque me pedian los datos, para hacer la factura. Nombre, apellido
+	ON clientes.idCliente = ventas.idCliente
+WHERE ventas_detalle.idVenta = 1
+;
+
+/* ERRORES
+- Este errore significa que hay tantas referencias a idVenta en distintas tablas, que no sabe a cual
+tiene que hacer referencia
+Error Code: 1052. Column 'idVenta' in where clause is ambiguous
+WHERE idVenta = 1,
+
+*/
 
 
