@@ -25,19 +25,44 @@ https://stackoverflow.com/questions/8084571/not-unique-table-alias
 LEFT JOIN ventas
 ON ventas.idCliente = clientes.idCliente)
 UNION */
-SELECT vd.idVentaDetalle
--- , vd.idProducto
-, vd.idVenta
-, vd.cantidad
-, pr.precioVenta
--- , pr.idProducto
-, SUM(cantidad * precioVenta) AS 'cantidad * precioVenta'
+SELECT 
+-- vd.idVentaDetalle,
+ vd.idVenta
+-- , vd.cantidad
+-- , pr.precioVenta
+, SUM(vd.cantidad * pr.precioVenta) AS 'cantidad * precioVenta'
 FROM ventas_detalle  AS vd
 JOIN productos AS pr
 ON vd.idProducto = pr.idProducto
--- GROUP BY vd.idVentaDetalle
+GROUP BY vd.idVenta
 ;
+/* NOTAS PARA EL EJERCICIO # 044
+¿Qué es una columna agregada? "nonagreggated column"
+Es una columna que se procesa usando una función de agregación, como:
+SUM(), AVG, COUNT, MAX, MIN, 
+〰️
+EJEMPLO: 
+SELECT idCliente, SUM(cantidad) FROM ventas GROUP BY idCliente;
+En este caso: SUM(cantidad) es una columna agregada.
+idCliente no está agregada, pero sí está en el GROUP BY, por eso no hay error.
+〰️
+¿Qué es una columna no agregada?
+Es cualquier columna que aparece en el SELECT pero no está dentro de una función de agregación ni en el GROUP BY.
 
+〰️
+EJEMPLO:
+SELECT idCliente, nombreCliente, SUM(cantidad) FROM ventas GROUP BY idCliente;
+nombreCliente es no agregada (no está en SUM, ni en GROUP BY)
+Y como no está en el GROUP BY, SQL no sabe qué valor mostrar si hay más de un nombre asociado a un idCliente.
+〰️
+
+‼️‼️ SQL necesita saber qué hacer con cada columna que aparece en el SELECT
+Entonces: Cada columna que aparece en el SELECT debe estar:
+1) en una función de agregación (como SUM(), COUNT(), etc.)
+2) en el GROUP BY
+
+
+*/
 /*
 Error Code: 1222. The used SELECT statements have a different number of columns
 Error Code: 1055. Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'comercio_electronico.vd.cantidad' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
