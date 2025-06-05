@@ -105,9 +105,29 @@ GROUP BY vd.idVentaDetalle
 ;
 */
 
-
 # 5. Obtener todos los productos de la categoría "Electrónica" con su nombre de categoría:
+# (Hecho en clase)
+/*
+SELECT * -- trae TODO de todas las tablas
+	FROM ventas_detalle 
+INNER JOIN productos
+	ON ventas_detalle.idProducto = productos.idProducto
+INNER JOIN ventas 
+	ON ventas.idVenta = ventas_detalle.idVenta
+INNER JOIN clientes -- ¿Con qué lo vinculo? Tengo que vincularlo con la tabla detalle, porque detalle_ventas, no tiene nada para vincular con clientes
+-- Traje a clientes, porque me pedian los datos, para hacer la factura. Nombre, apellido
+	ON clientes.idCliente = ventas.idCliente
+WHERE ventas_detalle.idVenta = 1
+;
+*/
 # 6. Obtener el nombre y la dirección de todos los clientes que han realizado ventas:
+SELECT ventas.idVenta, clientes.nombreCliente, clientes.direccionCliente
+	FROM ventas
+INNER JOIN clientes -- INNER JOIN pq necesito unicamente los clientes con ventas. no ventas sin clientes
+	ON ventas.idCliente = clientes.idCliente
+
+
+
 # 7. Obtener los detalles de ventas de la venta con idVenta = 1, incluyendo el nombre del producto y su precio de venta:
 # 8.Obtener el total de ventas realizadas por cada cliente, mostrando el nombre del cliente y la cantidad total de ventas:
 # 9. Obtener los nombres de las categorías y la cantidad de productos vendidos en cada categoría:

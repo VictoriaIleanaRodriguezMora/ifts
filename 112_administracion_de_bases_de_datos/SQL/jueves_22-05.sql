@@ -73,7 +73,7 @@ WHERE nombreCategoria = "Electronica"
 
 # 2. Obtener todos los detalles de ventas con idVenta = 1
 -- SELECT nombreProducto, precioVenta, cantidad, nombreCliente, apellidoCliente
-SELECT *
+SELECT * -- trae TODO de todas las tablas
 	FROM ventas_detalle 
 INNER JOIN productos
 	ON ventas_detalle.idProducto = productos.idProducto
@@ -93,4 +93,6 @@ WHERE idVenta = 1,
 
 */
 
+# BORRAR Y CREAR DATABASE
+DROP DATABASE comercio_electronico;
 
