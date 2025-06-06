@@ -126,16 +126,20 @@ INNER JOIN clientes -- ¿Con qué lo vinculo? Tengo que vincularlo con la tabla 
 WHERE ventas_detalle.idVenta = 1
 ;
 */
+
+
 # 6. Obtener el nombre y la dirección de todos los clientes que han realizado ventas:
-/* -- EJ 06
+ -- EJ 06
+ /*
 SELECT ventas.idVenta, clientes.nombreCliente, clientes.direccionCliente
 	FROM ventas
 INNER JOIN clientes -- INNER JOIN pq necesito unicamente los clientes con ventas. no ventas sin clientes
 	ON ventas.idCliente = clientes.idCliente
+;
 */
 
 # 7. Obtener los detalles de ventas de la venta con idVenta = 1, incluyendo el nombre del producto y su precio de venta:
-/* -- EJ 07
+/* -- EJ 07  
 SELECT v.idVenta
 , c.nombreCliente
 , c.direccionCliente
@@ -177,7 +181,32 @@ GROUP BY (c.nombreCliente)
 */
 
 # 9. Obtener los nombres de las categorías y la cantidad de productos vendidos en cada categoría:
-SELECT * FROM productos
+/* -- EJERCICIO 09
+SELECT c.nombreCategoria
+-- , p.idProducto
+-- , vd.cantidad
+, COUNT(vd.cantidad)
+	FROM ventas_detalle AS vd
+INNER JOIN productos AS p
+	ON p.idProducto = vd.idProducto
+INNER JOIN categorias AS c
+	ON c.idCategoria = p.idCategoria
+GROUP BY (c.nombreCategoria)
 ;
-# 10. Obtener el nombre de cada cliente y el total gastado en compras por cada cliente, incluyendo aquellos clientes que no han realizado compras:
+*/
 
+# 10. Obtener el nombre de cada cliente y el total gastado en compras por cada cliente, incluyendo aquellos clientes que no han realizado compras:
+SELECT nombreCliente
+-- , vd.idVenta
+, vd.idVentaDetalle
+, vd.idProducto, vd.cantidad, p.precioCompra,
+ SUM(p.precioCompra * vd.cantidad) AS 'precio * cantidad'
+	FROM clientes AS c
+JOIN ventas AS v
+	ON c.idCliente = v.idCliente
+JOIN ventas_detalle AS vd
+	ON vd.idVenta = v.idVenta
+JOIN productos AS p
+	ON p.idProducto = vd.idProducto
+GROUP BY nombreCliente
+;
