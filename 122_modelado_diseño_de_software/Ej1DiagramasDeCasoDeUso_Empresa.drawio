@@ -1,127 +1,178 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.0.8">
   <diagram name="Page-1" id="58cdce13-f638-feb5-8d6f-7d28b1aa9fa0">
-    <mxGraphModel dx="1681" dy="1778" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1681" dy="928" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="5zwYq6cNZRpwNvur7axG-1" value="Se requiere desarrollar un Diagrama de Casos de Uso según el siguiente&#xa;escenario:&#xa;&#xa;Una empresa dedicada a la selección de personal quiere automatizar el proceso de selección de candidatos para las ofertas de empleo deempresas que le llegan, de acuerdo a las habilidades y la titulación queposeen los candidatos. &#xa;&#xa;Para ello, mantiene una base de datos con los candidatos que buscan empleo y con las ofertas de empleo de las empresas que buscan trabajadores. &#xa;&#xa;Las ofertas de puestos de trabajo recibidas son debidamente publicadas en la red, para lo cual el sistema proporciona dicha información a un proveedor de servicios de internet.&#xa;&#xa;Cuando una persona se inscribe en la empresa de selección debe llenar una solicitud de inscripción. &#xa;&#xa;La empresa de selección requiere que la aplicación seleccione a los demandantes aptos para cada oferta de empleo, por orden de idoneidad." style="text;whiteSpace=wrap;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="30" y="30" width="570" height="570" as="geometry" />
+        <mxCell id="5zwYq6cNZRpwNvur7axG-1" value="Se requiere desarrollar un Diagrama de Casos de Uso según el siguiente&#xa;escenario:&#xa;&#xa;Una empresa dedicada a la selección de personal quiere automatizar el proceso de selección de candidatos para las ofertas de empleo de empresas que le llegan, de acuerdo a las habilidades y la titulación que poseen los candidatos. &#xa;&#xa;Para ello, mantiene una base de datos con los candidatos que buscan empleo y con las ofertas de empleo de las empresas que buscan trabajadores. &#xa;&#xa;Las ofertas de puestos de trabajo recibidas son debidamente publicadas en la red, para lo cual el sistema proporciona dicha información a un proveedor de servicios de internet.&#xa;&#xa;Cuando una persona se inscribe en la empresa de selección debe llenar una solicitud de inscripción. &#xa;&#xa;La empresa de selección requiere que la aplicación seleccione a los demandantes aptos para cada oferta de empleo, por orden de idoneidad." style="text;whiteSpace=wrap;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="270" y="410" width="570" height="570" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-2" value="&#xa;Proveedor de servicios de  internet&#xa;&#xa;Persona/Usuario sin inscribirse&#xa;Persona/Usuario llena solicitud de inscripcion&#xa;Persona/Usuario inscripta" style="text;whiteSpace=wrap;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="650" y="-180" width="410" height="170" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-4" target="5zwYq6cNZRpwNvur7axG-31">
+        <mxCell id="5zwYq6cNZRpwNvur7axG-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" parent="1" source="5zwYq6cNZRpwNvur7axG-4" target="5zwYq6cNZRpwNvur7axG-31" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-4" target="5zwYq6cNZRpwNvur7axG-34">
+        <mxCell id="5zwYq6cNZRpwNvur7axG-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" parent="1" source="5zwYq6cNZRpwNvur7axG-4" target="5zwYq6cNZRpwNvur7axG-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-4" value="&lt;span style=&quot;text-wrap-mode: wrap; text-align: left;&quot;&gt;empresa dedicada&lt;br&gt;a la&lt;br&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;text-align: left; text-wrap-mode: wrap;&quot;&gt;selección de personal&amp;nbsp;&lt;/span&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=20;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="1480" y="-70" width="40" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-5" value="oferta de empleo" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="980" y="550" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-7" value="QUE MARCA SI ALGUIEN PUEDE SER ACTOR?&#xa;Si ese actor puede ejecutar alguna acción, o no&#xa;¿Ese actor realiza alguna acción?" style="text;whiteSpace=wrap;fontSize=20;fillColor=#f8cecc;strokeColor=#b85450;gradientColor=#ea6b66;" vertex="1" parent="1">
-          <mxGeometry x="690" y="-40" width="450" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=3;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-8" target="5zwYq6cNZRpwNvur7axG-20">
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-4" target="H7HByN_JSWiTgD1NI1l1-8">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="950" y="350" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-8" value="Candidato" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=20;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="870" y="310" width="40" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-10" target="5zwYq6cNZRpwNvur7axG-22">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-10" value="Empresa que solicita info&lt;br&gt;de los candidatos&lt;br&gt;&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(204, 0, 0));&quot;&gt;Publica ofertas laborales&lt;/font&gt;&lt;/b&gt;&lt;br&gt;(empresa cliente)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=20;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="2320" y="310" width="40" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-12" target="5zwYq6cNZRpwNvur7axG-42">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-12" value="Empresa servicio de internet" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=20;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="2000" y="740" width="40" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-14" target="5zwYq6cNZRpwNvur7axG-39">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1520" y="680" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1640" y="400" />
-              <mxPoint x="1640" y="500" />
-              <mxPoint x="1730" y="500" />
+              <mxPoint x="1430" y="210" />
+              <mxPoint x="1430" y="390" />
+              <mxPoint x="1451" y="390" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-14" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); text-wrap-mode: wrap;&quot;&gt;RED/Pagina en donde se llenan solicitud y se publican ofertas&lt;/span&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=20;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="1490" y="320" width="50" height="90" as="geometry" />
+        <mxCell id="5zwYq6cNZRpwNvur7axG-4" value="&lt;span style=&quot;text-wrap-mode: wrap; text-align: left;&quot;&gt;empresa dedicada&lt;br&gt;a la&lt;br&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;text-align: left; text-wrap-mode: wrap;&quot;&gt;selección de personal&amp;nbsp;&lt;/span&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=20;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="130" width="40" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-16">
+        <mxCell id="5zwYq6cNZRpwNvur7axG-7" value="QUE MARCA SI ALGUIEN PUEDE SER ACTOR?&#xa;Si ese actor puede ejecutar alguna acción, o no&#xa;¿Ese actor realiza alguna acción?" style="text;whiteSpace=wrap;fontSize=20;fillColor=#f8cecc;strokeColor=#b85450;gradientColor=#ea6b66;" parent="1" vertex="1">
+          <mxGeometry x="1910" y="331.5" width="450" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5zwYq6cNZRpwNvur7axG-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=3;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="5zwYq6cNZRpwNvur7axG-8" target="5zwYq6cNZRpwNvur7axG-20" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1449.999999999989" y="350.0000000000002" as="targetPoint" />
+            <mxPoint x="1028" y="826" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-16" value="se inscribe en la empresa de selección" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="290" width="180" height="120" as="geometry" />
+        <mxCell id="5zwYq6cNZRpwNvur7axG-8" value="Candidato" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=20;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="948" y="786" width="40" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-19" value="sistema" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1140" y="680" width="120" height="80" as="geometry" />
+        <mxCell id="5zwYq6cNZRpwNvur7axG-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2154" y="652.5" as="sourcePoint" />
+            <mxPoint x="2074" y="652.5" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-20" target="5zwYq6cNZRpwNvur7axG-16">
+        <mxCell id="5zwYq6cNZRpwNvur7axG-10" value="Empresa que solicita info&lt;br&gt;de los candidatos&lt;br&gt;&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(204, 0, 0));&quot;&gt;Publica ofertas laborales&lt;/font&gt;&lt;/b&gt;&lt;br&gt;(empresa cliente)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=20;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="2155" y="612.5" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5zwYq6cNZRpwNvur7axG-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;endArrow=none;startFill=0;" parent="1" source="5zwYq6cNZRpwNvur7axG-12" target="5zwYq6cNZRpwNvur7axG-42" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-20" value="llenar&lt;br&gt;solicitud de inscripcion" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="990" y="297.5" width="140" height="105" as="geometry" />
+        <mxCell id="5zwYq6cNZRpwNvur7axG-12" value="Empresa servicio de internet" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=20;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="1974" y="962.5" width="40" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=3;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-22" target="5zwYq6cNZRpwNvur7axG-47">
+        <mxCell id="5zwYq6cNZRpwNvur7axG-20" value="llenar&lt;br&gt;solicitud de inscripcion" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1068" y="773.5" width="140" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="5zwYq6cNZRpwNvur7axG-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=3;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;startFill=0;" parent="1" source="5zwYq6cNZRpwNvur7axG-42" target="5zwYq6cNZRpwNvur7axG-47" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1890" y="350" as="targetPoint" />
+            <mxPoint x="1734" y="576" as="targetPoint" />
+            <mxPoint x="1704" y="856" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-22" value="&lt;b style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(204, 0, 0));&quot;&gt;Registra&lt;br&gt;ofertas &lt;br&gt;laborales&lt;/font&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="2040" y="297.5" width="160" height="105" as="geometry" />
+        <mxCell id="5zwYq6cNZRpwNvur7axG-22" value="&lt;b style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(204, 0, 0));&quot;&gt;Registra&lt;br&gt;ofertas &lt;br&gt;laborales&lt;/font&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1915" y="600" width="160" height="105" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-31">
+        <mxCell id="5zwYq6cNZRpwNvur7axG-31" value="seleccionar candidato" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1170" y="325" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5zwYq6cNZRpwNvur7axG-34" value="seleccionar oferta de empleo" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="320" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5zwYq6cNZRpwNvur7axG-41" value="evaluar habilidades y titulacion&lt;br&gt;automaticamente" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1864" y="160" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zwYq6cNZRpwNvur7axG-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;endArrow=none;startFill=0;" parent="1" source="5zwYq6cNZRpwNvur7axG-42" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1510" y="310.0000000000002" as="targetPoint" />
+            <mxPoint x="1994" y="705" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-31" value="seleccionar candidato" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1270" y="70" width="120" height="80" as="geometry" />
+        <mxCell id="5zwYq6cNZRpwNvur7axG-42" value="Consulta Ofertas Laborales&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1919" y="802.5" width="150" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-34" value="seleccionar oferta de empleo" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1580" y="60" width="150" height="90" as="geometry" />
+        <mxCell id="5zwYq6cNZRpwNvur7axG-44" value="para consultar las ofertas laborales, es necesario consultar las ofertas registradas? SI &lt;include&gt;" style="text;whiteSpace=wrap;fontSize=20;fillColor=#f8cecc;strokeColor=#b85450;gradientColor=#ea6b66;" parent="1" vertex="1">
+          <mxGeometry x="1780" y="1140" width="400" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.655;entryY=0.006;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-34">
+        <mxCell id="5zwYq6cNZRpwNvur7axG-47" value="publicar ofertas laborales registradas por Empresa Cliente" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1590" y="900" width="274" height="106.5" as="geometry" />
+        </mxCell>
+        <mxCell id="5zwYq6cNZRpwNvur7axG-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=3;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;startFill=0;" parent="1" source="5zwYq6cNZRpwNvur7axG-47" target="H7HByN_JSWiTgD1NI1l1-2" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1528.6" y="310.4799999999998" as="targetPoint" />
+            <mxPoint x="2090" y="640" as="sourcePoint" />
+            <mxPoint x="1530.0000000000005" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-39" value="acceder&lt;br&gt;base de datos" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1660" y="540" width="140" height="90" as="geometry" />
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-1" value="Sistema de selección de personal" style="text;whiteSpace=wrap;fontSize=30;fillColor=#d5e8d4;strokeColor=#82b366;gradientColor=#97d077;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="60" width="470" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-41" value="evaluar habilidades y titulacion&lt;br&gt;automaticamente" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1790" y="60" width="300" height="120" as="geometry" />
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-2" value="consulta las ofertas publicadas" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1078" y="926" width="230" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-42" target="5zwYq6cNZRpwNvur7axG-22">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-3" value="clase 01:15:00:&#xa;Hay una empresa cliente que registra ofertas laborales, &#xa;La empresa de rrhh recibe una solicitud, la gestiona, le pasa la solicitud a la empresa de internet, que la publica &#xa;El candidato llena una solicitud, consulta la oferta laboral, y la empresa de rrhh consulta la app, la evalua, y luego hace la seleccion &#xa;la evaluacion de las habilidades deberia ser sobre lo que aplicaron a las ofertas" style="text;whiteSpace=wrap;fontSize=20;fillColor=#ffcd28;strokeColor=#d79b00;gradientColor=#ffa500;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1360" width="460" height="290" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-42" value="consultar Ofertas Laborales registradas por empresa cliente" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1900" y="570" width="240" height="100" as="geometry" />
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-4" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1023" y="1115" width="20" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-44" value="para consultar las ofertas laborales, es necesario consultar las ofertas registradas? SI &lt;include&gt;" style="text;whiteSpace=wrap;fontSize=20;fillColor=#f8cecc;strokeColor=#b85450;gradientColor=#ea6b66;" vertex="1" parent="1">
-          <mxGeometry x="1810" y="930" width="460" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-47" value="publicar ofertas laborales registradas" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1670" y="305" width="220" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="5zwYq6cNZRpwNvur7axG-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=3;entryX=1;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-47" target="5zwYq6cNZRpwNvur7axG-14">
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=3;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-8" target="H7HByN_JSWiTgD1NI1l1-2">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="2100" y="350" as="sourcePoint" />
-            <mxPoint x="1950" y="350" as="targetPoint" />
+            <mxPoint x="1088" y="864" as="targetPoint" />
+            <mxPoint x="1008" y="864" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="1028" y="866" />
+              <mxPoint x="1028" y="961" />
+            </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;exitX=0;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;startFill=0;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-12" target="5zwYq6cNZRpwNvur7axG-47">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2165" y="962.5" as="sourcePoint" />
+            <mxPoint x="2085" y="962.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1919" y="989" />
+              <mxPoint x="1864" y="990" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-7" value="&amp;lt;&amp;lt;includes&amp;gt;&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1730" y="850" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-8" value="recibe una solicitud" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1435" y="421.5" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=block;endFill=0;strokeWidth=3;endSize=14;" edge="1" parent="1" source="H7HByN_JSWiTgD1NI1l1-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1540" y="474" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-9" value="recibe una solicitud de &lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 0, 0));&quot;&gt;busqueda laboral&lt;br&gt;(candidato)&lt;/font&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="494" width="165" height="166" as="geometry" />
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.646;exitY=0.023;exitDx=0;exitDy=0;endArrow=block;endFill=0;strokeWidth=3;endSize=14;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="H7HByN_JSWiTgD1NI1l1-10" target="H7HByN_JSWiTgD1NI1l1-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1400" y="474" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1367" y="467" />
+              <mxPoint x="1400" y="467" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-10" value="recibe una solicitud de &lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 0, 0));&quot;&gt;busqueda de candidato&lt;br&gt;(empresa &lt;br&gt;cliente)&lt;/font&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="484" width="165" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-14" value="se inscribe en la empresa de selección" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="612.5" width="180" height="106" as="geometry" />
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=3;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="5zwYq6cNZRpwNvur7axG-8" target="H7HByN_JSWiTgD1NI1l1-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1088" y="820" as="targetPoint" />
+            <mxPoint x="1008" y="820" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeWidth=3;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;startFill=0;" edge="1" parent="1" source="H7HByN_JSWiTgD1NI1l1-14" target="5zwYq6cNZRpwNvur7axG-20">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1340" y="733.5" as="sourcePoint" />
+            <mxPoint x="1260" y="733.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1100" y="774" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-18" value="&amp;lt;&amp;lt;includes&amp;gt;&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="733.5" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="H7HByN_JSWiTgD1NI1l1-19" value="para inscribirse en la empresa de seleccion hace falta llenar la solicitud de inscripcion? SÍ: &lt;&lt;includes&gt;&gt;" style="text;whiteSpace=wrap;fontSize=20;fillColor=#f8cecc;strokeColor=#b85450;gradientColor=#ea6b66;" vertex="1" parent="1">
+          <mxGeometry x="820" y="500" width="350" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
