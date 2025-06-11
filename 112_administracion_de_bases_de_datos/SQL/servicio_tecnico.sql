@@ -498,6 +498,11 @@ END $$
 
 DELIMITER ;
 
+-- UPDATE clientes SET nombre = "Mario" WHERE nombre = "María" ;
+-- Me da error Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
+UPDATE clientes SET nombre = "Mario" WHERE id_cliente = 3;
+SELECT * FROM clientes;
+
 
 /*
 Ejercicio 3: Validar número de serie único para equipos
