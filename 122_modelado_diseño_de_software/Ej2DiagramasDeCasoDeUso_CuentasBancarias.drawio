@@ -1,0 +1,13 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
+  <diagram name="Página-1" id="-wFxdBlby1XKPPebEJTD">
+    <mxGraphModel dx="2154" dy="1878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Rsvjbp8aXM3X0UAH0wtk-1" value="Ejercicio Diagrama de Casos de Uso - cuentas bancarias&lt;br&gt;&lt;br&gt;Modele el siguiente escenario, mediante un Diagrama de Casos de Uso usando UML:&lt;br&gt;&lt;br&gt;Un banco privado requiere el desarrollo de un software que le permita gestionar los datos de su cartera de clientes, las cuentas bancarias que poseen cada uno de ellos, que pueden ser Cajas de Ahorro o Cuentas Corrientes y los movimientos de dinero. &lt;br&gt;&lt;br&gt;Esto debe incluir, la creación de dichas cuentas bancarias, el registro de las operaciones de depósito, extracción y transferencias entre cuentas, consultar los saldos de sus cuentas y el registro de los movimientos de las mismas.&lt;br&gt;&lt;br&gt;Para las cuentas corrientes se debe incluir un monto máximo en descubierto que podrá ser&lt;br&gt;modificado en función de la situación financiera del cliente.&lt;br&gt;&lt;br&gt;En el caso de una operación de extracción para este tipo de cuenta, ésta se deberá confirmar si el monto a extraer no es superior al saldo más el monto máximo en descubierto. &lt;br&gt;&lt;br&gt;Y para el caso de una transferencia, se considerará como correcta si el monto a transferir no es superior al saldo más el monto máximo en descubierto." style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;align=left;" vertex="1" parent="1">
+          <mxGeometry x="-670" y="-340" width="840" height="540" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
