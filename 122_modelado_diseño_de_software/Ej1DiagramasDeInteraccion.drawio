@@ -1,9 +1,12 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
   <diagram name="Página-1" id="Jsaf4DdOy1yt7iLnSPwo">
-    <mxGraphModel>
+    <mxGraphModel dx="1042" dy="574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="YcpJH4Q6T_PlQNTq--iY-2" value="&lt;div&gt;Ejercicio nro 1 - Diagramas de Interacción UML&lt;/div&gt;&lt;div&gt;Relacionado con el Ejercicio nro 2 de Diagramas de Clases UML sobre un sistema de gestión&lt;/div&gt;&lt;div&gt;educativa para una facultad que ya ha sido resuelto,&lt;br&gt;&lt;br&gt;&amp;nbsp;ahora se requiere realizarlos diagramas UML&lt;/div&gt;&lt;div&gt;de Casos de Uso, y de Secuencia. &lt;br&gt;&lt;br&gt;En particular, sobre el proceso de inscripción de un alumno en&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;las materias.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Hipótesis: cada alumno podrá anotarse en varias materias, para los cuales habrá que verificar que&lt;/div&gt;&lt;div&gt;tenga aprobadas las correlativas. &lt;br&gt;&lt;br&gt;En una segunda etapa, el profesor del curso y el coordinador de&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;la carrera evaluarán la situación del alumno y aprobarán o no la solicitud.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="380" height="378" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
