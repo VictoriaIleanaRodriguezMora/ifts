@@ -1,0 +1,169 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.9">
+  <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
+    <mxGraphModel dx="2517" dy="1911" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-1" value="Ejercicio nro 2 - Diagrama de Clases UML&#xa;Nos requieren modelar un sistema de gestión educativa para una facultad. En una primera etapa, debemos crear la estructura del software a partir de un Diagrama de Clases UML.&#xa;&#xa;El sistema debe permitir registrar las carreras que dicta la facultad, las materias de cada carrera, los profesores y los alumnos.&#xa;&#xa;Tanto de los profesores como de los alumnos se necesita conocer su nombre, apellido, dni,&#xa;domicilio y edad.&#xa;&#xa;De los estudiantes en particular, es necesario registrar su número de matrícula, la carrera a la que está inscripto, las materias aprobadas y las materias que se encuentra cursando.&#xa;Del profesor, su número de legajo, su antigüedad docente, la carrera y las materias que dicta.&#xa;&#xa;De la carrera, es necesario registrar el código, el nombre y el título otorgado.&#xa;&#xa;De las materias, el código, el nombre, a qué carrera corresponde y la modalidad de cursado, que puede ser presencial o virtual.&#xa;&#xa;Además, nos piden poder obtener el promedio de notas de cada alumno respecto de las materias ya aprobadas.&#xa;&#xa;&#xa;FINAL:&#xa;Asimismo, el sistema debe permitir que cada alumno pueda inscribirse a rendir el examen final de las materias que se encuentra cursando.&#xa;&#xa; Para poder anotarse a la mesa de examen los requisitos son: &#xa;- tener aprobados con nota igual o mayor a cuatro cada uno de los exámenes parciales &#xa;- tener un promedio de asistencia igual o mayor al 75 %.&#xa;&#xa;- En caso de obtener una nota igual o mayor a 4 en el examen final, la materia debe registrarse como aprobada." style="text;whiteSpace=wrap;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="-820" y="-470" width="620" height="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;strokeWidth=3;endSize=23;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="TYxQVD2XMGMqfk_iEmio-20" target="A6qmrVI5I13Jj1zC-Mew-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="776" y="-230" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-5" value="Carrera" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="601" y="-487" width="410" height="130" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-6" value="+ codigo: int&#xa;+ nombre: str&#xa;+ titulo_otorgado: str" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" parent="A6qmrVI5I13Jj1zC-Mew-5" vertex="1">
+          <mxGeometry y="30" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-19" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="1660" y="100" width="360" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-8" value="" style="resizable=0;align=right;verticalAlign=bottom;labelBackgroundColor=none;fontSize=20;" parent="LrnWb1vMRJ4Bcc8fWhRj-19" connectable="0" vertex="1">
+          <mxGeometry y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-20" value="&lt;font style=&quot;font-size: 16px; color: light-dark(rgb(0, 0, 0), rgb(255, 0, 0));&quot;&gt;crea el objeto dentro &lt;br&gt;del metodo y lo retorna&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1830" y="550" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-22" value="los tipos de dato para mí son:&lt;br&gt;&#39;Primer parcial&#39; | &#39;Segundo parcial&#39; |&lt;br&gt;&amp;nbsp;&#39;Recuperatorio primer parcial&#39; | &lt;br&gt;&#39;Recuperatorio segundo parcial&#39; | &lt;br&gt;&#39;Final&#39; | &#39;Final instancia X&#39;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#005700;fillColor=#008a00;fontSize=19;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1750" y="660" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=0;strokeWidth=3;endSize=23;exitX=0;exitY=0.032;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.008;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="LrnWb1vMRJ4Bcc8fWhRj-4" target="LrnWb1vMRJ4Bcc8fWhRj-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="652.79" y="80" as="sourcePoint" />
+            <mxPoint x="1760" y="20" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-4" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=50;" vertex="1" parent="1">
+          <mxGeometry x="817" y="-290" width="40" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-5" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=25;" vertex="1" parent="1">
+          <mxGeometry x="821" y="-360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <UserObject label="1 Carrera tiene muchas Materias, pero 1 Materia sólo pertenece a 1 Carrera&lt;br&gt;(abstrayendo de correlativas y poniendo un id unico a cada materia por mas que tengan el mismo nombre)" placeholders="1" name="Variable" id="TYxQVD2XMGMqfk_iEmio-6">
+          <mxCell style="text;html=1;strokeColor=#B09500;fillColor=#e3c800;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=16;fontColor=#000000;" vertex="1" parent="1">
+            <mxGeometry x="520" y="-600" width="435" height="100" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;div&gt;La carrera es el TODO, formada por Materias - partes&lt;/div&gt;&lt;div&gt;1 Carrera existe con más o menos materias, es el TODO&lt;br&gt;-------------------------------------------&lt;br&gt;&amp;nbsp;1 Materia no tiene sentido sin 1 Carrera, si se elimina la Carrera, la Materia no tendría sentido&lt;/div&gt;" placeholders="1" name="Variable" id="TYxQVD2XMGMqfk_iEmio-7">
+          <mxCell style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=16;gradientColor=#ea6b66;" vertex="1" parent="1">
+            <mxGeometry x="1055" y="-472" width="410" height="100" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;div&gt;El RegistroCursada es el TODO, formada por Profesor - partes&lt;/div&gt;&lt;div&gt;&amp;nbsp;Profesor&amp;nbsp;&amp;nbsp;es la parte&lt;br&gt;----------------------------&lt;br&gt;1 RegistroCursada tiene 1 sólo Profesor&amp;nbsp;&lt;br&gt;1 Profesor puede estar en *&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;RegistroCursada&lt;br&gt;(porque dicta muchas materias)&lt;/span&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="TYxQVD2XMGMqfk_iEmio-8">
+          <mxCell style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=16;gradientColor=#ea6b66;" vertex="1" parent="1">
+            <mxGeometry x="1230" y="-120" width="538" height="130" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-9" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=25;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="15" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-10" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=50;" vertex="1" parent="1">
+          <mxGeometry x="1050" width="40" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.004;entryY=0.042;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=0;strokeWidth=3;endSize=23;exitX=1.003;exitY=0.041;exitDx=0;exitDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="A6qmrVI5I13Jj1zC-Mew-19" target="LrnWb1vMRJ4Bcc8fWhRj-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="27" as="sourcePoint" />
+            <mxPoint x="90" y="-120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-12" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=50;" vertex="1" parent="1">
+          <mxGeometry x="820" width="40" height="70" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;div&gt;El RegistroCursada es el TODO, formada por Alumnos - partes&lt;/div&gt;&lt;div&gt;&amp;nbsp;Alumno es la parte&lt;br&gt;----------------------------&lt;br&gt;1 RegistroCursada es formada por * Alumnos&lt;br&gt;1 Alumno puede estar en *&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;RegistroCursada&lt;br&gt;(porque cursa muchas materias)&lt;/span&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="TYxQVD2XMGMqfk_iEmio-14">
+          <mxCell style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=16;gradientColor=#ea6b66;" vertex="1" parent="1">
+            <mxGeometry x="-140" y="-102.5" width="462" height="125" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-19" value="Alumno" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="-156" y="33" width="570" height="420.0008108108108" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-20" value="+ nombre: str&#xa;+ apellido: str&#xa;+ dni: str&#xa;+ domicilio: str&#xa;+ edad: tinyint&#xa;+ numero_matricula: int&#xa;+ carrera_inscripto: Carrera" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" parent="A6qmrVI5I13Jj1zC-Mew-19" vertex="1">
+          <mxGeometry y="30" width="570" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-21" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;fontSize=20;" parent="A6qmrVI5I13Jj1zC-Mew-19" vertex="1">
+          <mxGeometry y="230" width="570" height="10.81081081081081" as="geometry" />
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-10" value="+ promedio_materias_aprobadas(Carreras[]): float&#xa;+ materias_aprobadas(): (RegistroDeAprobacion[]): Materias[]&#xa;+ materias_en_curso(Materias[]): Materias[]&#xa;+ promedio_de_asistencia(): float&#xa;+ notas_parciales(nombreMateria: str): float&#xa;+ asistencia_por_materias(nombreMateria: str): float&#xa;+ inscribirse_a_final(materia: Materia): InscripcionAFinal&#xa;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" parent="A6qmrVI5I13Jj1zC-Mew-19" vertex="1">
+          <mxGeometry y="240.8108108108108" width="570" height="179.19" as="geometry" />
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-27" value="InscripcionAFinal " style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="-47" y="560" width="410" height="240" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A6qmrVI5I13Jj1zC-Mew-28" value="+ alumno: Alumno&#xa;+ materia: Materia&#xa;+ fecha_inscripcion: date&#xa;+ habilitado: bool  // si cumple los requisitos&#xa;+ rindio: bool&#xa;+ nota_obtenida: int&#xa;+ estado: str" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" parent="A6qmrVI5I13Jj1zC-Mew-27" vertex="1">
+          <mxGeometry y="30" width="410" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=0;strokeWidth=3;endSize=23;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.552;entryY=1.003;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="A6qmrVI5I13Jj1zC-Mew-27" target="LrnWb1vMRJ4Bcc8fWhRj-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="580" as="sourcePoint" />
+            <mxPoint x="160" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-17" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=50;" vertex="1" parent="1">
+          <mxGeometry x="160" y="515" width="40" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-19" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=25;" vertex="1" parent="1">
+          <mxGeometry x="414" y="10" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-20" value="Materia" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="593" y="-250" width="426" height="194" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-21" value="+ codigo: str&#xa;+ nombre: str&#xa;+ carrera: str&#xa;+ modalidad_de_cursada: &#39;Presencial&#39; | &#39;Virtual&#39;&#xa;+ edad: tinyint" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" vertex="1" parent="TYxQVD2XMGMqfk_iEmio-20">
+          <mxGeometry y="30" width="426" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-13" value="RegistroCursada" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="570" y="36" width="480" height="346.88" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-14" value="+ alumno: Alumno&#xa;+ materia: Materia&#xa;+ profesor: Profesor&#xa;+ nota_parcial_1: float&#xa;+ nota_parcial_2: float&#xa;+ promedio_asistencia: float&#xa;+ nota_final: float&#xa;+ estado: str  // EnCurso | Aprobado | Desaprobado |&#xa; InscriptoFinal | Promocionado&#xa;+ fecha_final: date  // opcional, si rinde" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" parent="LrnWb1vMRJ4Bcc8fWhRj-13" vertex="1">
+          <mxGeometry y="30" width="480" height="316.88" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-13" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=50;" vertex="1" parent="1">
+          <mxGeometry x="520" width="40" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-24" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=25;" vertex="1" parent="1">
+          <mxGeometry x="820" y="-51" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-4" value="Profesor" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=35;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1275" y="40" width="347" height="420" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-5" value="+ nombre: str&#xa;+ apellido: str&#xa;+ dni: str&#xa;+ domicilio: str&#xa;+ edad: tinyint&#xa;+ numero_legajo: int&#xa;+ antiguedad_docente: DATE&#xa;+ materias_que_dicta: Materia[]" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" parent="LrnWb1vMRJ4Bcc8fWhRj-4" vertex="1">
+          <mxGeometry y="35" width="347" height="215" as="geometry" />
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-6" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;fontSize=20;" parent="LrnWb1vMRJ4Bcc8fWhRj-4" vertex="1">
+          <mxGeometry y="250" width="347" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="LrnWb1vMRJ4Bcc8fWhRj-18" value="asignar_nota(&#xa;        materia: Materia, &#xa;        nota:float, &#xa;        nro_alumno: int,&#xa;        fecha: date, &#xa;RegistroDeAprobacion" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" parent="LrnWb1vMRJ4Bcc8fWhRj-4" vertex="1">
+          <mxGeometry y="258" width="347" height="162" as="geometry" />
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=0;strokeWidth=3;endSize=23;" edge="1" parent="1" target="LrnWb1vMRJ4Bcc8fWhRj-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="-60" as="sourcePoint" />
+            <mxPoint x="772" y="-10" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TYxQVD2XMGMqfk_iEmio-26" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=25;" vertex="1" parent="1">
+          <mxGeometry x="160" y="453" width="40" height="40" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;div&gt;El Alumno es el TODO, la InscripcionAFinal - partes&lt;/div&gt;&lt;div&gt;&amp;nbsp;InscripcionAFinal&amp;nbsp; depende logicamente de Alumno&lt;br&gt;----------------------------&lt;br&gt;1 Alumno tiene * InscripcionAFinal&amp;nbsp;porque rinde muchos finales&lt;br&gt;1 InscripcionAFinal solo tiene 1 Alumno&lt;/div&gt;" placeholders="1" name="Variable" id="TYxQVD2XMGMqfk_iEmio-27">
+          <mxCell style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=16;gradientColor=#ea6b66;" vertex="1" parent="1">
+            <mxGeometry x="108" y="850" width="462" height="125" as="geometry" />
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
