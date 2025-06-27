@@ -1,0 +1,31 @@
+@startuml CdU
+left to right direction
+skinparam packageStyle rectangle
+
+actor Alumno
+actor Profesor
+actor "Coordinador de Carrera" as Coordinador
+actor "Sistema de Gestión" as Sistema
+
+rectangle "Sistema de Inscripción" {
+    
+    usecase "Solicitar inscripción a materia" as UC1
+    usecase "Verificar correlativas aprobadas" as UC2
+    usecase "Evaluar solicitud del alumno" as UC3
+    usecase "Aprobar o rechazar inscripción" as UC4
+    usecase "Notificar resultado al alumno" as UC5
+    usecase "Registrar inscripción" as UC6
+
+    Alumno --> UC1
+    UC1 --> UC2 : include
+    UC2 --> UC5 : <<si no cumple>>
+    UC2 --> UC3 : <<si cumple>>
+
+    Profesor --> UC3
+    UC3 --> UC4
+    Coordinador --> UC4
+
+    UC4 --> UC6
+    UC6 --> UC5
+}
+@enduml

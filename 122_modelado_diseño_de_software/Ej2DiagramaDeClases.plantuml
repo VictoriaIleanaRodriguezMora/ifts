@@ -1,0 +1,87 @@
+@startuml a
+skinparam classAttributeIconSize 0
+
+class Carrera {
+  - codigo: int
+  - nombre: str
+  - titulo_otorgado: str
+}
+
+class Materia {
+  - codigo: str
+  - nombre: str
+  - carrera: str
+  - modalidad_de_cursada: 'Presencial' | 'Virtual'
+  - edad: tinyint
+}
+
+class Alumno {
+  - nombre: str
+  - apellido: str
+  - dni: str
+  - domicilio: str
+  - edad: tinyint
+  - numero_matricula: int
+  - carrera_inscripto: Carrera
+  --
+  + promedio_materias_aprobadas(carreras[]): float
+  + materias_aprobadas(): Materias[]
+  + materias_en_curso(): Materias[]
+  + promedio_de_asistencia(): float
+  + notas_parciales(nombreMateria: str): float
+  + asistencia_por_materias(nombreMateria: str): float
+  + inscribirse_a_final(materia: Materia): InscripcionAFinal
+}
+
+class Profesor {
+  - nombre: str
+  - apellido: str
+  - dni: str
+  - domicilio: str
+  - edad: tinyint
+  - numero_legajo: int
+  - antiguedad_docente: DATE
+  - materias_que_dicta: Materia[]
+  --
+  + asignar_nota(materia: Materia, nota: float, nro_alumno: int, fecha: date): RegistroDeAprobacion
+}
+
+class RegistroCursada {
+  - alumno: Alumno
+  - materia: Materia
+  - profesor: Profesor
+  - nota_parcial_1: float
+  - nota_parcial_2: float
+  - promedio_instancia: float
+  - estado: EnCurso | Aprobado | Desaprobado | Promocionado
+  - tipo_final: str // opcional, si rinde
+}
+
+class InscripcionAFinal {
+  - alumno: Alumno
+  - materia: Materia
+  - fecha_inscripcion: date
+  - habilitado: bool // si cumple los requisitos
+  - rindio: bool
+  - nota_obtenida: int
+  - estado: str
+}
+
+'================= RELACIONES =================
+
+Carrera "1" -- "many" Materia : contiene >
+Materia "1" -- "1" Carrera : pertenece a >
+
+Alumno "1" -- "*" RegistroCursada : cursa >
+RegistroCursada "*" -- "1" Alumno : contiene >
+
+Profesor "1" -- "*" RegistroCursada : dicta >
+RegistroCursada "*" -- "1" Profesor : contiene >
+
+Alumno "1" -- "*" InscripcionAFinal : solicita >
+InscripcionAFinal "*" -- "1" Alumno : pertenece a >
+
+Materia "1" -- "*" InscripcionAFinal : tiene >
+InscripcionAFinal "*" -- "1" Materia : para >
+
+@enduml

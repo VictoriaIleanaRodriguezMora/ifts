@@ -1,0 +1,27 @@
+@startuml DdS
+actor Alumno
+participant "Sistema de Gestión" as Sistema
+participant Profesor
+participant "Coordinador de Carrera" as Coordinador
+
+== Inicio del proceso ==
+
+Alumno -> Sistema : solicitarInscripcion(materias[])
+
+loop por cada materia
+    Sistema -> Sistema : verificarCorrelativas(alumno, materia)
+    
+    alt Correlativas Aprobadas
+        Sistema -> Profesor : enviarSolicitudEvaluacion(alumno, materia)
+        Profesor -> Sistema : resultadoEvaluacion(materia, estadoProfesor)
+
+        Sistema -> Coordinador : enviarEvaluacion(alumno, materia, estadoProfesor)
+        Coordinador -> Sistema : aprobarORechazar(materia, resultadoFinal)
+
+        Sistema -> Sistema : registrarInscripcion(alumno, materia, resultadoFinal)
+        Sistema -> Alumno : notificarResultado(materia, resultadoFinal)
+    else Correlativas No Aprobadas
+        Sistema -> Alumno : notificarRechazo(materia, "Faltan correlativas")
+    end
+end
+@enduml
