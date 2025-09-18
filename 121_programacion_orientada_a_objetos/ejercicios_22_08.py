@@ -31,7 +31,7 @@ def ej_4():
         nros_ingresados.append(user_num)
     
     for i in nros_ingresados:
-        # i es cada elemento de mi array, empezando en la posicion cero
+        # i es cada elemento de mi array nros_ingresados, empezando en la posicion cero
         if i != nros_ingresados[0]:
             print(f"IF - i ", i)
             print(f"nros_ingresados[0] ", nros_ingresados[0])
