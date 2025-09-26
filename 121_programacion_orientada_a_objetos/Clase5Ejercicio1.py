@@ -1,36 +1,69 @@
-# Consigna 
-"""
-Ejercicio POO con encapsulamiento y uso de atributos de instancia y de clase
-Crear una clase llamada Password con las siguientes condiciones:
-• Dos atributos de clase privados:
-1. LONGITUD. Cuyo valor sea 8 (numérico).
-2. CARACTERES_VALIDOS. Cuyo valor sea
-"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<=>@#%
-&+" (string)
-• Dos atributos de instancia privados:
-1. longitud. Por defecto, será igual al valor del atributo de clase LONGITUD. Y su valor no
-podrá ser inferior a 6 caracteres ni mayor a 15 caracteres.
-2. contraseña. Su valor aleatorio deberá ser asignado en el método generarPassword().
-• Un método inicializador de instancias, con el parámetro longitud cuyo valor se asignará al
-atributo de instancia. Generará una contraseña aleatoria con esa longitud invocando al
-método generarPassword().
-• Dos métodos de instancia públicos, cuya implementación deberá ser:
-1. esFuerte(): devuelve un booleano si es fuerte o no. Para que sea fuerte debe tener
-más de 1 mayúscula, 1 carácter especial, más de 1 minúscula y más de 1 números.
-2. generarPassword(): genera la contraseña del objeto cuyo valor de tipo string tendrá
-una longitud igual al valor del atributo de instancia “longitud”. Para la generación de la
-clave puede usar los métodos random.choice() y string.join() de Python.
-• Incluir métodos públicos que permitan obtener y asignar valores (getters y setters) a los
-atributos de instancia privados.
-• Sobreescribir el método de instancia __str__(), para que retorne la clave generada y el
-valor booleano que devuelve el método “es_fuerte()”.
-Luego, agregar sentencias de código Python que permitan:
-• Crear una lista de objetos de tipo Password.
-• Crear instancias de Password y agregarlas a la lista. Para cada objeto, se debe ingresar la
-longitud de la clave por teclado. Si el valor ingresado es cero, no se pasará ningún valor
-como argumento al método inicializador.
-• Mostrar cada una de las contraseñas creadas y si es o no fuerte (usar un bucle). Para ello,
-usar este simple formato:
-contraseña1 - valor_booleano1
-contraseña2 - valor_bololeano2
-"""
+import random
+
+class Password:
+    LONGITUD = 8
+    CARACTERES_VALIDOS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<=>@#%&+"
+
+    def __init__(self, paramLongitud ):
+        # No entiendo, inicialmente es igual a LONGITUD, pero dsps dice que su valor es el parametro
+        self.__longitud = paramLongitud
+        self.__contraseña = self.generarPassword()
+
+    # 
+    def generarPassword(self):
+        finalPass = ''
+        for i in range(0, self.__longitud + 1):
+            finalPass += random.choice(Password.CARACTERES_VALIDOS)
+        print("finalPass",finalPass)
+        return finalPass
+    
+    # esFuerte evalúa si la contraseña es segura
+    def esFuerte(self):
+            condicion_mas_de_1_mayuscula = 0
+            condicion_1_caracter_especial = 0
+            condicion_mas_de_1_minuscula = 0
+            condicion_mas_de_1_numero = 0
+
+            contra = self.__contraseña
+            
+            for letra in Password.CARACTERES_VALIDOS:
+                for letraPass in contra:
+                    if (letraPass == letra):
+                        # print("letraPass == letra", letraPass)
+                        if(letraPass.isupper()):
+                            condicion_mas_de_1_mayuscula += 1
+                            print("condicion_mas_de_1_mayuscula +1", letraPass)
+
+                        if(letraPass.islower()):
+                            condicion_mas_de_1_minuscula += 1
+                            print("condicion_mas_de_1_minuscula +1", letraPass)
+                        if(letraPass.isdigit()):
+                            condicion_mas_de_1_numero += 1
+                            print("condicion_mas_de_1_numero +1", letraPass)
+                        if(not(letraPass.isupper()) and (not letraPass.islower()) and (not letraPass.isdigit()) ):
+                            print("*** ", letraPass)
+                            condicion_1_caracter_especial += 1
+                            print("caracter especial:", letraPass)
+                
+            print("condicion_mas_de_1_mayuscula", condicion_mas_de_1_mayuscula)                     
+            print("condicion_mas_de_1_minuscula", condicion_mas_de_1_minuscula)                     
+            print("condicion_mas_de_1_numero", condicion_mas_de_1_numero)                     
+            print("condicion_1_caracter_especial", condicion_1_caracter_especial)               
+
+            if((condicion_mas_de_1_mayuscula > 1) and (condicion_mas_de_1_minuscula > 1) and (condicion_mas_de_1_numero > 1) and (condicion_1_caracter_especial >= 1)):
+                return True
+            else: 
+                return False
+
+    def getLongitud(self):
+        print("self.__longitud",self.__longitud)
+        return self.__longitud
+    
+    def getPassword(self):
+        print("self.__contraseña",self.__contraseña)
+        return self.__contraseña
+    
+mi_pass = Password(8)
+mi_pass.getLongitud()
+mi_pass.getPassword()
+mi_pass.esFuerte()

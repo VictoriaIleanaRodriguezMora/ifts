@@ -23,10 +23,10 @@ class Persona:
         self.__dni = dni
 
     # Metodos publicos, que usan atributos privados
-    def mostrar_edad(self):
+    def getEdad(self):
         return self.__edad
 
-    def es_mayor_edad(self):
+    def get_es_mayor_edad(self):
         return self.__edad >= 18
 
 
