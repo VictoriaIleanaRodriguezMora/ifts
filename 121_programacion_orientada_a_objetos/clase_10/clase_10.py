@@ -9,8 +9,8 @@ def hablar():
     print('Comenzando a hablar')
 
 # saluda_antes_de_hablar(hablar)
-# Buenas tardes
-# Comenzando a hablar
+# Output: Buenas tardes
+# Output: Comenzando a hablar
 
 # nuevo_decorador es una funcion que retorna otra funcion: funcion_interna
 def nuevo_decorador(la_func): # la_func es funcion_a_decorar
@@ -37,7 +37,7 @@ def funcion_a_decorar():
 
 # print()
 
-# @decorador
+# Con @decorador
 # """
 
 def saluda_antes_de_hablar(una_func):
@@ -49,8 +49,11 @@ def hablar():
 
 # saluda_antes_de_hablar(hablar)
 
-# Buenas tardes
-# Comenzando a hablar
+"""
+Buenas tardes
+Comenzando a hablar
+"""
+ 
 
 def nuevo_decorador(la_func): 
     def funcion_interna():
@@ -65,6 +68,14 @@ def funcion_a_decorar():
     print('Soy la funcion que necesita ser decorada')
 
 # funcion_a_decorar() 
+
+"""
+Output
+Haciendo algo antes de llamar a la_func
+Soy la funcion que necesita ser decorada
+Haciendo algo despues de llamar a la_func
+"""
+
 
 # """
 
@@ -87,11 +98,20 @@ def trabajar():
 
 # var1 = saluda_antes_de_cualquier_cosa(45) # TypeError: 'int' object is not callable 
 var1 = saluda_antes_de_cualquier_cosa(trabajar)
-# var1()
+var1()
+
+"""
+Output
+Buen día!
+Comenzando a trabajar...
+"""
+
 
 # print()
 # print('Con decorador')
 # print()
+
+# CON decorador
 
 # Funcion que actua como decorador
 def saluda_antes_de_cualquier_cosa(var_fun):
@@ -111,6 +131,7 @@ def trabajar():
 
 # hablar()
 # trabajar()
+
 
 
 # Uso de Properties. Atributos como Propiedades.
@@ -136,7 +157,7 @@ class Celsius:
         self.__temperature = value # recien acá se está asignando un valor a un atributo. en este caso es privado y es una asignacion controlada
 
 
-
+# Uso del decorador @classmethod
 import math
 
 class Circulo:
@@ -181,7 +202,7 @@ class Calculadora:
 Calculadora.sumar_clase(5)  # Modifica el valor de clase
 
 
-
+# Uso del decorador @staticmethod  
 class Calculadora:
     valor_clase = 0
 
