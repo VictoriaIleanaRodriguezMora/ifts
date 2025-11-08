@@ -9,11 +9,12 @@
 
 En vez de recibir un string, un nro, un array, va a recibir el nombre de una función ya existente cómo parametro. Dentro, se va a ejecutar esa función que se recibe cómo argumento, y además se va a añadir una neuva funcionalidad.
 
+```py
 @el_decorador_que_se_aplica
 def funcion_decorada:
 
 funcion_decorada()
-
+```
 
 # Alteran dinámicamente una funcion, método o clase sin tener que cambiar el codigo legacy para ser decoradas
 Algunos casos de uso son:
@@ -28,7 +29,9 @@ Python  proporciona un decorador `@property` incorporado que hace que
 el uso de `getter` y `setters` sea mucho más fácil en la programación orientada a objetos.
 
 Cualquier funcion donde se aplica el decorador @property se le agrega una funcionalidad, ¿Cual?
-> `@property` es un decorador integrado para la función property() en Python. Se usa para otorgar una funcionalidad especial a ciertos métodos, haciéndolos actuar como getter, setter o deleters al definir propiedades en una clase.
+> `@property` es un decorador integrado para la función property() en Python. Se usa para otorgar una funcionalidad especial a ciertos métodos
+> 
+>  haciéndolos actuar como getter, setter o deleters al definir propiedades en una clase.
 
 - En el init se inicializan los valores del obj 
 
