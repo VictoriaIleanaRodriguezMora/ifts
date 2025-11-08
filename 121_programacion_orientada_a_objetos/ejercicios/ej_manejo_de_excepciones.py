@@ -27,6 +27,7 @@ def agregar_una_vez(lista, elem):
                 f"Error: Imposible añadir elementos duplicados => [{elem}]"
             )
         print("*try ")
+        lista = lista.append(elem)
         
     except ValueError as error_info:
         print("error_info", error_info) # Error: Imposible añadir elementos duplicados => [{elem}]
@@ -34,7 +35,7 @@ def agregar_una_vez(lista, elem):
 
 def main():
     elementos = [1, 5, -2]
-    valores = [10, -2, "Hola"]
+    valores = [10,  "Hola"]
 
     # agregar_una_vez(elementos, valores) # Así no funciona porque valores es un array, no es ni 10, ni -2
     for valor in valores:
