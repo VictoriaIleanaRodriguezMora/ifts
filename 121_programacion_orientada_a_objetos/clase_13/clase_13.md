@@ -23,9 +23,13 @@ sintaxis) se denominan excepciones o errores lógicos.
 Las excepciones en Python son mecanismos que permiten detectar errores en
 tiempo de ejecución y manejarlos de manera controlada.
 
-Cuando se produce un error en Python, se genera una excepción, que es un objeto
-de tipo `“Exception”` que encapsula información acerca del error. Las excepciones
-pueden ser generadas por el intérprete de Python o por el propio código del programa.
+Cuando se produce un error en Python, se genera una excepción, que **es un objeto
+de tipo `“Exception”`** que encapsula información acerca del error. 
+
+Las excepciones pueden ser generadas por el intérprete de Python o por el propio código del programa.
+
+> [!NOTE]
+> Una excepcion es un objeto de tipo `exception`
 
 Si no se maneja correctamente, imprime un seguimiento de ese error junto con algunos detalles sobre por qué ocurrió ese error
 
@@ -51,8 +55,9 @@ la ruta indicada.
 ## Uso de finally
 
 permite ejecutar un determinado bloque de código siempre, se haya producido o no una
-excepción. Se trata de un bloque muy importante, y que suele ser usado para ejecutar
-alguna tarea de limpieza.
+excepción. 
+
+Se trata de un bloque muy importante, y que suele ser usado para ejecutar alguna tarea de limpieza.
 
 
 
