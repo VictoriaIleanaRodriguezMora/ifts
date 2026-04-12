@@ -141,3 +141,6 @@ usando las variables del activity main
 PantallaPrincipal (dueño del estado)
     ↓ le pasa el valor
 VistaNumeroAleatorio(numeroVista)
+
+
+ctrl + shift + A : 
