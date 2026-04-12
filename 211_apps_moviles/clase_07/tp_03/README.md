@@ -1,3 +1,5 @@
+cd 211_apps_moviles/clase_07/tp_03/tp_03.kt
+
 # TP N°3: Promedio y nombre de estudiante
 
 ## Descripción
