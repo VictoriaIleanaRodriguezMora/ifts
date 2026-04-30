@@ -76,7 +76,7 @@ fun PantallaPerfil() { // UI y lógica
 
     var mensaje by rememberSaveable { mutableStateOf("") } // feedback: "Completa todos los campos" o "Perfil guardado correctamente"
 
-    Scaffold(
+    Scaffold( // molde
         topBar = {
             TopAppBar(
                 title = { Text("Perfil del estudiante") }

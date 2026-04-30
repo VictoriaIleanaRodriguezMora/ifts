@@ -3,11 +3,17 @@
 El trabajo podrá realizarse de manera grupal hasta 3 estudiantes o individual.
 
 Desarrollar una aplicación Android en Kotlin con Jetpack Compose llamada **“Calculadora de IMC”**. 
-La app deberá tener dos activities. En la primera, el usuario ingresará su peso en kilogramos y su altura en metros junto con su nombre. 
+La app deberá tener dos activities. 
 
-Al presionar un botón, la aplicación deberá validar los datos, calcular el índice de masa corporal (IMC) y abrir una segunda activity. En la segunda pantalla se deberá mostrar el resultado del IMC, una clasificación simple del resultado (por ejemplo: bajo peso, normal, sobrepeso u obesidad) y un historial con los últimos 3 cálculos realizados. 
+### En la primera
+El usuario ingresará su peso en kilogramos y su altura en metros junto con su nombre. 
 
-Al bajar de peso, la app deberá felicitar al usuario por su nuevo IMC menor.
+> Al presionar un botón, la aplicación deberá validar los datos, calcular el índice de masa corporal (IMC) y abrir una segunda activity. 
+
+### En la segunda pantalla 
+Se deberá mostrar el resultado del IMC, una clasificación simple del resultado (por ejemplo: bajo peso, normal, sobrepeso u obesidad) y un historial con los últimos 3 cálculos realizados. 
+
+> Al bajar de peso, la app deberá felicitar al usuario por su nuevo IMC menor.
 
 Los datos del formulario deberán conservarse si la pantalla se recrea, y el historial deberá guardarse de forma persistente para que no se pierda al cerrar la app. 
 
@@ -21,3 +27,10 @@ La interfaz debe estar construida con composables y debe poder desplazarse si el
 Código .kt + AndroidManifies.xml
 
 - El código deberá estar comentado y explicado a fin de demostrar comprensión sobre lo trabajado.
+
+
+# Recursos
+- https://youtu.be/Fv46Q0IeUc4?si=Lw16TwyvWUZcRNhS 
+- https://youtu.be/4SKQSIKWPM8?si=uuRRMxcQB3NYOReY
+- https://youtu.be/OAG4Qphl9AQ?si=0_aOMWUEAyw94ONz 
+- 

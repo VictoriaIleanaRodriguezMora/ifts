@@ -131,7 +131,7 @@ fun PantallaPrincipal() {
                         onClick = {
                             mensaje = if (nombre.isBlank()) {
                                 "Por favor ingresa un nombre"
-                            } else {
+                             } else {
                                 Log.d("shared", nombre)
                                 preferencias.guardarNombre(nombre)
                                 "Hola, $nombre"

@@ -42,7 +42,6 @@ class MainActivity : ComponentActivity() {
 
 // funcion de lógica
 fun generarNumeroAleatorio(): Int{ // marco que va a devolver un valor de tipo entero
-    // var es un contenido variable
     return Random.nextInt(from = 1, until = 101) // HASTA sin incluir
 }
 
@@ -50,7 +49,7 @@ fun generarNumeroAleatorio(): Int{ // marco que va a devolver un valor de tipo e
 @Composable
 fun PantallaPrincipal(){ // este es el intermediario, el que está pendiente de que valorse cambian para avisarle a la vista que tiene que renderizar de nuevo
     // crea una variable que se llama numero
-    // remember lo que hace es que Composable, recuerde el valor entre COMPOSICIONES
+    // remember lo que hace es que Composable, recuerde el valor entre COMPOSICIONES. Entre Composables
     // pq sino lo resetea. lo guarda en memoria pq lo voy a llavar en otro lado
 
     // de la composición PantallaPrincipal, estoy pasando la variable numero a la composicion VistaNumeroAleatorio
@@ -59,23 +58,25 @@ fun PantallaPrincipal(){ // este es el intermediario, el que está pendiente de 
     // mutableIntStateOf es mas especifico aun acerca del valor que va a cambiar
 
     // numero es una variable de estado. que cambia de estado
-    var numero by remember { mutableIntStateOf(value = 0) } // linea nueva
+    var numero by remember { mutableIntStateOf(value = 0) } // linea nueva. var es un contenido variable
 
-    VistaNumeroAleatorio(
-        numeroVista = numero,
+    VistaNumeroAleatorio( // LLAMO A UN COMPOSABLE !! UNA UI PINTA PANTALLA. PANTALLA DIBUJABLE
+        numeroVista = numero, // acá se lo estoy pasando!!
         onGenerarClick = { // accion que llamo cuando hago click
+            //este numero, se lo estoy pasando a la vista para que lo renderice
             numero = generarNumeroAleatorio() // es una funcion que devuelve un entero, ese entero lo estoy guardando en numeroVista = numero. al hacer = numero, estoy indicando que numeroVista es una variable de estado
         }
     )
 }
 
 // acá decido como se muestra el numero
-
+// COMPOSABLE QUE TIENE LA LOGICA PARA MOSTRAR EL NUMERO, PERO LO RECIBE AFUERA, CUANDO SE LO LLAMA
 @Composable
 fun VistaNumeroAleatorio(
     numeroVista : Int, // la fn recibe como parametro un nro entero
     onGenerarClick: () -> Unit // es una fn sin parametro, que no devuelve nada y que se ejecuta al tocar el boton. Unit es un genérico
     // es una funcion lambda: una fn que recibe otra funcion como parametro.
+    // NO especifico QUÉ tiene que devolver
 ) {
 Column(
     modifier = Modifier.fillMaxSize(),
@@ -87,7 +88,7 @@ Column(
         fontSize = 30.sp
     )
 
-    Button(onClick = onGenerarClick) {
+    Button(onClick = onGenerarClick) { // onGenerarClick viene de afuera
         Text (
             text = "Generá tu nro",
             fontSize = 30.sp
