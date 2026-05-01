@@ -59,19 +59,15 @@ fun FormularioSaludo(){
             fontSize = 20.sp
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
-
         OutlinedTextField(
             value = nombreForm, // lo que yo escriba, guardalo en value
             onValueChange = {nombreForm = it}, // IT ES ESO, ese nuevo valor
             label = { Text(text="Nombre") }
         ) // INPUT de formulario
-        Spacer(modifier = Modifier.height(12.dp))
 
         Button(onClick = {mensajeForm = "Hola $nombreForm"}) {
             Text(text="Saludar")
         }
-        Spacer(modifier = Modifier.height(12.dp))
 
         Text(text=mensajeForm, fontSize = 24.sp)
 

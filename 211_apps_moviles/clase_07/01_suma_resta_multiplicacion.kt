@@ -39,9 +39,9 @@ class MainActivity : ComponentActivity() {
                 // scaffold - andamio
                 Scaffold(modifier = Modifier.fillMaxSize()) {
                     // PantallaSuma tiene que ser un Composable en algún lado
-                    innerPadding -> PantallaSuma(
-                        modifier = Modifier.padding(innerPadding)
-                     )
+                        innerPadding -> PantallaSuma(
+                    modifier = Modifier.padding(innerPadding)
+                )
                 }
             }
         }
@@ -85,31 +85,24 @@ fun PantallaSuma(modifier: Modifier = Modifier){
     var mensajeMultiplicacion by remember { mutableStateOf("") }
     var mensajeRandom by remember { mutableStateOf("") }
 
-
     // idea de recomposicion
-
     Column(
         modifier = modifier
             .fillMaxSize()
             .padding(24.dp)
-        .verticalScroll(rememberScrollState()), // no está funcionando
+            .verticalScroll(rememberScrollState()), // no está funcionando
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-    Text(text = "Ejemplo: sumar 2 nros")
-
-        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = "Ejemplo: sumar 2 nros")
 
         OutlinedTextField( // nombre del campo
             value = nro1Texto,
-            onValueChange = { nuevoValor -> // fn lambda
-                nro1Texto = nuevoValor
-            }, // esta coma me estaba rompiendo todo
+            onValueChange = { nuevoValor -> nro1Texto = nuevoValor
+            },
             label = { Text("1° nro") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number) // no entiendo esta línea
         )
-
-        Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField( // nombre del campo
             value = nro2Texto,
@@ -118,10 +111,6 @@ fun PantallaSuma(modifier: Modifier = Modifier){
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
 
-        HorizontalDivider(
-            modifier = Modifier.padding(vertical = 16.dp),
-            thickness = 1.dp
-        )
         // SUMAR
         Button(onClick = {
             val n1 = nro1Texto.toIntOrNull()
@@ -142,12 +131,6 @@ fun PantallaSuma(modifier: Modifier = Modifier){
         Text(text = "Resultado SUMA: $resultadoSuma") // sin esto no veo el rtado
         // Fin SUMAR
 
-        Spacer(modifier = Modifier.height(16.dp))
-        HorizontalDivider(
-            modifier = Modifier.padding(vertical = 8.dp),
-            thickness = 1.dp
-        )
-
         // RESTA
         Button(onClick = {
             val n1 = nro1Texto.toIntOrNull()
@@ -165,12 +148,6 @@ fun PantallaSuma(modifier: Modifier = Modifier){
         Text(text = "$mensajeResta")
         Text(text = "Resultado RESTA: $resultadoResta") // sin esto no veo el rtado
         // Fin RESTA
-
-        Spacer(modifier = Modifier.height(8.dp))
-        HorizontalDivider(
-            modifier = Modifier.padding(vertical = 16.dp),
-            thickness = 1.dp
-        )
 
         // MULTIPLICACION
         Button(onClick = {
@@ -190,12 +167,6 @@ fun PantallaSuma(modifier: Modifier = Modifier){
         Text(text = "Resultado MULTIPLICACION: $resultadoMultiplicacion") // sin esto no veo el rtado
         // Fin MULTIPLICACION
 
-        Spacer(modifier = Modifier.height(8.dp))
-        HorizontalDivider(
-            modifier = Modifier.padding(vertical = 16.dp),
-            thickness = 1.dp
-        )
-
         // NRO RANDOM
         Button(onClick = {
             val random = generarNroRandom()
@@ -205,9 +176,7 @@ fun PantallaSuma(modifier: Modifier = Modifier){
             Text("Sumar número random")
         }
 
-
         Text(text = mensajeRandom)
         // Fin NRO RANDOM
-
     }
 }

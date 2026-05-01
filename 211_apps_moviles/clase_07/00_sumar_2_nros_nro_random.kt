@@ -31,13 +31,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme{
+            MaterialTheme {
                 // scaffold - andamio
                 Scaffold(modifier = Modifier.fillMaxSize()) {
                     // PantallaSuma tiene que ser un Composable en algún lado
-                    innerPadding -> PantallaSuma(
+                        innerPadding ->
+                    PantallaSuma(
                         modifier = Modifier.padding(innerPadding)
-                     )
+                    )
                 }
             }
         }
@@ -45,17 +46,17 @@ class MainActivity : ComponentActivity() {
 }
 
 // funciones
-fun sumar(n1: Int, n2: Int): Int{
+fun sumar(n1: Int, n2: Int): Int {
     return n1 + n2
 }
 
-fun generarNroRandom(): Int{
+fun generarNroRandom(): Int {
     return Random.nextInt(1, 11) // 1 - 10
 }
 
 // parte grafica
 @Composable // funcion dibujable
-fun PantallaSuma(modifier: Modifier = Modifier){
+fun PantallaSuma(modifier: Modifier = Modifier) {
     // Seteo variables
     // remember lo que hace es que Composable, recuerde el valor entre COMPOSICIONES
     // pq si no lo resetea. Lo guarda en memoria pq lo voy a llavar en otro lado
@@ -75,20 +76,14 @@ fun PantallaSuma(modifier: Modifier = Modifier){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-    Text(text = "Ejemplo: sumar 2 nros")
-
-        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = "Ejemplo: sumar 2 nros")
 
         OutlinedTextField( // nombre del campo
             value = nro1Texto,
-            onValueChange = { nuevoValor -> // fn lambda
-                nro1Texto = nuevoValor
-            }, // esta coma me estaba rompiendo todo
-            label = { Text("1° nro") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number) // no entiendo esta línea
+            onValueChange = { nuevoValor -> nro1Texto = nuevoValor}, // equivalente a it
+            label = { Text("1er nro") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number) // cuando abro en mi telefono y me aparecen solo numeros para ingresar, eso es
         )
-
-        Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField( // nombre del campo
             value = nro2Texto,
@@ -97,8 +92,6 @@ fun PantallaSuma(modifier: Modifier = Modifier){
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
-
         Button(onClick = {
             val n1 = nro1Texto.toIntOrNull()
             val n2 = nro2Texto.toIntOrNull()
@@ -106,29 +99,22 @@ fun PantallaSuma(modifier: Modifier = Modifier){
             if (n1 == null || n2 == null) {
                 mensajeSuma = "Ingresá números válidos"
             } else {
-                resultadoSuma += n1 + n2
+                resultadoSuma = n1 + n2
             }
-        }) {
-            Text("Sumar los dos nros")
-        }
+        }) { Text("Sumar los dos nros") }
+
         Text(text = "$mensajeSuma")
         Text(text = "nro1Texto: $nro1Texto")
         Text(text = "nro2Texto: $nro2Texto")
         Text(text = "Resultado: $resultadoSuma") // sin esto no veo el rtado
 
-
-        Spacer(modifier = Modifier.height(16.dp))
-
         Button(onClick = {
             val random = generarNroRandom()
-            resultadoRandom += random
-            mensajeRandom = "Se sumó el nro aleatorio: $resultadoRandom"
-        }) {
-            Text("Sumar número random")
-        }
+            resultadoRandom += random // acumulador
+            mensajeRandom = "Se sumó el nro aleatorio: $random RESULTADO: $resultadoRandom . ACUMULADOR!!"
+        }) { Text("Sumar número random") }
 
-        Spacer(modifier = Modifier.height(16.dp))
 
-        Text(text = mensajeRandom)
+        Text(text = mensajeRandom) // ! muestro el valor de mensajeRandom en pantalla
     }
 }
