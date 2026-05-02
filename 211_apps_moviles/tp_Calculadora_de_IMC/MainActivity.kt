@@ -1,6 +1,7 @@
 package com.example.tp_calculadora_imc
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -34,12 +35,13 @@ import com.example.tp_calculadora_imc.ui.theme.TP_calculadora_IMCTheme
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.jvm.java
 import kotlin.toString
-
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,12 +106,7 @@ fun imc(peso: Double, altura: Double): Double {
 }
 
 @Composable
-fun Content(
-    ScaModifier: Modifier = Modifier,
-) { // 'Si no me pasa nada, uso un Modifier vacío'
-
-    // ********** ESTADOS *********
-
+fun Content(ScaModifier: Modifier = Modifier) { // 'Si no me pasa nada, uso un Modifier vacío'
     //  USARIO ESCRIBIENDO - INPUTS
     // rememberSaveable sobrevive a rotaciones de pantalla
     var nombreUserState by rememberSaveable { mutableStateOf("") }
@@ -117,8 +114,12 @@ fun Content(
     var alturaMtsUserState by rememberSaveable { mutableStateOf("") }
 
     var imcResultadoState by rememberSaveable { mutableStateOf<Double?>(null) }
+
     // Estado de error
     var errorMensajeState by rememberSaveable { mutableStateOf<String?>(null) }
+
+    // CONTEXTO DE LA APP
+    val context = LocalContext.current
 
     // INPUTS - reciben VALUE y onValueChange sí o si
     Column(
@@ -137,13 +138,11 @@ fun Content(
             // modifier = Modifier.fillMaxWidth() // con esto puesto, no me lo centraba poqrue estaba ocupando el 100% del ancho.
             //   textAlign = TextAlign.Center //, si dejaba la prop de arriba, tenia que dejar esta tambien
         )
-        Spacer(modifier = Modifier.padding(bottom = 8.dp))
         Text(
             text = "Ingrese sus datos porfavor",
             fontSize = 25.sp,
             modifier = Modifier.padding(bottom = 5.dp)
         )
-
         // Campo nombre
         TextField(
             value = nombreUserState,
@@ -151,7 +150,6 @@ fun Content(
             label = { Text("Ingrese su nombre") },
             modifier = Modifier.padding(bottom = 15.dp)
         )
-
         // Campo peso
         TextField(
             value = pesoKgUserState,
@@ -160,7 +158,6 @@ fun Content(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             modifier = Modifier.padding(bottom = 15.dp)
         )
-
         // Campo altura
         TextField(
             value = alturaMtsUserState,
@@ -171,51 +168,43 @@ fun Content(
         )
 
         Button(onClick = {
-            /*
-            val peso_altura_o_null = validarPesoAltura(pesoKgUserState, alturaMtsUserState)
-            if (peso_altura_o_null == null) {
-                errorMensajeState =
-                    "Ingrese Peso y altura VÁLIDOS" // Un Button no puede devolver un String.
-                // onClick es solo una acción (side effect)
-            } else {
-                errorMensajeState = null
-                val (pesoFn, alturaFn) = peso_altura_o_null // desestructuracion
-                imcResultadoState = pesoFn / (alturaFn * alturaFn)
-            }
-            */
 
-            if (pesoKgUserState.isBlank()){
-                errorMensajeState = "Ingrese Peso VÁLIDO"
-            } else if (alturaMtsUserState.isBlank()) {
-                errorMensajeState = "Ingrese altura VÁLIDA"
-            } else if(pesoKgUserState.toIntOrNull() == null){
-                errorMensajeState = "Ingrese un NÚMERO para el Peso"
-            }  else if(alturaMtsUserState.toIntOrNull() == null){
-                errorMensajeState = "Ingrese un NÚMERO para la altura"
+            val pesoDecimalONulo = pesoKgUserState.replace(',', '.').toDoubleOrNull()
+            val alturaDecimalONulo = alturaMtsUserState.replace(',', '.').toDoubleOrNull()
+
+            if (pesoKgUserState.isBlank() || alturaMtsUserState.isBlank() || nombreUserState.isBlank()) {
+                errorMensajeState = "Ingrese todos los datos VÁLIDOS"
+            } else if (pesoDecimalONulo != null && pesoDecimalONulo <= 0) {
+                errorMensajeState = "El peso debe ser mayor a cero"
+            } else if (alturaDecimalONulo != null && alturaDecimalONulo <= 0) {
+                errorMensajeState = "La altura debe ser mayor a cero"
             }
+
+            // caso feliz - Navegación a otra pantalla - otro activity
             else {
                 errorMensajeState = null
 
-                val peso = pesoKgUserState.toDoubleOrNull()
-                val altura = alturaMtsUserState.toDoubleOrNull()
-
-                if (peso != null && altura != null) {
-                    val resultado = imc(peso, altura)
+                if (pesoDecimalONulo != null && alturaDecimalONulo != null) {
+                    val resultado = imc(pesoDecimalONulo, alturaDecimalONulo)
                     imcResultadoState = resultado
                 }
+
+                val intentActivityRtado = Intent(context, ResultadoActivity::class.java)
+                // mando datos
+                intentActivityRtado.putExtra(ResultadoActivity.EXTRA_PESO, pesoDecimalONulo)
+                intentActivityRtado.putExtra(ResultadoActivity.EXTRA_ALTURA, alturaDecimalONulo)
+                intentActivityRtado.putExtra(ResultadoActivity.EXTRA_NOMBRE, nombreUserState)
+                intentActivityRtado.putExtra(ResultadoActivity.EXTRA_IMC, imcResultadoState ?: 0.0)
+
+                // si todo sale bien, iniciame este activity. AL HACER CLICK EN EL BOTÓN
+                // ejecuta el intent, 'abrí esa pantalla ahora'
+                context.startActivity(intentActivityRtado)
             }
 
-        }) {
-            Text("Calcular IMC")
-        }
+        }) { Text("Calcular IMC") }
 
-        if (imcResultadoState != null) {
-            Text(
-                text = "Tu IMC es: $imcResultadoState",
-                color = Color.Black,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 10.dp)
-            )
+        if (errorMensajeState != null) {
+            Text("$errorMensajeState")
         }
 
     }

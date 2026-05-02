@@ -61,8 +61,6 @@ class MainActivity : ComponentActivity() {
 }
 
 // funciones - logica
-
-
 fun sumar(n1: Int, n2: Int): Int {
     return n1 + n2
 }
@@ -77,7 +75,6 @@ fun multiplicar(n1: Int, n2: Int): Int {
 
 // Forma resumida
 /* fun restar(n1: Int, n2: Int): Int = n1 - n2 */
-
 fun generarNroRandom(): Int {
     return Random.nextInt(1, 11) // 1 - 10
 }

@@ -1,5 +1,9 @@
 # Calculadora de IMC
 
+```bash
+cd 211_apps_moviles/tp_Calculadora_de_IMC/
+```
+
 El trabajo podrá realizarse de manera grupal hasta 3 estudiantes o individual.
 
 Desarrollar una aplicación Android en Kotlin con Jetpack Compose llamada **“Calculadora de IMC”**. 
@@ -33,4 +37,4 @@ Código .kt + AndroidManifies.xml
 - https://youtu.be/Fv46Q0IeUc4?si=Lw16TwyvWUZcRNhS 
 - https://youtu.be/4SKQSIKWPM8?si=uuRRMxcQB3NYOReY
 - https://youtu.be/OAG4Qphl9AQ?si=0_aOMWUEAyw94ONz 
-- 
+- https://es.stackoverflow.com/questions/119184/como-hacer-un-switch-en-kotlin

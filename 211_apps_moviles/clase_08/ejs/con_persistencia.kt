@@ -1,8 +1,10 @@
 package com.example.clase_06
+
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,10 +22,13 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
@@ -38,21 +43,23 @@ class MainActivity : ComponentActivity() {
 // Clase que  maneja persistencia local usando SharedPreferences
 class PerfilPreferences(context: Context) {
     // Crea un almacenamiento tipo clave-valor (como un JSON interno)
+    // perfil_prefs nombre del archivo en modo privado.
+    // 'abrí este archivo perfil_prefs, si no existe crealo'
     private val prefs = context.getSharedPreferences("perfil_prefs", Context.MODE_PRIVATE)
 
     // Guarda datos
-    fun guardarPerfil(nombre: String, email: String, carrera: String) {
-        prefs.edit()
-            .putString("nombre", nombre)
-            .putString("email", email)
-            .putString("carrera", carrera)
-            .apply()
+    fun guardarPerfil(nombreParam: String, emailParam: String, carreraParam: String) {
+        prefs.edit() // prefs es el archivo
+            .putString("nombre", nombreParam) // clave - valor
+            .putString("email", emailParam)
+            .putString("carrera", carreraParam)
+            .apply() // aplicar los cambios, los seteos de valores !
     }
 
     // Leen lo guardado si no hay nada, devuelven ""
-    fun obtenerNombre(): String = prefs.getString("nombre", "") ?: ""
-    fun obtenerEmail(): String = prefs.getString("email", "") ?: ""
-    fun obtenerCarrera(): String = prefs.getString("carrera", "") ?: ""
+    fun obtenerNombre(): String = prefs.getString("nombre", "No se encontró valor") ?: "Falló"
+    fun obtenerEmail(): String = prefs.getString("email", "No se encontró valor") ?: "Falló"
+    fun obtenerCarrera(): String = prefs.getString("carrera", "No se encontró valor") ?: "Falló"
 }
 
 @OptIn(ExperimentalMaterial3Api::class) // ?
@@ -62,24 +69,27 @@ fun PantallaPerfil() { // UI y lógica
     val perfilPrefs = remember(context) { PerfilPreferences(context) } // Crea UNA instancia de PerfilPreferences q no se recrea en cada recomposición
 
     // ESTADOS
-    // DRAFT - USARIO ESCRIBIENDO - INPUTS
+    // State - USARIO ESCRIBIENDO - INPUTS
     // rememberSaveable sobrevive a rotaciones de pantalla
-    var nombreDraft by rememberSaveable { mutableStateOf("") }
-    var emailDraft by rememberSaveable { mutableStateOf("") }
-    var carreraDraft by rememberSaveable { mutableStateOf("") }
+    var nombreState by rememberSaveable { mutableStateOf("") }
+    var emailState by rememberSaveable { mutableStateOf("") }
+    var carreraState by rememberSaveable { mutableStateOf("") }
 
     // PERSISTENCIA - Se carga desde SharedPreferences
     // remember no hace falta que sobreviva rotación porque ya está guardado
-    var nombreGuardado by remember { mutableStateOf(perfilPrefs.obtenerNombre()) }
-    var emailGuardado by remember { mutableStateOf(perfilPrefs.obtenerEmail()) }
-    var carreraGuardada by remember { mutableStateOf(perfilPrefs.obtenerCarrera()) }
+    var nombreGuardadoPreferencias by remember { mutableStateOf(perfilPrefs.obtenerNombre()) }
+    var emailGuardadoPreferencias by remember { mutableStateOf(perfilPrefs.obtenerEmail()) }
+    var carreraGuardadaPreferencias by remember { mutableStateOf(perfilPrefs.obtenerCarrera()) }
 
     var mensaje by rememberSaveable { mutableStateOf("") } // feedback: "Completa todos los campos" o "Perfil guardado correctamente"
 
-    Scaffold( // molde
+    Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Perfil del estudiante") }
+                title = { Text("Perfil del estudiante") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = colorResource(id = R.color.teal_700) // fondo
+                )
             )
         }
     ) { paddingInterno ->
@@ -100,68 +110,56 @@ fun PantallaPerfil() { // UI y lógica
                 Column(modifier = Modifier.padding(16.dp)) {
 
                     OutlinedTextField(
-                        value = nombreDraft,
-                        onValueChange = { nombreDraft = it },
+                        value = nombreState,
+                        onValueChange = { nombreState = it },
                         label = { Text("Nombre") },
                         modifier = Modifier.fillMaxWidth()
                     )
 
-                    Spacer(modifier = Modifier.height(8.dp))
-
                     OutlinedTextField(
-                        value = emailDraft,
-                        onValueChange = { emailDraft = it },
+                        value = emailState,
+                        onValueChange = { emailState = it },
                         label = { Text("Email") },
                         modifier = Modifier.fillMaxWidth()
                     )
 
-                    Spacer(modifier = Modifier.height(8.dp))
-
                     OutlinedTextField(
-                        value = carreraDraft,
-                        onValueChange = { carreraDraft = it },
+                        value = carreraState,
+                        onValueChange = { carreraState = it },
                         label = { Text("Carrera") },
                         modifier = Modifier.fillMaxWidth()
                     )
 
-                    Spacer(modifier = Modifier.height(12.dp))
-
                     Button(
                         onClick = {
                             // VALIDACIÓN
-                            if (nombreDraft.isBlank() || emailDraft.isBlank() || carreraDraft.isBlank()) {
+                            if (nombreState.isBlank() || emailState.isBlank() || carreraState.isBlank()) {
                                 mensaje = "Completa todos los campos"
                             } else {
-                                // Si setá todo OK GUARDA
-                                perfilPrefs.guardarPerfil(nombreDraft, emailDraft, carreraDraft)
+                                // Si tá todo OK GUARDA
+                                perfilPrefs.guardarPerfil(nombreState, emailState, carreraState)
 
                                 // Guarda en disco, vuelve a leer y actualiza el estado. Recompone UI
-                                nombreGuardado = perfilPrefs.obtenerNombre()
-                                emailGuardado = perfilPrefs.obtenerEmail()
-                                carreraGuardada = perfilPrefs.obtenerCarrera()
+                                nombreGuardadoPreferencias = perfilPrefs.obtenerNombre()
+                                emailGuardadoPreferencias = perfilPrefs.obtenerEmail()
+                                carreraGuardadaPreferencias = perfilPrefs.obtenerCarrera()
 
                                 mensaje = "Perfil guardado correctamente"
                             }
                         },
                         modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text("Guardar perfil")
-                    }
-
-                    Spacer(modifier = Modifier.height(8.dp))
+                    ) { Text("Guardar perfil") }
 
                     Button(
                         onClick = {
                             // Limpia borrador
-                            nombreDraft = ""
-                            emailDraft = ""
-                            carreraDraft = ""
+                            nombreState = ""
+                            emailState = ""
+                            carreraState = ""
                             mensaje = "Borrador limpiado"
                         },
                         modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text("Limpiar borrador")
-                    }
+                    ) { Text("Limpiar borrador") }
                 }
             }
 
@@ -181,9 +179,9 @@ fun PantallaPerfil() { // UI y lógica
 
                     Spacer(modifier = Modifier.height(8.dp))
                     // Muestra lo persistido
-                    Text("Nombre: $nombreGuardado")
-                    Text("Email: $emailGuardado")
-                    Text("Carrera: $carreraGuardada")
+                    Text("Nombre: $nombreGuardadoPreferencias")
+                    Text("Email: $emailGuardadoPreferencias")
+                    Text("Carrera: $carreraGuardadaPreferencias")
                 }
             }
         }
