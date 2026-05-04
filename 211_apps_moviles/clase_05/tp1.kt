@@ -60,8 +60,6 @@ fun FormularioSaludo() {
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
-
         //Instrucción para el usuario
         Text(
             text = "Completa los campos",
@@ -69,8 +67,6 @@ fun FormularioSaludo() {
             color = Color.Gray,
             modifier = Modifier.padding(bottom = 16.dp)
         )
-
-        Spacer(modifier = Modifier.height(32.dp))
 
         //Campo nombre
         OutlinedTextField(
@@ -80,8 +76,6 @@ fun FormularioSaludo() {
             modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
-
         //Campo Apellido
         OutlinedTextField(
             value = apellido,
@@ -89,8 +83,6 @@ fun FormularioSaludo() {
             label = { Text("Apellido") },
             modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
         )
-
-        Spacer(modifier = Modifier.height(24.dp))
 
         //Botón
         Button(
@@ -111,8 +103,6 @@ fun FormularioSaludo() {
             )
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
-
         //Botón Limpiar
         Button(
             onClick = {
@@ -130,8 +120,6 @@ fun FormularioSaludo() {
                 fontSize = 16.sp
             )
         }
-
-        Spacer(modifier = Modifier.height(28.dp))
 
         //Texto de resultado (solo si hay un mensaje)
         if (mensaje.isNotEmpty()) {
