@@ -75,7 +75,7 @@ fun PantallaPerfil() { // UI y lógica
     var emailState by rememberSaveable { mutableStateOf("") }
     var carreraState by rememberSaveable { mutableStateOf("") }
 
-    // PERSISTENCIA - Se carga desde SharedPreferences
+    // PERSISTENCIA - Se carga des de SharedPreferences
     // remember no hace falta que sobreviva rotación porque ya está guardado
     var nombreGuardadoPreferencias by remember { mutableStateOf(perfilPrefs.obtenerNombre()) }
     var emailGuardadoPreferencias by remember { mutableStateOf(perfilPrefs.obtenerEmail()) }

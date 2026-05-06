@@ -244,25 +244,13 @@ fun PantallaOperacionesView(
             label = {Text("Nombre alumno: $nombreAlumnoParam") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)        )
 
-        HorizontalDivider(
-            modifier = Modifier.padding(vertical = 8.dp),
-            thickness = 1.dp
-        )
-
         Button(onClick = onPromedioClick) { // DUDA. de donde viene?
             Text("Calcular promedio")
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
-
         Button(onClick = onLimpiarClick) {
             Text("Limpiar")
         }
-
-        HorizontalDivider(
-            modifier = Modifier.padding(vertical = 16.dp),
-            thickness = 1.dp
-        )
 
         Text(
             text = "Resultado: $resultadoParam",
