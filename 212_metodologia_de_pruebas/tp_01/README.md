@@ -38,9 +38,18 @@ Las pruebas deben incluir:
 Se debe validar no solo el resultado de las operaciones, sino también los **efectos secundarios**, como cambios de estado, modificaciones de datos o interacción entre objetos.
 
 ### EJEMPLO para la practica:
-Modelo de negocio: compra simple dentro de un marketplace:
-un usuario registrado navega el catálogo de productos disponibles, selecciona un producto
-específico, lo agrega a su carrito de compras y luego inicia el proceso de pago. El carrito permite acumular uno o más productos, calcular el total de la compra y validar que los productos seleccionados tengan stock suficiente antes de confirmar la operación. Para finalizar la compra, el usuario utiliza una plataforma externa de pagos denominada Plataforma X, la cual permite abonar mediante tres medios posibles: tarjeta de crédito, tarjeta de débito o transferencia desde una cuenta bancaria previamente asociada a dicha plataforma. La compra solo se considera aprobada si el usuario existe, el carrito no está vacío, los productos tienen stock disponible, el medio de pago es válido y la Plataforma X confirma correctamente la transacción. En caso contrario, la operación debe ser rechazada o quedar pendiente según el problema detectado. Este modelo está pensado para trabajar pruebas unitarias sobre clases relacionadas entre sí, validando comportamientos concretos como agregar productos al carrito, calcular totales, controlar stock, validar medios de pago y confirmar o rechazar una compra.
+Modelo de negocio: Compra simple dentro de un marketplace:
+Un usuario registrado navega el catálogo de productos disponibles, selecciona un producto específico, lo agrega a su carrito de compras y luego inicia el proceso de pago. 
+
+El carrito permite acumular uno o más productos, calcular el total de la compra y validar que los productos seleccionados tengan stock suficiente antes de confirmar la operación. 
+
+Para finalizar la compra, el usuario utiliza una plataforma externa de pagos denominada Plataforma X, la cual permite abonar
+mediante tres medios posibles: tarjeta de crédito, tarjeta de débito o transferencia desde una cuenta bancaria previamente asociada a dicha plataforma. 
+
+La compra solo se considera aprobada si el usuario existe, el carrito no está vacío, los productos tienen stock disponible, el medio de pago es válido y la Plataforma X confirma correctamente la transacción. 
+
+En caso contrario, la operación debe ser rechazada o quedar pendiente según el problema detectado. Este modelo está pensado para trabajar pruebas unitarias sobre clases relacionadas entre sí, validando comportamientos concretos como agregar productos al carrito, calcular totales, controlar stock, validar medios de pago y confirmar o rechazar una compra.
+
 
 
 # Instalar pytest
@@ -54,3 +63,10 @@ pip install  pytest
 ```bash
 pytest
 ```
+
+# Casos de prueba
+- https://docs.google.com/document/d/1UgA_1QfhccQPSXf51uFcJ0mADDF03WDPwIa-_afxez0/edit?usp=sharing
+
+# Recursos
+- https://medium.com/@ferdina.kusumah/understanding-and-meaning-of-python-4b82e828253e
+- https://www.geeksforgeeks.org/python/pytest-tutorial-testing-python-application-using-pytest/

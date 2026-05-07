@@ -1,7 +1,10 @@
-# Consigna 1: Validacion de reglas de negocio
 from tp_01 import Producto, Usuario, Carrito, PlataformaPagoX, Compra
 import pytest
 
+
+# ---------------------------------------------------------------------------------
+# Consigna 1: Validacion de reglas de negocio
+# ---------------------------------------------------------------------------------
 # Caso válidos (comportamiento esperado correcto)
 def test_hay_stock():
     p = Producto(1, "Mouse", 1000, 5)
@@ -13,7 +16,7 @@ def test_hay_stock():
 # Caso inválidos o de error (datos incorrectos, estados no permitidos, etc.)
 def test_descontar_stock():
     p = Producto(1, "Mouse", 1000, 5)
-
+    # Se usa esta instruccion cuando el metodo retorna un: raise ValueError
     with pytest.raises(ValueError):
         p.descontar_stock(10)
 
@@ -27,7 +30,9 @@ def test_hay_stock_invalido():
         p.descontar_stock(0)
 
 
+# ---------------------------------------------------------------------------------
 # Consigna 2: Cobertura de escenarios y estados del sistema
+# ---------------------------------------------------------------------------------
 
 
 # Escenarios normales (flujo principal)
@@ -44,26 +49,32 @@ def test_compra_exitosa():
 
     resultado = compra.finalizar_compra("credito")
 
-    assert resultado == True
-    assert compra.estado == "aprobada"
-    assert producto.stock == 3
+    # Se espera un flujo normal, eso significa que:
+    assert resultado == True  # La compra se finalizó
+    assert compra.estado == "aprobada"  # El estado de la compra es aprobada
+    assert producto.stock == 3  # Si el stock era 5 inicialmente y
 
 
 # Escenarios alternativos (variaciones del flujo)
+#  Camino no feliz
 def test_compra_rechazada_pago():
     usuario = Usuario(1, "Juan", "juan@mail.com")
     carrito = Carrito(usuario)
-
     producto = Producto(1, "Mouse", 1000, 5)
+
     carrito.agregar_producto(producto, 1)
 
     plataforma = PlataformaPagoX()
 
     compra = Compra(usuario, carrito, plataforma)
 
-    resultado = compra.finalizar_compra("bitcoin")
+    resultado = compra.finalizar_compra(
+        "bitcoin"
+    )  # acá se produce la variacion de flujo
 
-    assert resultado == False
+    assert (
+        resultado == False
+    )  # Porque finalizar_compra espera False si pago_aprobado resulta en False
     assert compra.estado == "rechazada"
 
 
@@ -71,7 +82,7 @@ def test_compra_rechazada_pago():
 def test_compra_rechazada_carrito_vacio():
     usuario = Usuario(1, "Juan", "juan@mail.com")
     carrito = Carrito(usuario)
-
+    # Acá no está sucediendo el paso de agregar un producto, y validar el stock
     plataforma = PlataformaPagoX()
 
     compra = Compra(usuario, carrito, plataforma)
