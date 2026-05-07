@@ -1,10 +1,14 @@
 from tp_01 import Producto, Usuario, Carrito, PlataformaPagoX, Compra
 import pytest
 
-
 # ---------------------------------------------------------------------------------
 # Consigna 1: Validacion de reglas de negocio
 # ---------------------------------------------------------------------------------
+
+# Cada test tiene: un objetivo, datos de entrada, una acción, y un resultado esperado (assert).
+# Eso es lo que define un caso de prueba
+
+
 # Caso válidos (comportamiento esperado correcto)
 def test_hay_stock():
     p = Producto(1, "Mouse", 1000, 5)
@@ -52,7 +56,7 @@ def test_compra_exitosa():
     # Se espera un flujo normal, eso significa que:
     assert resultado == True  # La compra se finalizó
     assert compra.estado == "aprobada"  # El estado de la compra es aprobada
-    assert producto.stock == 3  # Si el stock era 5 inicialmente y
+    assert producto.stock == 3  # Si el stock era 5 inicialmente y pedí 2
 
 
 # Escenarios alternativos (variaciones del flujo)
@@ -67,14 +71,11 @@ def test_compra_rechazada_pago():
     plataforma = PlataformaPagoX()
 
     compra = Compra(usuario, carrito, plataforma)
+    # acá se produce la variacion de flujo
+    resultado = compra.finalizar_compra("bitcoin")
 
-    resultado = compra.finalizar_compra(
-        "bitcoin"
-    )  # acá se produce la variacion de flujo
-
-    assert (
-        resultado == False
-    )  # Porque finalizar_compra espera False si pago_aprobado resulta en False
+    # Porque finalizar_compra espera False si pago_aprobado resulta en False
+    assert resultado == False
     assert compra.estado == "rechazada"
 
 
@@ -87,6 +88,7 @@ def test_compra_rechazada_carrito_vacio():
 
     compra = Compra(usuario, carrito, plataforma)
 
+    # valida que el carrito no esté vacío
     resultado = compra.finalizar_compra("credito")
 
     assert resultado == False
