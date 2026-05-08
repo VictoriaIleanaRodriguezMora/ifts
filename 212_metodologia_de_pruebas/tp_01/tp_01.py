@@ -59,9 +59,8 @@ class Carrito:
 
     def confirmar_compra(self):
         if self.esta_vacio():  # metodo de Carrito
-            raise ValueError(
-                "El carrito está vacío"
-            )  # si está vacío. NO confirma la compra
+            # si está vacío. NO confirma la compra
+            raise ValueError("El carrito está vacío")
 
         for item in self.items:
             producto = item["producto"]
@@ -101,9 +100,10 @@ class Compra:
             self.estado = "rechazada"
             return False
 
-        total = self.carrito.calcular_total() # Método de carrito
-
-        pago_aprobado = self.plataforma_pago.procesar_pago(total, medio_pago) # Método de PlataformaPagoX
+        total = self.carrito.calcular_total()  # Método de carrito
+        
+        # Método de PlataformaPagoX
+        pago_aprobado = self.plataforma_pago.procesar_pago(total, medio_pago)
 
         if not pago_aprobado:
             self.estado = "rechazada"

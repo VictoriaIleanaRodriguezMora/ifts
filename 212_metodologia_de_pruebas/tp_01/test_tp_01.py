@@ -84,6 +84,9 @@ def test_compra_rechazada_carrito_vacio():
     usuario = Usuario(1, "Juan", "juan@mail.com")
     carrito = Carrito(usuario)
     # Acá no está sucediendo el paso de agregar un producto, y validar el stock
+    #  producto = Producto(1, "Mouse", 1000, 5)
+    # carrito.agregar_producto(producto, 1)
+
     plataforma = PlataformaPagoX()
 
     compra = Compra(usuario, carrito, plataforma)
