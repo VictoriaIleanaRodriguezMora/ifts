@@ -43,36 +43,37 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             MaterialTheme {
-                var currentMeasurement by rememberSaveable {
-                    mutableStateOf<ObjetoAccelerometerMeasurement?>(null)
-                }
+                var currentMeasurementState by remember {
+                    mutableStateOf<ObjetoAccelerometerMeasurement?>(
+                        null
+                    )
+                } // un estado observable
 
-                var savedMeasurement by remember {
-                    mutableStateOf(preferences.getUltimaMedicion())
-                }
+                // savedMeasurementState no necesita rememberSaveable porque es un dato que viene de sharedpreferences
+                var savedMeasurementState by remember { mutableStateOf(preferences.getUltimaMedicion()) }
+                var sensorAvailableState by remember { mutableStateOf(true) }
+                val accelerometerReaderState = remember { AccelerometerReader(applicationContext) }
 
-                var sensorAvailable by remember {
-                    mutableStateOf(true)
-                }
-
-                val accelerometerReader = remember {
-                    AccelerometerReader(applicationContext)
-                }
-
+                // ejecutar código cuando el composable aparece/desaparece
+                // "ejecutá este bloque cuando el composable entra en composición"
+                /*  - Cuando aparece la pantalla
+                    1. empezar a escuchar el acelerómetro
+                    2. cada medición nueva: actualizar currentMeasurement
+                    - Cuando desaparece la pantalla
+                    dejar de escuchar el sensor */
                 DisposableEffect(Unit) {
-                    sensorAvailable = accelerometerReader.iniciarLecturaDelSensor { measurement ->
-                        currentMeasurement = measurement
+                    sensorAvailableState = accelerometerReaderState.iniciarLecturaDelSensor { // empieza a escuchar el sensor.
+                        measurement -> currentMeasurementState = measurement // REDIBUJA LA UI
                     }
 
-                    onDispose {
-                        accelerometerReader.stopReading()
-                    }
+                    onDispose { accelerometerReaderState.stopReading() } // deja de escuchar. "limpiá recursos cuando salga"
+                    // sin esto la app seguiría escuchando sensores: aunque se cierre la pantalla, aunque se navegue a otra, aunque el composable desaparezca
                 }
 
                 Scaffold(
                     topBar = {
                         TopAppBar(
-                            title = {Text("Introducción a sensores")},
+                            title = { Text("Introducción a sensores") },
                             colors = TopAppBarDefaults.topAppBarColors(
                                 containerColor = colorResource(id = R.color.purple_500) // fondo
                             )
@@ -80,15 +81,15 @@ class MainActivity : ComponentActivity() {
                     }
                 ) { paddingValues ->
 
-                    SensorScreen(
+                    SensorScreen( // que es sensor screen?
                         paddingValues = paddingValues,
-                        sensorAvailable = sensorAvailable,
-                        currentMeasurement = currentMeasurement,
-                        savedMeasurement = savedMeasurement,
-                        onSaveMeasurement = {
-                            currentMeasurement?.let { measurement ->
+                        sensorAvailable = sensorAvailableState,
+                        currentMeasurementView = currentMeasurementState,
+                        savedMeasurementView = savedMeasurementState,
+                        onSaveMeasurementView = {
+                            currentMeasurementState?.let { measurement ->
                                 preferences.guardarUltimaMedicion(measurement)
-                                savedMeasurement = measurement
+                                savedMeasurementState = measurement
                             }
                         }
                     )
@@ -102,9 +103,9 @@ class MainActivity : ComponentActivity() {
 fun SensorScreen(
     paddingValues: PaddingValues,
     sensorAvailable: Boolean,
-    currentMeasurement: ObjetoAccelerometerMeasurement?,
-    savedMeasurement: ObjetoAccelerometerMeasurement?,
-    onSaveMeasurement: () -> Unit
+    currentMeasurementView: ObjetoAccelerometerMeasurement?,
+    savedMeasurementView: ObjetoAccelerometerMeasurement?,
+    onSaveMeasurementView: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -133,18 +134,18 @@ fun SensorScreen(
         // 1° tarjeta
         MeasurementCard(
             title = "Medición actual",
-            measurement = currentMeasurement
+            measurement = currentMeasurementView
         )
 
         Button(
-            onClick = onSaveMeasurement,
-            enabled = currentMeasurement != null && sensorAvailable,
+            onClick = onSaveMeasurementView,
+            enabled = currentMeasurementView != null && sensorAvailable,
             modifier = Modifier.fillMaxWidth()
-        ) { Text("Guardar medición actual")        }
+        ) { Text("Guardar medición actual") }
 
         MeasurementCard(
             title = "Última medición guardada",
-            measurement = savedMeasurement
+            measurement = savedMeasurementView
         )
 
         Text(
@@ -175,6 +176,7 @@ fun MeasurementCard(
             if (measurement == null) {
                 Text("No hay medición disponible.")
             } else {
+                // se muestran los valores de la ultima medición
                 Text("X: ${formatNumber(measurement.x)} m/s²")
                 Text("Y: ${formatNumber(measurement.y)} m/s²")
                 Text("Z: ${formatNumber(measurement.z)} m/s²")

@@ -31,22 +31,19 @@ class AccelerometerReader(context: Context): SensorEventListener {
 
     // 2. Solicitamos específicamente el acelerómetro por defecto del dispositivo.
     // Usamos el tipo "Sensor?" (nullable) porque es posible que el dispositivo físico no cuente con un acelerómetro (aunque hoy en día es muy raro).
-    private val acelerometroDelDispositivo: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) // obtener el acelerometro por defecto
+    private val acelerometroDelDispositivo: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) // obtener el acelerometro por defecto del celular
 
     // 3. Variable para almacenar un callback (función lambda).
     // Esta función tomará las mediciones (ObjetoAccelerometerMeasurement) y no devolverá nada (Unit).
     // Se invocará automáticamente cada vez que el sensor registre un cambio.
-    private var onMedicionChanged: ((ObjetoAccelerometerMeasurement) -> Unit)? = null // duda
-
+    private var onMedicionChanged: ((ObjetoAccelerometerMeasurement) -> Unit)? = null // voy a guardar una función
 
     /**
      * Inicia la suscripción al sensor y comienza a recibir mediciones.
      * @param onMeasurementChanged Función lambda que se ejecutará al recibir nuevos datos.
      * @return `true` si el sensor se registró con éxito, `false` si el dispositivo no tiene acelerómetro.
      */
-    // iniciarLectura del sensor
     fun iniciarLecturaDelSensor(onMedicionChangedParam: (ObjetoAccelerometerMeasurement) -> Unit): Boolean {
-
         // Usamos el operador Elvis (?:) para verificar si el acelerómetro existe.
         // Si 'acelerometroDelDispositivo' es null, salimos de la función inmediatamente devolviendo false.
         // Porque no existe acelerometro del dispositivo
@@ -97,7 +94,7 @@ class AccelerometerReader(context: Context): SensorEventListener {
 
             // Usamos la llamada segura (?.) para invocar el callback solo si no es nulo.
             // invoke Esto pasará las mediciones hacia la clase que haya llamado a 'startReading'.
-            onMedicionChanged?.invoke(ObjetoMedidas)
+            onMedicionChanged?.invoke(ObjetoMedidas) // onMedicionChanged(ObjetoMedidas)
 
             // ---------------------------------------------------------------------------------
 

@@ -20,20 +20,23 @@ class LastMeasurementPreferences(context: Context) {
             .putFloat(KEY_X, medicionParam.x) // clave - valor
             .putFloat(KEY_Y, medicionParam.y)
             .putFloat(KEY_Z, medicionParam.z)
+
             .putLong(KEY_TIMESTAMP, medicionParam.timeStampMillis) // put - tipo de dato
             .apply() // aplicar los cambios, los seteos de valores !
     }
 
     fun getUltimaMedicion(): ObjetoAccelerometerMeasurement? {
 
-        if(!sensor_prefs.contains(KEY_TIMESTAMP)){ // esta parte no entendí
+        if(!sensor_prefs.contains(KEY_TIMESTAMP)){ // ¿Ya hay una medición guardada?
+            // si nunca se guardó nada, no existe last_timestamp
+            // evita crear una medición falsa con: 0f, 0f, 0f
             return null
         }
 
        var miMedicion = ObjetoAccelerometerMeasurement (
             x = sensor_prefs.getFloat(KEY_X, 0f), // 0f es el valor que retorna por defecto, y con f marco que es float
             y = sensor_prefs.getFloat(KEY_Y, 0f),
-            z = sensor_prefs.getFloat(KEY_Y, 0f),
+            z = sensor_prefs.getFloat(KEY_Z, 0f),
             timeStampMillis = sensor_prefs.getLong(KEY_TIMESTAMP, 0L) // acá es long el tipo de dato
         )
 
