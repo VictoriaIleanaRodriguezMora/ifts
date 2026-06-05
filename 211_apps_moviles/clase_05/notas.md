@@ -144,3 +144,8 @@ VistaNumeroAleatorio(numeroVista)
 
 
 ctrl + shift + A : 
+
+
+
+- https://youtu.be/X8FIQyg9ioU?si=P6T4JxBxLQfp9h0j 
+- https://youtu.be/qw6gmE8vqL0?si=rDw3qtZvvrv0c3jh

@@ -76,6 +76,7 @@ fun VistaNumeroAleatorio(
     numeroVista : Int, // la fn recibe como parametro un nro entero
     onGenerarClick: () -> Unit // es una fn sin parametro, que no devuelve nada y que se ejecuta al tocar el boton. Unit es un genérico
     // es una funcion lambda: una fn que recibe otra funcion como parametro.
+    // Es el equivalente a void
     // NO especifico QUÉ tiene que devolver
 ) {
 Column(
