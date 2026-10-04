@@ -4,15 +4,16 @@
 ```cmd
 ls
 ```
-![alt text](image-6.png)
+![alt text](image.png)
 
-Son iguales
+> [!NOTE] Son iguales, para la creación del proyecto.
 ```cmd
 python3 manage.py startproject
 
 django-admin startproject
 ```
 
+> [!NOTE] Para levantar el proyecto
 Este comando lo corre desde la ruta principal, la raiz del proyecto
 ```cmd
 python3 manage.py run server 0.0.0.0.1233
@@ -22,6 +23,13 @@ Este comando lo corre desde la ruta principal, la raiz del proyecto
 ```cmd
 django-admin run server 0.0.0.0.1233
 ```
+django-admin --> creación inicial del proyecto, crear carpetas archivos, etc
+
+
+
+
+
+
 
 > [!NOTE] DJANGO ADMIN
 > django-admin funciona para la creacion inicial del proyecto
@@ -36,7 +44,7 @@ django-admin es un patrón de diseño de  arquitectura, que se llama MVP, calco 
 
 - MVC --> Model View Controller
 - MVT --> Model View Template
-
+24.00
 - Modelo: Se almacena lógica a la creacion de tablas, columnas, etc
 - Vista: Logica de  mostrar o generar el html
 - Controlador: Lógica de negocio (relacionado a la lógica de la empresa, cómo se hacen las cosas. es mas decicsion, más humano)
@@ -50,182 +58,326 @@ Lo ORQUESTA la view. Cuando queremos buscar lógica, se va a la view.
 
 Lo primero que hace una persona es ingresar a nuestra vista, django funciona como un orquestador, django está escuchando. 
 > [!NOTE] Note | ¿Quién está escuchando?
-> `asgi.py` o `wsgi.py`, dependiendo del servidor interno que estemos hablando
+> `asgi.py` ASINCRONICO o `wsgi.py` SINCRONICO, dependiendo del servidor interno que estemos hablando
 
 Nosotros no lo usamos, lo usa django. Lo disponibilizan afuera en estos archivos, por si queremos hacer algo afuera, a nivel de lo primero que entra en django, va a pasar por ahi, por esos archivos. ahi levanta la app. Y esto va a correr, cuando le decimos al servidor, quedate escuchando y levantame el servidor, el run server, entra por ahí. 
 
 Una vez que se queda escuchando, empieza a redirigir desde `urls.py` a las urls que tengamos configuradas. En `urlpatterns`, cuando quiera buscar la url de cada una de mis apps, que vendrian a ser cómo módulos.
 
+![alt text](image-1.png)
+![alt text](image-2.png)
+
+```cmd
+django-admin startapp accounts
+```
+![alt text](image-3.png)
+
+`views.py` es el controlador, vistas del modelo es html
+![alt text](image-4.png)
+
+
+> [!WARNING]
+> NO usar vistas basadas en funciones. Sino basadas en CLASES
+
+
+
+```py
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('accounts/', include('apps.accounts')),
+]
+```
+
+Lo que hace la palabra include, es que todo lo que escriba en `accounts/urls.py`, me lo cargue. Le digo la carpeta que quiero que incluya. Eso lo concatena
+
+En `accounts/urls.py`:
+```py
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('accounts/', include('apps.accounts')),
+]
+```
+
+> [!IMPORTANT]
+> Hay que crear el archivo, `urls.py`, no se crea por defecto
+
+> [!TIP] TIP | Solucion a un error
+> Estaba teniendo el error 'Import "apps.accounts.views" could not be resolvedPylancereportMissingImports', porque no habia creado accounts, dentro de la carpeta app. El comando, no estaba bien puesta lña ruta, y yo no lo ejecuté desde apps.
+
+> [!IMPORTANT] 35.00 DEBUGGER
+![alt text](image-5.png)
+![alt text](image-6.png)
 ![alt text](image-7.png)
 ![alt text](image-8.png)
 
+Le dió error, hay que crear un json file para ejecutar el debugger
+![alt text](image-9.png)
+![alt text](image-10.png)
 
+me salieron los logs! COMMIT: a168f9299cb413d388763ac69a28fc2acc37f741
+![alt text](image-11.png)
+
+PERO NO ME LLEVÓ A LA VISTA
+![alt text](image-12.png)
+
+> [!IMPORTANT] Important | 
+estaba poniendo mal el CURL
 ```cmd
+curl 127.0.0.1:1233/accounts/mi_primer_vista
+```
+![alt text](image-13.png)
+
+
+https://youtu.be/vfF_z0t5Zow?si=ANKeIck3cxZNx5oi&t=2832
+1.00.00
+https://youtu.be/vfF_z0t5Zow?si=mbJsCBF22pAp1gf-&t=3924
+
+
+empieza de cero de nuevo
+https://youtu.be/vfF_z0t5Zow?si=mX03R1NOR-Pu-J71&t=3088
+
+> [!WARNING] Warning | REVISAR LO DE LAS MIGRACIONES, NO ME ACUERDO QUÉ ES
+
+
+![alt text](image-14.png)
+Tengo que tener prendido el debugger 1.10.0
+![alt text](image-15.png)
+
+
+De `CampusLab/urls.py` de la raiz, tengo configurada la ruta `/accounts/`, en la app "accounts", de ahi se va al `./apps/accounts/urls.py`, a buscar qué tiene que hacer con esta ruta. 
+
+Cuando la ruta matchea, django dice, tengo que ejecutar esta funcion, que se llama `mi_primer_vista` y ahí ejecita la lógica que escribimos. La lógica es el render
+
+allí se encuentra que para la url solicitada, tiene que renderizar el template `mi_primer_vista`, con los datos pasados en el `context`
+
+> [!IMPORTANT] Important | Carpeta templates 1.16.00
+No tengo que pasar templates en la ruta de `./apps/accounts/urls.py` porque eso está configurado en `CampusLab/settings.py` ![alt text](image-16.png)
+
+El template, en este caso `jaja.html`, renderiza dinamicamente html, con un for, y renderizando la variable suelta. 
+
+
+### Modelos 1.19.00
+`apps/accounts/models.py`
+
+lOS MODELOS en django se representan con clases 
+Un modelo es una tabla
+Un campo es un atributo del modelo
+
+```py
+from django.db import models
+
+from django.contrib.auth.models import AbstractUser
+
+# Create your models here.
+
+# CustomUser
+# StudentProfile
+
+class CustomUser(models.AbstractUser):
+    pass
+
+# Este va a estar relacionado con CustomUser
+class StudentProfile(models.Model): # tabla - StudentProfile
+    bio = models.CharField(max_length=255) # campo - bio
 
 ```
 
-# Proyecto - 2
-# Crear y activar el entorno virtual
-
-Un entorno virtual es una copia liviana del intérprete de Python con su propia carpeta de paquetes. 
-
-Sin entorno virtual, todo lo que instales queda en el Python del sistema y compartido con cualquier otro proyecto: dos trabajos que necesiten versiones distintas de Django se pisan, y arreglar uno rompe el otro. 
-
-El módulo venv viene incluido en Python, no hay que instalarlo.
-
-> Crear el entorno no es usarlo. Son dos pasos distintos. Crear y activar
-
-Activarlo es lo que hace que python y pip apunten a ese entorno y no al del sistema.
-
-La activación pone la carpeta del entorno adelante de todo en el PATH, que es la lista de lugares donde la terminal busca los programas que le pedís. Por eso a partir de ahí python encuentra primero el del entorno.
-
-La señal de que está activo es que el prompt de la terminal pasa a mostrar (.venv) adelante.
-
-- La activación vale para esa terminal y nada más.
-- La carpeta .venv no se sube al repositorio
-- Lo que se versiona es la receta
-
-> [!NOTE] Note | Get-ChildItem -Force
-> Con `Get-ChildItem -Force` (powershell) se ve la carpeta .git
-
+> [!IMPORTANT] Important | 1.23.0 Migraciones migrate
+> Para aplicar migraciones, django tiene un sistema. Nosotros lo vamos a hacer con python3
+> MIGRATE APLICA/GENERA la MIGRACION
 ```cmd
-py install 3.14
+python3 manage.py migrate 
+```
+![alt text](image-17.png)
 
-# Crear
-py -3.14 -m venv .venv
-# Activar
-.\.venv\Scripts\Activate.ps1
-# Comprobar
-Get-Command python
+### La documentacion oficial dice que para poder cambiar el usuario, un nuevo CustomUser, le tengo que decir la "app.El modelo que reemplazo"
+En `CampusLab/settings.py`:
+```py
+AUTH_USER_MODEL = "accounts.CustomUser"
 ```
 
-> [!IMPORTANT] Importante - Error
-> Obtuve este error y lo solucioné con este enlace:
-> - https://es.stackoverflow.com/questions/321611/problema-con-scripts-en-visual-studio-code
->
-> ![alt text](image.png)
-> ![alt text](image-1.png)
+Estoy extendiendo el usuario de django
+    # Lo extiendo para poder agregarlo mis propios atributos y métodos AL MODELO USER DE DJANGO
 
-Luego de tirar ese comando, la consola salió bien, el paso de Activar y Comprobar
+```py
+from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-![alt text](image-3.png)
+# CustomUser
+# StudentProfile
 
-Con esto tambien se solucionaba
-```cmd
-Set-ExecutionPolicy -Scope Process Bypass
+class CustomUser(AbstractUser): # Estoy extendiendo el usuario de django
+    # Lo extiendo para poder agregarlo mis propios atributos y métodos AL MODELO USER DE DJANGO
+    phone_number = models.CharField(max_length=255) # campo - phone_number
+
+# Este va a estar relacionado con CustomUser
+class StudentProfile(models.Model): # tabla - StudentProfile
+    bio = models.CharField(max_length=255) # campo - bio
 ```
 
-### Qué python se usa.
-
-> [!IMPORTANT]
-> Django 6 exige Python 3.12 o superior
-
+### MIGRACIONES | Tiene 2 partes: 1) Crear 2) Aplicar
+> [!NOTE] Migrations
+> MIGRATIONS CREA la MIGRACION
+![alt text](image-18.png)
 ```cmd
-python --version
+python3 manage.py migrations
+python3 manage.py makemigrations
+```
+> [!NOTE] Esto genera el archivo de MIGRACIONES
+> ![alt text](image-19.png)
+
+> [!NOTE]
+> APLICAR LA MIGRACION
+```cmd
+python3 manage.py migrate 
 ```
 
-# Proyecto - 3 
-# Instalar las dependencias y congelarlas
+### Vista a la bdd sqlite3
+![alt text](image-20.png)
+
+/ ******************************* /
+Lo 1° que hay que hacer cuando trabajamos con django, es extender el custom user, por las migraciones
+/ ******************************* /
 
 
-pip es el instalador de paquetes de Python: recibe un nombre, lo busca en `PyPI (Python Package Index, el repositorio público donde la comunidad publica sus paquetes)`, lo descarga junto con las dependencias que ese paquete necesite y lo deja dentro del entorno activo.
+¿Quién administra el usuario en django?
+¿Quien se encarga de crear la sesion del usuario en django?
 
-> [!WARNING] Warning | Precaución pip freeze
-> Lo invocamos como `python -m pip` y **no** como `pip` a secas por una razón concreta: 
+1.40.0
+### RELACIONES SQL, RELACIONAR LAS TABLAS
+### Activar la shell para esto
+```py
+class CustomUser(AbstractUser):  # Estoy extendiendo el usuario de django
+    # Lo extiendo para poder agregarlo mis propios atributos y métodos AL MODELO USER DE DJANGO
+    phone_number = models.CharField(max_length=255)  # campo - phone_number
+
+
+# Este va a estar relacionado con CustomUser
+class StudentProfile(models.Model):  # tabla - StudentProfile
+    bio = (models.CharField(max_length=255),)  # campo - bio
+    user = models.OneToOneField(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name="profile",  # me dice cómo lo puedo acceder
+    )
+```
+
+BaseModel --> borrado lógico 1.50.0
+![alt text](image-21.png)
+
+1.59.00
+02.02.00
+
+> [!NOTE] Note | Pyhon shell
+```cmd
+python3 manage.py shell
+```
+![alt text](image-22.png)
+
+Me importa los objetos qué tenemos
+
+- objects es el manager, es el intermediario que permite hacer querys. el ORM.
+- CustomUser es la tabla
+
+Mapeo Relacional de Objetos, me permite ejecutar sentencias SQL con una abstract y con código python
+
+```cmd
+CustomUser.objects.all()
+# Los campos username y first_name son obligatorios
+# CustomUser.objects.create(username="Pepito", first_name="Apellido")
+CustomUser.objects.create(username="Pepito")
+```
+![alt text](image-23.png)
+![alt text](image-24.png)
+
+> [!NOTE] Note | CustomUser.objects.all() es SELECT * FROM USER
+
+```cmd
+pepito = CustomUser.objects.all() # esto es una lista
+pepito = CustomUser.objects.all()[0] # quiero el 1° valor de esa lista
+pepito.id
+pepito.username
+```
+me dió error al buscar el id pq le habia asignado una lista, no un objeto
+![alt text](image-25.png)
+![alt text](image-26.png)
+
+> [!IMPORTANT] Important | GET Y FILTER
+> GET da error si no encuentra
+> FILTER devuelve una lista vacia si no encuentra
 > 
-> `python -m pip` usa el pip del python que está activo, mientras que pip suelto puede ser cualquier otro que ande dando vueltas en el sistema.
-> 
->  Es la diferencia entre instalar en el entorno y creer que instalaste en el entorno.
-
-
-- `Django` (el framework)
-- `django-ninja` (la capa de API, con validación y documentación automática)
-- `PyJWT` (firma y verificación de los tokens), python-dotenv (el que lee el archivo .env con la configuración propia de cada máquina)
-- `Pillow` (la biblioteca de imágenes de Python, que Django exige para usar un ImageField).
-
-
-Instalar no alcanza: lo que instalaste vive adentro de .venv, que no se sube al repositorio. Si tu compañero clona el proyecto, se encuentra con el código y sin una sola dependencia. 
-
-Lo que `se versiona` es `la lista`, y esa lista es `requirements.txt`: un `archivo de texto con un paquete por renglón` y su `versión exacta`, en el formato que entiende `pip install -r`
 ```cmd
-pip install -r
-
-pip freeze # mira el entorno activo y escribe todo lo que hay instalado con la versión exacta de cada cosa
+ SELECT * FROM USER WHERE id=1
+CustomUser.objects.get(id=1) # Devuelve un objeto
+CustomUser.objects.filter(id=1) # Devuelve un array de objetos
 ```
-
-El archivo se genera con
-```cmd
-python -m pip freeze > requirements.txt
-```
-
-
-> [!NOTE] Note | Operador >
-> el > es el operador de la terminal que redirige esa salida a un archivo en vez de mostrarla en pantalla
-
-- Leer el archivo de dependencias
-```cmd
-python -m pip install -r requirements.txt
-```
-es también lo que va a correr Docker más adelante.
-
-> [!IMPORTANT]
-> cada vez que instales algo nuevo, volvé a generar el archivo
-
-1) Instalá. 
-Las cinco dependencias con la versión fijada, en un solo comando. Antes de correrlo, comprobá que el entorno esté activo: el prompt tiene que mostrar (.venv).
-```cmd
-python -m pip install Django==6.0.8 django-ninja==1.6.2 PyJWT==2.13.0 python-dotenv==1.2.2 Pillow==12.3.0
-```
-![alt text](image-4.png)
-
-2) Mirá qué quedó. 
-python -m pip freeze sin nada más, para ver en pantalla lo que se va a escribir. Van a aparecer más paquetes de los cinco que instalaste: son las dependencias que ellos arrastran.
-```cmd
-python -m pip freeze
-```
-
-3) Congelá. 
-Ahora sí, con > requirements.txt al final, para que esa salida vaya a un archivo en la raíz del proyecto.
-```cmd
-python -m pip freeze > requirements.txt
-```
-
-4) Abrí el archivo. 
-Fijate que cada renglón tenga la forma paquete==version. Ninguno tiene que quedar sin versión.
-```cmd
-python -m pip install -r requirements.txt
-```
-
-5) Probá el camino de vuelta.
- No va a instalar nada, porque ya está todo: eso es exactamente lo que tiene que pasar, y confirma que el archivo se entiende.
-```cmd
-python -m pip install -r requirements.txt
-```
-![alt text](image-5.png)
-
-DJANGO NINJA es el framework a usar para hacer aps
-
-
-# Proyecto - 4 
-# Crear el proyecto con startproject
-
-`django-admin` es la herramienta de línea de comandos que quedó instalada junto con Django. 
-- startproject genera el esqueleto de configuración: 
-  - `settings.py` (los ajustes del proyecto), 
-  - `urls.py` (el mapa de rutas), 
-  - `wsgi.py` y 
-  - `asgi.py` (los puntos de entrada que usan los servidores) y 
-  - `manage.py .` # El punto final del comando no es un detalle: sin él, Django agrega una carpeta contenedora extra y te deja el proyecto un nivel más adentro.
-
-> [!IMPORTANT] 
-> De acá en adelante ya no usamos django-admin sino manage.py, que hace lo mismo pero sabiendo cuál es el settings.py de este proyecto.
+![alt text](image-27.png)
+![alt text](image-28.png)
 
 ```cmd
-django-admin startproject CampusLab .
+CustomUser.objects.get(id=2) # Da error
+```
+![alt text](image-29.png)
 
+localhost/user=10 # get
+localhost/users?id=1,id=5 # filter
+
+> [!TIP] TIP | ver la QUERY SQL
+> str(CustomUser.objects.filter(username="pepito", profile__id=1).query())
+
+```py
+# Buscame usuarios cuyo username sea Pepito y cuyo StudentProfile relacionado tenga id=1
+CustomUser.objects.filter(username="Pepito", profile__id=1)
+StudentProfile.objects.create(user="Pepito", bio="Info de la bio") 
 ```
 
+> [!IMPORTANT] Important | orm de python, cómo entiende los guiones bajos
+> Con 1 sólo guión bajo entiende que es un atributo, un campo de la clase
+> Con 2 guiones. profile__id, no es el id de la tabla en la que estoy, sino que de la tabla que le sigue. 
+> No estoy queriendo usar un atributo de la clase CustomUser, sino de StudentProfile
 
+> [!TIP] TIP | Error con el comando de filter y profile__id que atraviesa relaciones
+> A mi el comando `CustomUser.objects.filter(username="Pepito", profile__id=1)`, me está dando error porque me dice "django.db.utils.OperationalError: no such column: accounts_studentprofile.user_id", aparentemente es por migraciones
+
+Pasos de cero para poder realizar la query:
+1) Borrar la bdd sqlite y los archivos de MIGRACIONES
+2) Cerrar la python shell y crear las migraciones 
+   `python3 manage.py makemigrations`
+3) APLICAR las migraciones 
+   `python3 manage.py migrate`
+4) Abrir la shell para usar el ORM 
+   `python3 manage.py shell`
+5) Crear el usuario 
+   `CustomUser.objects.create(username="Pepito")`
+6) Verificar que se haya creado correctamente 
+   `CustomUser.objects.get(id=1)`
+7) Asignarle a una variable la query de arriba: 
+   `pepito = CustomUser.objects.get(username="Pepito")`
+
+- Antes habia escrito en este paso, create, y daba error porque estaba intentando crear otro usuario con el mismo nombre y eso no se puede. Tiene UNIQUE constraint
+
+8) Crearle un perfil al usuario 
+~~`StudentProfile.objects.create(user="Pepito", bio="Info de la bio")`~~
+> [!TIP] TIP | Le estaba pasando un TEXTO al campo user de StudentProfile, cuando lo que esperaba era una isntancia de CustomUser
+> se lo estaba pasando en STRING. Tiene que ir sin las comillas
+
+`StudentProfile.objects.create(user=pepito, bio="Info de la bio")`
+
+- Se creó correctamente el perfil de pepito
+
+9) Verificar que se haya asignado al usuario
+    `CustomUser.objects.filter(username="Pepito", profile__id=1)`
+- Veo si todo se relacionó correctamente
+  
+``
 ```cmd
 
 ```
+
+> [!NOTE] Note |
+
+> [!WARNING] Warning |
+
+> [!IMPORTANT] Important | 
+
+> [!TIP] TIP |
