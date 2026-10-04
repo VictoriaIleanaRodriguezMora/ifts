@@ -156,20 +156,99 @@ No tengo que pasar templates en la ruta de `./apps/accounts/urls.py` porque eso 
 El template, en este caso `jaja.html`, renderiza dinamicamente html, con un for, y renderizando la variable suelta. 
 
 
+### Modelos 1.19.00
+`apps/accounts/models.py`
+
+lOS MODELOS en django se representan con clases 
+Un modelo es una tabla
+Un campo es un atributo del modelo
+
+```py
+from django.db import models
+
+from django.contrib.auth.models import AbstractUser
+
+# Create your models here.
+
+# CustomUser
+# StudentProfile
+
+class CustomUser(models.AbstractUser):
+    pass
+
+# Este va a estar relacionado con CustomUser
+class StudentProfile(models.Model): # tabla - StudentProfile
+    bio = models.CharField(max_length=255) # campo - bio
+
+```
+
+> [!IMPORTANT] Important | 1.23.0 Migraciones migrate
+> Para aplicar migraciones, django tiene un sistema. Nosotros lo vamos a hacer con pytohn3
+> MIGRATE APLICA/GENERA la MIGRACION
+```cmd
+python3 manage.py migrate 
+```
+![alt text](image-17.png)
+
+### La documentacion oficial dice que para poder cambiar el usuario, un nuevo CustomUser, le tengo que decir la "app.El modelo que reemplazo"
+En `CampusLab/settings.py`:
+```py
+AUTH_USER_MODEL = "accounts.CustomUser"
+```
+
+Estoy extendiendo el usuario de django
+    # Lo extiendo para poder agregarlo mis propios atributos y métodos AL MODELO USER DE DJANGO
+
+```py
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+# CustomUser
+# StudentProfile
+
+class CustomUser(AbstractUser): # Estoy extendiendo el usuario de django
+    # Lo extiendo para poder agregarlo mis propios atributos y métodos AL MODELO USER DE DJANGO
+    phone_number = models.CharField(max_length=255) # campo - phone_number
+
+# Este va a estar relacionado con CustomUser
+class StudentProfile(models.Model): # tabla - StudentProfile
+    bio = models.CharField(max_length=255) # campo - bio
+```
+
+> [!NOTE] Migrations
+> MIGRATIONS CREA la MIGRACION
+![alt text](image-18.png)
+```cmd
+python3 manage.py makemigrations
+```
+> [!NOTE] Esto genera el archivo de MIGRACIONES
+> ![alt text](image-19.png)
 
 
+### Vista a la bdd sqlite3
+![alt text](image-20.png)
+
+/ ******************************* /
+Lo 1° que hay que hacer cuando trabajamos con django, es extender el custom user, por las migraciones
+/ ******************************* /
 
 
+¿Quién administra el usuario en django?
+¿Quien se encarga de crear la sesion del usuario en django?
+
+1.40.0
+### RELACIONES SQL, RELACIONAR LAS TABLAS
 
 
-
-
-
+``
 ```cmd
 
 ```
 
 > [!NOTE] Note |
+
 > [!WARNING] Warning |
+
 > [!IMPORTANT] Important | 
+
 > [!TIP] TIP |
