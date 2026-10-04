@@ -183,7 +183,7 @@ class StudentProfile(models.Model): # tabla - StudentProfile
 ```
 
 > [!IMPORTANT] Important | 1.23.0 Migraciones migrate
-> Para aplicar migraciones, django tiene un sistema. Nosotros lo vamos a hacer con pytohn3
+> Para aplicar migraciones, django tiene un sistema. Nosotros lo vamos a hacer con python3
 > MIGRATE APLICA/GENERA la MIGRACION
 ```cmd
 python3 manage.py migrate 
@@ -215,15 +215,22 @@ class StudentProfile(models.Model): # tabla - StudentProfile
     bio = models.CharField(max_length=255) # campo - bio
 ```
 
+### MIGRACIONES | Tiene 2 partes: 1) Crear 2) Aplicar
 > [!NOTE] Migrations
 > MIGRATIONS CREA la MIGRACION
 ![alt text](image-18.png)
 ```cmd
+python3 manage.py migrations
 python3 manage.py makemigrations
 ```
 > [!NOTE] Esto genera el archivo de MIGRACIONES
 > ![alt text](image-19.png)
 
+> [!NOTE]
+> APLICAR LA MIGRACION
+```cmd
+python3 manage.py migrate 
+```
 
 ### Vista a la bdd sqlite3
 ![alt text](image-20.png)
@@ -238,8 +245,130 @@ Lo 1° que hay que hacer cuando trabajamos con django, es extender el custom use
 
 1.40.0
 ### RELACIONES SQL, RELACIONAR LAS TABLAS
+### Activar la shell para esto
+```py
+class CustomUser(AbstractUser):  # Estoy extendiendo el usuario de django
+    # Lo extiendo para poder agregarlo mis propios atributos y métodos AL MODELO USER DE DJANGO
+    phone_number = models.CharField(max_length=255)  # campo - phone_number
 
 
+# Este va a estar relacionado con CustomUser
+class StudentProfile(models.Model):  # tabla - StudentProfile
+    bio = (models.CharField(max_length=255),)  # campo - bio
+    user = models.OneToOneField(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name="profile",  # me dice cómo lo puedo acceder
+    )
+```
+
+BaseModel --> borrado lógico 1.50.0
+![alt text](image-21.png)
+
+1.59.00
+02.02.00
+
+> [!NOTE] Note | Pyhon shell
+```cmd
+python3 manage.py shell
+```
+![alt text](image-22.png)
+
+Me importa los objetos qué tenemos
+
+- objects es el manager, es el intermediario que permite hacer querys. el ORM.
+- CustomUser es la tabla
+
+Mapeo Relacional de Objetos, me permite ejecutar sentencias SQL con una abstract y con código python
+
+```cmd
+CustomUser.objects.all()
+# Los campos username y first_name son obligatorios
+# CustomUser.objects.create(username="Pepito", first_name="Apellido")
+CustomUser.objects.create(username="Pepito")
+```
+![alt text](image-23.png)
+![alt text](image-24.png)
+
+> [!NOTE] Note | CustomUser.objects.all() es SELECT * FROM USER
+
+```cmd
+pepito = CustomUser.objects.all() # esto es una lista
+pepito = CustomUser.objects.all()[0] # quiero el 1° valor de esa lista
+pepito.id
+pepito.username
+```
+me dió error al buscar el id pq le habia asignado una lista, no un objeto
+![alt text](image-25.png)
+![alt text](image-26.png)
+
+> [!IMPORTANT] Important | GET Y FILTER
+> GET da error si no encuentra
+> FILTER devuelve una lista vacia si no encuentra
+> 
+```cmd
+ SELECT * FROM USER WHERE id=1
+CustomUser.objects.get(id=1) # Devuelve un objeto
+CustomUser.objects.filter(id=1) # Devuelve un array de objetos
+```
+![alt text](image-27.png)
+![alt text](image-28.png)
+
+```cmd
+CustomUser.objects.get(id=2) # Da error
+```
+![alt text](image-29.png)
+
+localhost/user=10 # get
+localhost/users?id=1,id=5 # filter
+
+> [!TIP] TIP | ver la QUERY SQL
+> str(CustomUser.objects.filter(username="pepito", profile__id=1).query())
+
+```py
+# Buscame usuarios cuyo username sea Pepito y cuyo StudentProfile relacionado tenga id=1
+CustomUser.objects.filter(username="Pepito", profile__id=1)
+StudentProfile.objects.create(user="Pepito", bio="Info de la bio") 
+```
+
+> [!IMPORTANT] Important | orm de python, cómo entiende los guiones bajos
+> Con 1 sólo guión bajo entiende que es un atributo, un campo de la clase
+> Con 2 guiones. profile__id, no es el id de la tabla en la que estoy, sino que de la tabla que le sigue. 
+> No estoy queriendo usar un atributo de la clase CustomUser, sino de StudentProfile
+
+> [!TIP] TIP | Error con el comando de filter y profile__id que atraviesa relaciones
+> A mi el comando `CustomUser.objects.filter(username="Pepito", profile__id=1)`, me está dando error porque me dice "django.db.utils.OperationalError: no such column: accounts_studentprofile.user_id", aparentemente es por migraciones
+
+Pasos de cero para poder realizar la query:
+1) Borrar la bdd sqlite y los archivos de MIGRACIONES
+2) Cerrar la python shell y crear las migraciones 
+   `python3 manage.py makemigrations`
+3) APLICAR las migraciones 
+   `python3 manage.py migrate`
+4) Abrir la shell para usar el ORM 
+   `python3 manage.py shell`
+5) Crear el usuario 
+   `CustomUser.objects.create(username="Pepito")`
+6) Verificar que se haya creado correctamente 
+   `CustomUser.objects.get(id=1)`
+7) Asignarle a una variable la query de arriba: 
+   `pepito = CustomUser.objects.get(username="Pepito")`
+
+- Antes habia escrito en este paso, create, y daba error porque estaba intentando crear otro usuario con el mismo nombre y eso no se puede. Tiene UNIQUE constraint
+
+8) Crearle un perfil al usuario 
+~~`StudentProfile.objects.create(user="Pepito", bio="Info de la bio")`~~
+> [!TIP] TIP | Le estaba pasando un TEXTO al campo user de StudentProfile, cuando lo que esperaba era una isntancia de CustomUser
+> se lo estaba pasando en STRING. Tiene que ir sin las comillas
+
+`StudentProfile.objects.create(user=pepito, bio="Info de la bio")`
+
+- Se creó correctamente el perfil de pepito
+
+9) Verificar que se haya asignado al usuario
+    `CustomUser.objects.filter(username="Pepito", profile__id=1)`
+- Veo si todo se relacionó correctamente
+  
 ``
 ```cmd
 
