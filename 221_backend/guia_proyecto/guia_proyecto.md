@@ -503,10 +503,50 @@ En `api.py` no va ninguna consulta. Si aparece una, es que falta un selector.
 ## Arquitectura en capas: qué archivo hace qué
 
 
-
-
 > [!TIP] TIP | 
 > «¿de qué capa es este problema?». Un dato que no debería haberse guardado es de services; una consulta que trae de más es de selectors; un permiso que no se respeta es de la API. Ordenar el código es, sobre todo, ordenar la búsqueda.
+
+
+
+
+# Proyecto - 10
+# Crear la app accounts
+
+Una app de Django es una unidad de código con sus propios modelos, migraciones y configuración, pensada para resolver un tema. Un proyecto es un conjunto de apps más los settings que las unen. 
+
+> [!IMPORTANT] Important | app accounts
+> Esta app, accounts, se ocupa de una sola cosa: quién es el usuario y cómo se autentica.
+> se ocupa de las cuentas, los tipos de cuenta y los permisos. 
+
+> [!TIP] TIP | nomenclatura para apps
+> las apps se nombran en plural y en minúscula (accounts, projects), porque agrupan muchas instancias de una misma cosa.
+
+```cmd
+Set-Location apps # cd apps
+django-admin startapp accounts
+Set-Location .. # cd ..
+```
+![alt text](image-7.png)
+
+## Teoría - 10
+## Qué es una app de Django
+
+El comando, crea la carpeta con los archivos vacíos de esa convención.
+Lo usamos porque no equivoca ningún nombre y porque deja el` apps.py` listo para el único retoque que sí importa.
+
+> [!WARNING] Warning | Super importante acerca del comando `django-admin startapp accounts`
+> Despues de ejecutarlo, hay que hacer 2 pasos:
+> 1) Corregir el name en `apps/accounts/apps.py`, la ruta es `apps.accounts`, NO es `accounts`
+> 
+>     name = "apps.accounts"       # la ruta real del paquete
+> 2) sumarla a `CampusLab/settings.py/INSTALLED_APPS`
+
+
+```cmd
+django-admin startapp accounts
+```
+
+
 
 # Proyecto - 
 # 
