@@ -568,6 +568,36 @@ Cuando algo no anda
 Modelo que no genera migración, admin que no aparece, prueba que no se corre: las tres cosas suelen ser el mismo olvido, y se revisa en el mismo lugar.
 
 
+# Proyecto - 12
+# Editar el settings.py generado. Variables de entorno
+
+Arriba definimos dos funciones mínimas, `env` y `env_bool`, para leer variables de entorno con un valor por defecto: así el mismo código sirve en tu máquina y dentro de Docker, cambiando solo el entorno. Ninguna clave queda escrita a mano en el repositorio.
+
+Dos decisiones marcan el resto del trabajo. 
+- `AUTH_USER_MODEL = "accounts.User"` le dice a Django cuál es el modelo de usuario, y tiene que estar antes de la primera migración: si Django ya creó las tablas con su usuario por defecto, cambiarlo después obliga a borrar la base y arrancar de nuevo. - `DATABASES` arma la ruta del archivo SQLite creando la carpeta que lo contiene, para que el primer arranque no falle por una carpeta inexistente.
+
+Al final quedan separados 
+- `STATIC_*`, que es para los archivos que trae el proyecto (por ejemplo el CSS del admin)
+- `MEDIA_*`, que es para los que suben los usuarios: en este caso las imágenes y los videos de cada proyecto.
+
+También queda configurado el email, que esta primera etapa todavía no usa pero deja listo. `EMAIL_BACKEND` en desarrollo apunta al backend de consola, que imprime el mensaje en la terminal del servidor en vez de mandarlo: se ve que el envío ocurre sin configurar un servidor de correo. 
+
+En producción la misma variable pasa a SMTP con credenciales reales, sin tocar código.
+
+> [!IMPORTANT] Important | secretos/cambios
+> Si algo tiene que ser secreto o cambia entre máquinas, no va en settings.py: va en el entorno, y settings.py lo lee. El repositorio se comparte; el entorno, no.
+>  lo que cambia según dónde corra el programa no va escrito en el código.
+
+
+
+
+
+
+
+
+## Teoría - 
+## 
+
 # Proyecto - 
 # 
 
