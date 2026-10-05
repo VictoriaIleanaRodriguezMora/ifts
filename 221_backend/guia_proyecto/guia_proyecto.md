@@ -568,7 +568,7 @@ Cuando algo no anda
 Modelo que no genera migración, admin que no aparece, prueba que no se corre: las tres cosas suelen ser el mismo olvido, y se revisa en el mismo lugar.
 
 
-# Proyecto - 12
+# Proyecto - 12 ? DUDA
 # Editar el settings.py generado. Variables de entorno
 
 Arriba definimos dos funciones mínimas, `env` y `env_bool`, para leer variables de entorno con un valor por defecto: así el mismo código sirve en tu máquina y dentro de Docker, cambiando solo el entorno. Ninguna clave queda escrita a mano en el repositorio.
@@ -588,15 +588,48 @@ En producción la misma variable pasa a SMTP con credenciales reales, sin tocar 
 > Si algo tiene que ser secreto o cambia entre máquinas, no va en settings.py: va en el entorno, y settings.py lo lee. El repositorio se comparte; el entorno, no.
 >  lo que cambia según dónde corra el programa no va escrito en el código.
 
+# Proyecto - 13 ? DUDA
+# Manager del usuario
+El manager es el objeto que aparece como `User.objects`: es quien sabe crear y consultar registros. Django trae uno para su usuario por defecto, pero como el nuestro se identifica por email en vez de por nombre de usuario, hay que escribir el propio.
+
+> Duda. Donde dice que el nuestro se identifica por email?
 
 
+## Teoría - 13
+## Managers y QuerySets: por dónde se habla con la base
+
+- `Project.objects` no es una lista ni una conexión: es un manager, el objeto que Django le cuelga a cada modelo para empezar consultas. De él salen `all()`, `filter()`, `get()`, `create()`, y cada uno de esos métodos devuelve (salvo los que traen un objeto solo) un `QuerySet`.
+
+El QuerySet tiene dos propiedades que hay que entender bien porque explican casi todo lo que sorprende del ORM. 
+
+1) La primera: es perezoso. Escribir `Project.objects`.filter(...) no consulta la base; arma la consulta y la guarda. Recién se ejecuta cuando alguien necesita los datos: al recorrerlo con un for, al pedirle len(), al convertirlo en lista o al preguntarle si tiene algo. Gracias a eso podés ir agregando condiciones sin pagar una consulta por cada una.
+
+2) La segunda: es encadenable. Cada filtro devuelve un QuerySet nuevo, así que se pueden pegar uno atrás de otro y la consulta final es una sola con todas las condiciones juntas. Eso es lo que hace que valga la pena ponerles nombre a los filtros que se repiten.
 
 
+Un filtro con nombre, y cómo se combina
+```py
+class ProjectQuerySet(models.QuerySet):
+    def approved(self):
+        return self.filter(status=ProjectStatus.APPROVED)
+# En el resto del proyecto se lee casi como una frase:
+Project.objects.approved().filter(institution=inst).order_by("-created_at")
+```
+
+ 
+Definirlo como `QuerySet` y publicarlo con objects = ProjectQuerySet.as_manager() tiene una ventaja sobre escribir un manager a mano: los métodos siguen disponibles después del primer filtro. Si approved() viviera sólo en el manager, Project.objects.filter(...).approved() no existiría.
+
+El manager del usuario es un caso especial, y por eso este paso viene antes que el modelo. 
+
+Django lo usa para dos cosas que no puede inventar: 
+1) crear un usuario común
+2)  y crear un superusuario (lo llama createsuperuser). 
+  
+Como en este proyecto el login es por email y no por nombre de usuario, hay que escribirlo. Adentro pasan dos cosas importantes: 
+- el email se normaliza (el dominio va en minúsculas, para que Ana@IFTS.edu.ar y ana@ifts.edu.ar no sean dos cuentas)
+- la contraseña se guarda con set_password(), que la hashea. Un usuario creado sin pasar por ahí queda con la contraseña en texto plano y sin poder iniciar sesión.
 
 
-
-## Teoría - 
-## 
 
 # Proyecto - 
 # 
