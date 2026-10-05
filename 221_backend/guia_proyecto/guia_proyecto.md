@@ -546,6 +546,26 @@ Lo usamos porque no equivoca ningún nombre y porque deja el` apps.py` listo par
 django-admin startapp accounts
 ```
 
+# Proyecto - 11
+# Configurar AccountsConfig y registrar la app
+Una app recién creada no existe para Django hasta que se hacen dos cosas: 
+1) corregir su AppConfig 
+2) sumarla a INSTALLED_APPS.
+
+> [!TIP] TIP | Comando para verificar que no hay problemas
+```cmd
+python manage.py check
+```
+![alt text](image-8.png)
+
+## Teoría - 11
+## INSTALLED_APPS y el arranque de Django
+INSTALLED_APPS es la lista de todo lo que forma parte del proyecto. Cuando arranca (con runserver, con un comando de manage.py o dentro de un servidor de producción), Django hace siempre la misma secuencia: lee la configuración, recorre esa lista, importa la AppConfig de cada app, después importa todos los models.py, y recién cuando terminó ejecuta el ready() de cada una. Eso es estar listo: hasta ese momento, preguntar por un modelo puede fallar.
+
+La consecuencia práctica de registrar una app es que empieza a existir para todos los comandos. makemigrations le mira los modelos, migrate le crea las tablas, el admin le busca un admin.py, manage.py test le corre las pruebas. Una app fuera de la lista es una carpeta con código muerto, y como no da error, se puede pasar mucho tiempo buscando por qué «no toma» un modelo que está perfectamente escrito.
+
+Cuando algo no anda
+Modelo que no genera migración, admin que no aparece, prueba que no se corre: las tres cosas suelen ser el mismo olvido, y se revisa en el mismo lugar.
 
 
 # Proyecto - 
