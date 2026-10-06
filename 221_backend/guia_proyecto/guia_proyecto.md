@@ -673,6 +673,67 @@ Los actores del dominio son dos, la institución y el docente; ADMIN los acompa�
 
 > [!NOTE] Note |
 
+# Proyecto - 15
+# Registrar el usuario en el admin
+
+`El admin de Django es un CRUD generado a partir de los modelos.`
+Como cambiamos el usuario, hay que decirle cómo mostrarlo: heredamos de `UserAdmin`, que ya sabe manejar contraseñas hasheadas, y redefinimos los fieldsets porque los del original mencionan el campo username, que en nuestro modelo no existe.
+
+`add_fieldset`s es el formulario de alta, con password1 y password2 para la confirmación. Sin este archivo el admin directamente rompe al abrir la ficha de un usuario.
+
+
+## Teoría - 15
+## El panel de administración
+
+
+# Proyecto - 16
+# Primera migración
+
+> [!NOTE] Note | Migraciones
+> Una migración es un archivo de Python donde Django describe un cambio de esquema: crear una tabla, agregar una columna, cambiar un índice. Son dos comandos y hacen cosas distintas, así que conviene tenerlos separados en la cabeza.
+
+Cómo se hace el archivo. python manage.py makemigrations lee los modelos, los compara contra el estado que describen las migraciones que ya existen y escribe la diferencia en un archivo numerado dentro de migrations/: el primero siempre se llama 0001_initial.py. Este comando no toca la base: solo escribe un archivo, y por eso se puede leer y corregir antes de aplicarlo. Si le pasás el nombre de una app (makemigrations accounts) mira solo esa; sin argumentos las mira todas, que es lo que conviene cuando hay relaciones entre apps de por medio.
+
+Cómo se aplica. python manage.py migrate agarra las migraciones pendientes, las ordena según sus dependencias, ejecuta el SQL de cada una y anota su nombre en una tabla interna llamada django_migrations. Esa tabla es la que hace que el comando sea repetible: correrlo de nuevo no vuelve a aplicar lo que ya está anotado, simplemente dice que no hay nada pendiente.
+
+Para mirar sin ejecutar nada tenés dos comandos que valen oro: python manage.py showmigrations lista todas las migraciones con una [X] en las aplicadas, y python manage.py sqlmigrate accounts 0001 te muestra el SQL exacto que va a correr, sin correrlo.
+
+Por qué esto se versiona. Las migraciones se suben al repositorio igual que el código, y ahí está todo el punto: con ese historial cualquiera puede reconstruir la base desde cero y llegar exactamente al mismo esquema, en su máquina, en la de un compañero o en el servidor. Sin migraciones, la base pasa a ser algo que alguien tocó a mano alguna vez y que nadie sabe reproducir. De ahí sale la regla más importante: una migración que ya se aplicó y se compartió no se edita, se corrige con una nueva. En la guía teórica hay una sección entera sobre esto.
+
+Esta primera corrida crea la tabla del usuario y todas las de Django (permisos, sesiones, admin). Es el momento donde se comprueba que AUTH_USER_MODEL estaba bien puesto desde el principio.
+
+```cmd
+python manage.py makemigrations accounts
+python manage.py sqlmigrate accounts 0001
+python manage.py migrate
+python manage.py showmigrations
+```
+
+![alt text](image-11.png)
+![alt text](image-12.png)
+![alt text](image-13.png)
+
+
+## Teoría - 16
+## Migraciones: el historial de la base
+
+
+Los modelos son Python; las tablas son SQL. Las migraciones son el puente: archivos de Python, generados por Django, que describen cómo llegar de la base como está hoy a la base que tus modelos necesitan.
+
+Son dos comandos y hacen cosas distintas, y confundirlos es el error más común del principio. makemigrations compara tus modelos con el estado que describen las migraciones que ya existen y escribe un archivo nuevo con la diferencia: no toca la base. migrate aplica a la base las migraciones que todavía no corrieron: no mira tus modelos.
+
+Para saber qué falta aplicar, Django lleva una tabla propia, django_migrations, donde anota cada migración que corrió. Por eso migrate se puede ejecutar mil veces sin romper nada: las que ya están anotadas las saltea.
+
+Las migraciones forman un grafo, no una fila: cada una declara de cuál depende (dependencies), incluidas las de otras apps cuando hay relaciones entre ellas. Django ordena el grafo antes de aplicar, así que una tabla nunca se crea antes que aquella a la que apunta.
+
+De ahí sale una consecuencia importante: las migraciones se versionan con el código, como cualquier otro archivo. Son parte del proyecto: es lo que permite que tu compañero se baje el repositorio, corra migrate y tenga exactamente tu misma base. Borrar una migración que otros ya aplicaron rompe esa cadena, y ahí empiezan los problemas difíciles.
+
+No todas mueven columnas. Una migración de datos ejecuta código Python para transformar filas: partir un campo en dos, completar un valor que antes no existía, corregir algo cargado mal. Se generan con makemigrations --empty y viven en el mismo historial, con la ventaja de que corren en el momento exacto en que corresponde.
+
+Un detalle que aparece siempre al agregar un campo obligatorio a una tabla con filas: Django pregunta qué poner en las que ya existen, porque no puede inventarlo. Ahí las opciones son darle un valor por defecto, permitir nulo, o (mientras el proyecto todavía no tiene datos reales) rehacer la migración inicial.
+
+Comando útil
+python manage.py makemigrations --check --dry-run no escribe nada y falla si hay cambios sin migrar. Es la forma de saber, antes de entregar, que los modelos y las migraciones dicen lo mismo.
 
 # Proyecto - 
 # 
