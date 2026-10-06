@@ -588,19 +588,23 @@ En producción la misma variable pasa a SMTP con credenciales reales, sin tocar 
 > Si algo tiene que ser secreto o cambia entre máquinas, no va en settings.py: va en el entorno, y settings.py lo lee. El repositorio se comparte; el entorno, no.
 >  lo que cambia según dónde corra el programa no va escrito en el código.
 
-# Proyecto - 13 ? DUDA
+# Proyecto - 13 manager, queryset? DUDA
 # Manager del usuario
 El manager es el objeto que aparece como `User.objects`: es quien sabe crear y consultar registros. Django trae uno para su usuario por defecto, pero como el nuestro se identifica por email en vez de por nombre de usuario, hay que escribir el propio.
 
+`create_superuser` es el que `usa manage.py createsuperuser`: fuerza el rol ADMIN con is_staff e is_superuser en True y falla explícitamente si alguien intenta crear un superusuario que no cumpla eso. El use_in_migrations = True permite que las migraciones puedan usar este manager.
+
 > Duda. Donde dice que el nuestro se identifica por email?
+> Duda. Qué es un superuser
+
 
 
 ## Teoría - 13
 ## Managers y QuerySets: por dónde se habla con la base
 
-- `Project.objects` no es una lista ni una conexión: es un manager, el objeto que Django le cuelga a cada modelo para empezar consultas. De él salen `all()`, `filter()`, `get()`, `create()`, y cada uno de esos métodos devuelve (salvo los que traen un objeto solo) un `QuerySet`.
+- `Project.objects` no es una lista ni una conexión: es un `manager`, el objeto que Django le cuelga a cada modelo para empezar consultas. De él salen `all()`, `filter()`, `get()`, `create()`, y cada uno de esos métodos devuelve (salvo los que traen un objeto solo) un `QuerySet`.
 
-El QuerySet tiene dos propiedades que hay que entender bien porque explican casi todo lo que sorprende del ORM. 
+El `QuerySet` tiene dos propiedades que hay que entender bien porque explican casi todo lo que sorprende del ORM. 
 
 1) La primera: es perezoso. Escribir `Project.objects`.filter(...) no consulta la base; arma la consulta y la guarda. Recién se ejecuta cuando alguien necesita los datos: al recorrerlo con un for, al pedirle len(), al convertirlo en lista o al preguntarle si tiene algo. Gracias a eso podés ir agregando condiciones sin pagar una consulta por cada una.
 
@@ -629,6 +633,45 @@ Como en este proyecto el login es por email y no por nombre de usuario, hay que 
 - el email se normaliza (el dominio va en minúsculas, para que Ana@IFTS.edu.ar y ana@ifts.edu.ar no sean dos cuentas)
 - la contraseña se guarda con set_password(), que la hashea. Un usuario creado sin pasar por ahí queda con la contraseña en texto plano y sin poder iniciar sesión.
 
+# Proyecto - 14
+# Modelo User y los tres tipos de cuenta. actores del dominio
+
+`AbstractBaseUser` aporta lo mínimo de un usuario 
+(la contraseña hasheada y el manejo de sesión) y deja que vos definas los campos; 
+`PermissionsMixin` suma encima el sistema de permisos y grupos de Django. 
+Con `USERNAME_FIELD = "email"` el login pasa a hacerse con el email, y `REQUIRED_FIELDS` son los datos que además pide `createsuperuser`.
+
+Los `roles` se `modelan` con TextChoices, la forma que tiene Django de declarar un conjunto cerrado de valores con su etiqueta legible. Son tres: `ADMIN`, `INSTITUTION` y `TEACHER`. 
+
+Los actores del dominio son dos, la institución y el docente; ADMIN los acompaña a los dos porque es la cuenta que administra la plataforma.
+
+> [!TIP]
+> TEACHER, además, es un tipo de cuenta y no un rol general con permisos propios: todo lo que un docente puede hacer va a salir de su relación aceptada con una institución, que es una tabla que escribimos más adelante. Conviene tenerlo presente:` el rol dice qué tipo de cuenta sos, no todo lo que podés hacer.`
+
+
+## Teoría - 14
+## El ORM: una clase es una tabla
+
+> [!NOTE] ORM
+> Un `modelo` es una `clase de Python` que hereda de `models.Model`, y cada `atributo de clase` es una `columna de la tabla`. El ORM se ocupa del resto: traduce la clase a un CREATE TABLE, las consultas a SELECT y los objetos a filas. Escribís Python y la base queda hecha.
+
+> [!NOTE] Note | tipo del campo
+> El `tipo del campo` es lo primero que se decide, y no es sólo cuánto ocupa: es qué se puede hacer con ese dato. Un DateTimeField se puede ordenar y comparar; el mismo dato guardado como texto, no. Un EmailField es un CharField que además valida la forma. Un BooleanField tiene dos valores y ninguna ambigüedad; el mismo dato como texto tiene «si», «SI», «true» y «1».
+
+> [!NOTE] Note | null y blank
+> Dos parámetros se confunden siempre y conviene fijarlos: null es de la base (la columna admite NULL) y blank es de la validación (el formulario admite vacío). En campos de texto la costumbre es blank=True sin null=True, para que «sin valor» sea siempre la cadena vacía y no dos cosas distintas.
+
+> [!NOTE] Note | Text choices
+> Para los campos que sólo admiten unos pocos valores están las choices, y Django tiene una forma linda de escribirlas: una clase TextChoices con el valor guardado y su etiqueta legible. Lo que se gana es que la lista de valores válidos vive en un solo lugar,
+
+> [!NOTE] Note | La decisión grande de este paso es tener modelo de usuario propio
+> si hay alguna posibilidad de necesitar algo distinto, se define propio en el primer día. Acá hacía falta igual, porque el login es por email y el usuario tiene rol.
+
+
+> [!NOTE] Note | Heredar de AbstractBaseUser 
+> Heredar de AbstractBaseUser deja el manejo de contraseñas y el login hechos, y da libertad para definir los campos: cuál identifica (USERNAME_FIELD), qué se pide al crear un superusuario, qué datos hay. PermissionsMixin agrega lo que necesita el admin para permisos y grupos.
+
+> [!NOTE] Note |
 
 
 # Proyecto - 
