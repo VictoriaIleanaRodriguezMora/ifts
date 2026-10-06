@@ -735,6 +735,100 @@ Un detalle que aparece siempre al agregar un campo obligatorio a una tabla con f
 Comando útil
 python manage.py makemigrations --check --dry-run no escribe nada y falla si hay cambios sin migrar. Es la forma de saber, antes de entregar, que los modelos y las migraciones dicen lo mismo.
 
+# Proyecto - 17
+# Emitir y validar tokens JWT
+
+Un JWT (JSON Web Token) es un texto firmado que el cliente manda en cada pedido dentro del header Authorization: Bearer …. A diferencia de una sesión clásica, el servidor no guarda nada: verifica la firma con su clave secreta y confía en lo que el token declara. Por eso el contenido viaja legible: nunca hay que poner datos sensibles adentro.
+
+El payload que armamos incluye sub (el id del usuario), su email y su rol, más iat y exp, que son las marcas de emisión y vencimiento. Se emiten dos tokens: el de acceso, de vida corta, es el que viaja en cada pedido; el de refresco, de vida larga, sirve únicamente para pedir un acceso nuevo sin volver a mandar la contraseña. El campo type los distingue, y decode_token lo verifica para que un refresh no pueda usarse como si fuera un access.
+
+
+## Teoría - 17
+## Cómo se sostiene una sesión sin sesiones
+
+HTTP no tiene memoria: cada pedido llega solo, sin ningún recuerdo del anterior. Todo mecanismo de login existe para resolver eso, y hay dos familias. La clásica guarda una sesión en el servidor y le da al navegador una cookie con el identificador; es lo que usa el admin de Django. La otra le entrega al cliente un token firmado que él manda en cada pedido, y el servidor no guarda nada.
+
+Para una API, la segunda suele ser más cómoda: no hay estado que compartir entre varios servidores, y el cliente puede ser una app de celular o un programa, no sólo un navegador. El formato más difundido es el JWT (JSON Web Token).
+
+Un JWT son tres partes separadas por puntos: encabezado.contenido.firma. El encabezado dice con qué algoritmo está firmado; el contenido son los datos (los claims); la firma es lo que hace que todo esto funcione.
+
+Lo que hay adentro del contenido de un token
+json
+Copiar
+{
+  "sub": 42,              // subject: de quien es este token
+  "role": "TEACHER",     // lo que la API necesita para decidir
+  "iat": 1770000000,     // issued at: cuando se emitio
+  "exp": 1770086400      // expiration: hasta cuando vale
+}
+Acá está el malentendido más frecuente y hay que decirlo con todas las letras: un JWT no está cifrado. Las dos primeras partes son base64url, que es una codificación, no un secreto: cualquiera que tenga el token puede leer su contenido. Lo que protege la firma no es la privacidad sino la integridad: si alguien cambia un solo carácter del contenido, la firma deja de coincidir y el servidor lo rechaza. De ahí la consecuencia práctica: adentro de un token no van contraseñas ni datos sensibles, sólo lo mínimo para identificar y decidir.
+
+La firma se calcula con HMAC y la SECRET_KEY del proyecto: es una función que combina el contenido con la clave, así que sólo puede generarla (y verificarla) quien tenga la clave. Por eso la clave secreta es secreta de verdad: con ella se pueden fabricar tokens válidos de cualquier usuario.
+
+El exp merece atención porque es la única defensa real. Como el servidor no guarda nada, no hay dónde ir a «cancelar» un token: mientras no expire, vale. Por eso los tokens de acceso son cortos, y por eso hay que tratarlos como una credencial: no se pegan en un chat, no van en la URL y no se escriben en los logs.
+
+Idea clave
+La firma responde «¿esto lo emití yo y llegó intacto?». No responde «¿quién lo está usando?». Un token robado funciona igual de bien que uno propio: por eso valen poco tiempo y viajan siempre por HTTPS.
+
+
+# Proyecto - 18
+# Autenticación: quién hace el pedido
+
+Conviene separar dos preguntas que se confunden todo el tiempo. Autenticación es quién sos: verificar el token y saber qué usuario está del otro lado. Autorización es qué podés hacer: decidir si ese usuario tiene permiso para esta operación. Son dos momentos distintos y tienen dos respuestas HTTP distintas: 401 Unauthorized cuando no sabemos quién sos (falta el token, venció, el usuario está inactivo) y 403 Forbidden cuando sí sabemos quién sos pero esto no te corresponde. Devolver 401 donde va 403 es un error clásico: le dice al cliente "volvé a loguearte" cuando en realidad nunca va a alcanzarle con eso.
+
+HttpBearer es la clase de Ninja para autenticación con token: lee el header Authorization: Bearer … y nos pasa el token ya extraído. Nuestro authenticate lo decodifica, busca el usuario activo y lo devuelve; lo que devuelve queda disponible como request.auth dentro de cada endpoint. Ninja también aceptaría devolver None para rechazar, pero eso da un 401 mudo: preferimos levantar HttpError con un mensaje que diga qué pasó.
+
+La autorización por rol vive en el mismo lugar, en check_roles(), y la subclase RoleAuth permite crear variantes que exigen un rol determinado. La ventaja de resolverlo acá y no adentro de cada función es que el permiso se declara una vez para todo un grupo de endpoints y no se puede olvidar en uno.
+
+Fijate que no importa nada de apps/: el mecanismo no sabe qué roles existen, se los pasan por parámetro.
+
+
+## Teoría - 18
+## Cómo la API sabe quién está pidiendo
+
+El token viaja en un encabezado estándar de HTTP: Authorization: Bearer <token>. La palabra Bearer («portador») es el esquema: significa literalmente que quien presenta el token es tratado como su dueño, sin más preguntas.
+
+Del lado del servidor, autenticar es una cadena corta y siempre igual: sacar el encabezado, verificar la firma, controlar que no haya expirado, leer de quién es y traer esa cuenta de la base. Si algo de eso falla, el pedido se corta ahí con 401 y no llega nunca al endpoint.
+
+django-ninja resuelve el enganche con un objeto de autenticación: una clase que recibe el pedido y devuelve el usuario, o None si no pudo. Lo que devuelve queda en request.auth, y desde ahí el endpoint sabe quién está del otro lado sin volver a mirar el encabezado.
+
+El punto fino es dónde se declara. Se puede poner en cada endpoint, pero conviene al revés: declararlo en el router, para que valga en todos y no haya forma de olvidarse en uno. Un endpoint que quede sin autenticación por descuido no da ningún error: simplemente queda abierto, y eso no se nota hasta que alguien lo encuentra.
+
+Lo público, en cambio, se declara público a propósito. Este proyecto tiene bastante: el catálogo de proyectos aprobados con su ficha, las instituciones, las carreras y las tecnologías. Que se puedan leer sin cuenta es una decisión del producto, no un descuido, y por eso viven en routers separados.
+
+Vale distinguir dos códigos que se confunden todo el tiempo. 401 Unauthorized quiere decir «no sé quién sos»: falta el token o no sirve. 403 Forbidden quiere decir «sé quién sos y no podés»: la identidad está bien, lo que falta es el permiso. El primero se arregla iniciando sesión; el segundo, no.
+
+Buena práctica
+Cerrado por defecto, abierto por decisión. Es más fácil detectar que algo que debía ser público está pidiendo token que descubrir que algo privado estaba abierto.
+
+# Proyecto - 19
+# Los permisos de la API
+Este archivo chiquito es el que evita que los roles se mezclen. En vez de preguntar if user.role == ... repartido por cuarenta endpoints, quedan declarados cuatro permisos con nombre y cada router elige uno.
+
+authenticated pide solamente un token válido, sirva el rol que sirva: es lo que usa /auth/me. admin_only exige rol ADMIN. Y después hay uno por actor (institution_or_admin y teacher_or_admin), siempre con el administrador acompañando, porque un admin puede hacer todo lo que hace cualquiera.
+
+Ojo con lo que estos permisos no responden: el rol dice qué tipo de cuenta sos, no si esta cursada es tuya ni si tu institución es la del proyecto. Esas preguntas son a nivel de objeto y se responden después, en cada API. En el docente se ve clarísimo: teacher_or_admin solo abre la puerta del router, y el permiso real va a ser su membresía aceptada en una institución.
+
+Vive en apps/accounts/ y no en core/ a propósito: los roles son parte del dominio de las cuentas. core/ aporta el mecanismo, accounts aporta la política.
+
+
+## Teoría - 19
+## Autenticación y autorización no son lo mismo
+
+Son dos preguntas distintas y se responden en momentos distintos. Autenticación es «¿quién sos?»: la resuelve el token, una sola vez, al principio del pedido. Autorización es «¿podés hacer esto?»: depende de la operación, del rol y muchas veces del dato concreto que se está tocando.
+
+El esquema más común para responder la segunda es RBAC (control de acceso basado en roles): cada cuenta tiene un rol y cada operación declara qué roles la pueden ejecutar. Acá los roles son cuatro (administrador, institución, alumno y entidad interesada) y viajan adentro del token, así que chequearlos no cuesta una consulta.
+
+El rol solo no alcanza casi nunca, y este proyecto es un buen ejemplo. Que seas alumno te habilita a editar un proyecto: el tuyo. Que seas institución te habilita a aprobar proyectos: los de tu institución. A esa segunda mitad se la llama permiso a nivel de objeto, y es la que suele olvidarse, porque el endpoint «funciona» igual. Si la API acepta /projects/7 sin verificar de quién es el 7, cualquier alumno edita el proyecto de cualquier otro con sólo cambiar un número.
+
+El docente muestra un matiz más: en este sistema no es un rol general sino una relación con una institución (InstitutionTeacher, aceptada). Sus permisos no salen de lo que dice el token sino de esa membresía, que se consulta. Es la señal de que la autorización a veces es una pregunta al dominio, no una etiqueta.
+
+Dos principios cierran el tema. Mínimo privilegio: cada cuenta puede hacer lo justo y necesario, y lo que no está permitido explícitamente está prohibido. Y no confiar nunca en el cliente: que la pantalla esconda un botón no protege nada, porque el pedido se puede armar a mano. La interfaz oculta lo que no corresponde por comodidad; el servidor lo impide.
+
+Cómo probarlo
+La prueba que más vale de un permiso no es que el dueño pueda: es que otro no pueda. En el paso de tests vas a ver varias escritas justamente así.
+
+
 # Proyecto - 
 # 
 
