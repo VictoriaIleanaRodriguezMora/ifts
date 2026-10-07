@@ -828,6 +828,24 @@ Dos principios cierran el tema. Mínimo privilegio: cada cuenta puede hacer lo j
 Cómo probarlo
 La prueba que más vale de un permiso no es que el dueño pueda: es que otro no pueda. En el paso de tests vas a ver varias escritas justamente así.
 
+# Proyecto - 20
+# Lecturas y escrituras de cuentas, fuera de la API
+
+Dos archivos cortos que son el primer ejemplo de la regla. selectors.py tiene las lecturas: users(search) arma la lista aplicando el filtro del queryset solo si vino un texto, y user(id) devuelve uno o corta con un 404.
+
+services.py tiene las escrituras: create_user, update_user y register_teacher. Ahí adentro está lo que si no viviría suelto en el endpoint: validar que el rol exista, no asignar nunca la contraseña directo sino con set_password, y aplicar solo los campos que llegaron. register_teacher merece una pausa: es un alta pública, cualquiera se registra como docente, y aún así no es un agujero de seguridad, porque la cuenta sola no habilita nada. Todo lo que un docente puede hacer va a salir de que una institución lo acepte, unos pasos más adelante.
+
+Fijate en el detalle de los errores. El manager avisa con ValueError, pero el service lo vuelve a levantar como ValidationError. Es a propósito: hacia afuera, todos los errores de negocio del proyecto tienen la misma forma, y por eso la API los puede traducir a un 400 en un solo lugar, que es core/errors.py.
+
+## Teoría - 
+## 
+
+```cmd
+python3 manage.py run server 0.0.0.0.1233
+```
+![alt text](image-14.png)
+
+
 
 # Proyecto - 
 # 
@@ -835,6 +853,7 @@ La prueba que más vale de un permiso no es que el dueño pueda: es que otro no 
 
 ## Teoría - 
 ## 
+
 ```cmd
 
 ```

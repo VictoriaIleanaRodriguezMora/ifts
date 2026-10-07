@@ -16,12 +16,12 @@ django-admin startproject
 > [!NOTE] Para levantar el proyecto
 Este comando lo corre desde la ruta principal, la raiz del proyecto
 ```cmd
-python3 manage.py run server 0.0.0.0.1233
+python3 manage.py runserver 0.0.0.0:1233
 ```
 
 Este comando lo corre desde la ruta principal, la raiz del proyecto
 ```cmd
-django-admin run server 0.0.0.0.1233
+django-admin runserver 0.0.0.0:1233
 ```
 django-admin --> creación inicial del proyecto, crear carpetas archivos, etc
 
