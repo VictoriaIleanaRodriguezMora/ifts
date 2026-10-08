@@ -1,4 +1,4 @@
-# Clase 5
+# Clase 5 DNS - AD
 _clase 6_
 
 IP estática vs IP dinámica
@@ -54,8 +54,12 @@ Web Server IIS - HTTp, alcanza para configurar la página http dentro de este se
 
 > [!IMPORTANT] Important | Unidad Organizativa OU
 
+Punto de restauracion, backups, ambientes es la mejor opción, pero en gral no coincide dev con prd
 
 
+```cmd
+
+```
 > [!NOTE] Note |
 > [!IMPORTANT] Important |
 > [!WARNING] Warning |
