@@ -1,7 +1,7 @@
 # Clase 08
 
 
-# Modelo ITL - Ciclo de vida del servicio
+# Modelo ITIL - Ciclo de vida del servicio
 
 ## ¿Qué es ITIL?  Information Technology Infraestructure Library
 
@@ -9,7 +9,11 @@ es un marco de buenas prácticas para la Gestión de Servicios de IT, centrado e
 
 permite gestionar servicios it de forma estructurada, alineada al negocio y orientada a la mejora continua
 
-## Ciclo de vida del servicio ITL - 5 etapas:
+## Ciclo de vida del servicio ITIL - 5 etapas:
+
+El que dirige y se revincula con las areas es el PM
+Son 5 etapas y hasta que no se finalizan, hasta que no se cumple el ciclo de vida completo no se puede volver a redimensionar, corregir 
+
 1) Estrategia del servicio
 2) Diseño/desarrollo del servicio
 3) Transición/implementacion del servicio
@@ -121,6 +125,13 @@ Se analizan métricas, se reducen tiempos de atención y se  optimizan procesos.
 # Modelo SCRUM - Ciclo de vida del producto
 Scrum - Marco de trabajo ágil para desarrollar y gestionar productos complejos mediante iteraciones cortas llamadas sprints. 
 
+ACá en cada etapa, se involucra a todos en todas las etapas 
+
+El scrum master es el que tiene las reuniones con el cliente y el equipo
+Pero el que gestiona el proyecto va a ser el que gestiona el area. 
+
+Scrum busca acortar los tiempos de error. Busca entregar pequeñas cosas e interactuar con el cliente
+
 ## Ciclo de vida en scrum
 No tiene fases rígidas cómo en los modelos tradicionale, pero sigue un ciclo iterativo e incremental, 5 etapas: 
 
@@ -194,6 +205,23 @@ El equipo ajusta procesos para mejorar la comunicacion y productividad
 - equipo de desarrollo 
 
 # Modelo híbrido. SCRUM + ITIL 33.0
+
+Diferencias
+
+En ITIL hasta que no llegas a mantenimiento no vas a tener un feedback del cliente acerca de si era eso o no lo que queria. 
+
+En scrum al ser ciclos cortos vamos a estar mostrando cada x semanas un avance para saber si está conforme
+
+el modelo hibrido combina procesos estables para la operacion con flexibilidad para el desarrollo rápido de productos
+
+ITIL se enfoca en la gestión y operación de servicios, mientras que Scrum impulsa la mejora continua y adaptabilidad
+
+la idea es usar la estructura/proceso escalonado de ITIL y meter scrum para tener el mejor rendimiento
+
+Los que desarrollan usan scrum y gestion y soporte usa ITIL
+
+
+
 
 
 ```cmd
