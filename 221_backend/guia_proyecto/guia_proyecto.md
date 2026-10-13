@@ -503,10 +503,349 @@ En `api.py` no va ninguna consulta. Si aparece una, es que falta un selector.
 ## Arquitectura en capas: qué archivo hace qué
 
 
-
-
 > [!TIP] TIP | 
 > «¿de qué capa es este problema?». Un dato que no debería haberse guardado es de services; una consulta que trae de más es de selectors; un permiso que no se respeta es de la API. Ordenar el código es, sobre todo, ordenar la búsqueda.
+
+
+
+
+# Proyecto - 10
+# Crear la app accounts
+
+Una app de Django es una unidad de código con sus propios modelos, migraciones y configuración, pensada para resolver un tema. Un proyecto es un conjunto de apps más los settings que las unen. 
+
+> [!IMPORTANT] Important | app accounts
+> Esta app, accounts, se ocupa de una sola cosa: quién es el usuario y cómo se autentica.
+> se ocupa de las cuentas, los tipos de cuenta y los permisos. 
+
+> [!TIP] TIP | nomenclatura para apps
+> las apps se nombran en plural y en minúscula (accounts, projects), porque agrupan muchas instancias de una misma cosa.
+
+```cmd
+Set-Location apps # cd apps
+django-admin startapp accounts
+Set-Location .. # cd ..
+```
+![alt text](image-7.png)
+
+## Teoría - 10
+## Qué es una app de Django
+
+El comando, crea la carpeta con los archivos vacíos de esa convención.
+Lo usamos porque no equivoca ningún nombre y porque deja el` apps.py` listo para el único retoque que sí importa.
+
+> [!WARNING] Warning | Super importante acerca del comando `django-admin startapp accounts`
+> Despues de ejecutarlo, hay que hacer 2 pasos:
+> 1) Corregir el name en `apps/accounts/apps.py`, la ruta es `apps.accounts`, NO es `accounts`
+> 
+>     name = "apps.accounts"       # la ruta real del paquete
+> 2) sumarla a `CampusLab/settings.py/INSTALLED_APPS`
+
+
+```cmd
+django-admin startapp accounts
+```
+
+# Proyecto - 11
+# Configurar AccountsConfig y registrar la app
+Una app recién creada no existe para Django hasta que se hacen dos cosas: 
+1) corregir su AppConfig 
+2) sumarla a INSTALLED_APPS.
+
+> [!TIP] TIP | Comando para verificar que no hay problemas
+```cmd
+python manage.py check
+```
+![alt text](image-8.png)
+
+## Teoría - 11
+## INSTALLED_APPS y el arranque de Django
+INSTALLED_APPS es la lista de todo lo que forma parte del proyecto. Cuando arranca (con runserver, con un comando de manage.py o dentro de un servidor de producción), Django hace siempre la misma secuencia: lee la configuración, recorre esa lista, importa la AppConfig de cada app, después importa todos los models.py, y recién cuando terminó ejecuta el ready() de cada una. Eso es estar listo: hasta ese momento, preguntar por un modelo puede fallar.
+
+La consecuencia práctica de registrar una app es que empieza a existir para todos los comandos. makemigrations le mira los modelos, migrate le crea las tablas, el admin le busca un admin.py, manage.py test le corre las pruebas. Una app fuera de la lista es una carpeta con código muerto, y como no da error, se puede pasar mucho tiempo buscando por qué «no toma» un modelo que está perfectamente escrito.
+
+Cuando algo no anda
+Modelo que no genera migración, admin que no aparece, prueba que no se corre: las tres cosas suelen ser el mismo olvido, y se revisa en el mismo lugar.
+
+
+# Proyecto - 12 ? DUDA
+# Editar el settings.py generado. Variables de entorno
+
+Arriba definimos dos funciones mínimas, `env` y `env_bool`, para leer variables de entorno con un valor por defecto: así el mismo código sirve en tu máquina y dentro de Docker, cambiando solo el entorno. Ninguna clave queda escrita a mano en el repositorio.
+
+Dos decisiones marcan el resto del trabajo. 
+- `AUTH_USER_MODEL = "accounts.User"` le dice a Django cuál es el modelo de usuario, y tiene que estar antes de la primera migración: si Django ya creó las tablas con su usuario por defecto, cambiarlo después obliga a borrar la base y arrancar de nuevo. - `DATABASES` arma la ruta del archivo SQLite creando la carpeta que lo contiene, para que el primer arranque no falle por una carpeta inexistente.
+
+Al final quedan separados 
+- `STATIC_*`, que es para los archivos que trae el proyecto (por ejemplo el CSS del admin)
+- `MEDIA_*`, que es para los que suben los usuarios: en este caso las imágenes y los videos de cada proyecto.
+
+También queda configurado el email, que esta primera etapa todavía no usa pero deja listo. `EMAIL_BACKEND` en desarrollo apunta al backend de consola, que imprime el mensaje en la terminal del servidor en vez de mandarlo: se ve que el envío ocurre sin configurar un servidor de correo. 
+
+En producción la misma variable pasa a SMTP con credenciales reales, sin tocar código.
+
+> [!IMPORTANT] Important | secretos/cambios
+> Si algo tiene que ser secreto o cambia entre máquinas, no va en settings.py: va en el entorno, y settings.py lo lee. El repositorio se comparte; el entorno, no.
+>  lo que cambia según dónde corra el programa no va escrito en el código.
+
+# Proyecto - 13 manager, queryset? DUDA
+# Manager del usuario
+El manager es el objeto que aparece como `User.objects`: es quien sabe crear y consultar registros. Django trae uno para su usuario por defecto, pero como el nuestro se identifica por email en vez de por nombre de usuario, hay que escribir el propio.
+
+`create_superuser` es el que `usa manage.py createsuperuser`: fuerza el rol ADMIN con is_staff e is_superuser en True y falla explícitamente si alguien intenta crear un superusuario que no cumpla eso. El use_in_migrations = True permite que las migraciones puedan usar este manager.
+
+> Duda. Donde dice que el nuestro se identifica por email?
+> Duda. Qué es un superuser
+
+
+
+## Teoría - 13
+## Managers y QuerySets: por dónde se habla con la base
+
+- `Project.objects` no es una lista ni una conexión: es un `manager`, el objeto que Django le cuelga a cada modelo para empezar consultas. De él salen `all()`, `filter()`, `get()`, `create()`, y cada uno de esos métodos devuelve (salvo los que traen un objeto solo) un `QuerySet`.
+
+El `QuerySet` tiene dos propiedades que hay que entender bien porque explican casi todo lo que sorprende del ORM. 
+
+1) La primera: es perezoso. Escribir `Project.objects`.filter(...) no consulta la base; arma la consulta y la guarda. Recién se ejecuta cuando alguien necesita los datos: al recorrerlo con un for, al pedirle len(), al convertirlo en lista o al preguntarle si tiene algo. Gracias a eso podés ir agregando condiciones sin pagar una consulta por cada una.
+
+2) La segunda: es encadenable. Cada filtro devuelve un QuerySet nuevo, así que se pueden pegar uno atrás de otro y la consulta final es una sola con todas las condiciones juntas. Eso es lo que hace que valga la pena ponerles nombre a los filtros que se repiten.
+
+
+Un filtro con nombre, y cómo se combina
+```py
+class ProjectQuerySet(models.QuerySet):
+    def approved(self):
+        return self.filter(status=ProjectStatus.APPROVED)
+# En el resto del proyecto se lee casi como una frase:
+Project.objects.approved().filter(institution=inst).order_by("-created_at")
+```
+
+ 
+Definirlo como `QuerySet` y publicarlo con objects = ProjectQuerySet.as_manager() tiene una ventaja sobre escribir un manager a mano: los métodos siguen disponibles después del primer filtro. Si approved() viviera sólo en el manager, Project.objects.filter(...).approved() no existiría.
+
+El manager del usuario es un caso especial, y por eso este paso viene antes que el modelo. 
+
+Django lo usa para dos cosas que no puede inventar: 
+1) crear un usuario común
+2)  y crear un superusuario (lo llama createsuperuser). 
+  
+Como en este proyecto el login es por email y no por nombre de usuario, hay que escribirlo. Adentro pasan dos cosas importantes: 
+- el email se normaliza (el dominio va en minúsculas, para que Ana@IFTS.edu.ar y ana@ifts.edu.ar no sean dos cuentas)
+- la contraseña se guarda con set_password(), que la hashea. Un usuario creado sin pasar por ahí queda con la contraseña en texto plano y sin poder iniciar sesión.
+
+# Proyecto - 14
+# Modelo User y los tres tipos de cuenta. actores del dominio
+
+`AbstractBaseUser` aporta lo mínimo de un usuario 
+(la contraseña hasheada y el manejo de sesión) y deja que vos definas los campos; 
+`PermissionsMixin` suma encima el sistema de permisos y grupos de Django. 
+Con `USERNAME_FIELD = "email"` el login pasa a hacerse con el email, y `REQUIRED_FIELDS` son los datos que además pide `createsuperuser`.
+
+Los `roles` se `modelan` con TextChoices, la forma que tiene Django de declarar un conjunto cerrado de valores con su etiqueta legible. Son tres: `ADMIN`, `INSTITUTION` y `TEACHER`. 
+
+Los actores del dominio son dos, la institución y el docente; ADMIN los acompaña a los dos porque es la cuenta que administra la plataforma.
+
+> [!TIP]
+> TEACHER, además, es un tipo de cuenta y no un rol general con permisos propios: todo lo que un docente puede hacer va a salir de su relación aceptada con una institución, que es una tabla que escribimos más adelante. Conviene tenerlo presente:` el rol dice qué tipo de cuenta sos, no todo lo que podés hacer.`
+
+
+## Teoría - 14
+## El ORM: una clase es una tabla
+
+> [!NOTE] ORM
+> Un `modelo` es una `clase de Python` que hereda de `models.Model`, y cada `atributo de clase` es una `columna de la tabla`. El ORM se ocupa del resto: traduce la clase a un CREATE TABLE, las consultas a SELECT y los objetos a filas. Escribís Python y la base queda hecha.
+
+> [!NOTE] Note | tipo del campo
+> El `tipo del campo` es lo primero que se decide, y no es sólo cuánto ocupa: es qué se puede hacer con ese dato. Un DateTimeField se puede ordenar y comparar; el mismo dato guardado como texto, no. Un EmailField es un CharField que además valida la forma. Un BooleanField tiene dos valores y ninguna ambigüedad; el mismo dato como texto tiene «si», «SI», «true» y «1».
+
+> [!NOTE] Note | null y blank
+> Dos parámetros se confunden siempre y conviene fijarlos: null es de la base (la columna admite NULL) y blank es de la validación (el formulario admite vacío). En campos de texto la costumbre es blank=True sin null=True, para que «sin valor» sea siempre la cadena vacía y no dos cosas distintas.
+
+> [!NOTE] Note | Text choices
+> Para los campos que sólo admiten unos pocos valores están las choices, y Django tiene una forma linda de escribirlas: una clase TextChoices con el valor guardado y su etiqueta legible. Lo que se gana es que la lista de valores válidos vive en un solo lugar,
+
+> [!NOTE] Note | La decisión grande de este paso es tener modelo de usuario propio
+> si hay alguna posibilidad de necesitar algo distinto, se define propio en el primer día. Acá hacía falta igual, porque el login es por email y el usuario tiene rol.
+
+
+> [!NOTE] Note | Heredar de AbstractBaseUser 
+> Heredar de AbstractBaseUser deja el manejo de contraseñas y el login hechos, y da libertad para definir los campos: cuál identifica (USERNAME_FIELD), qué se pide al crear un superusuario, qué datos hay. PermissionsMixin agrega lo que necesita el admin para permisos y grupos.
+
+> [!NOTE] Note |
+
+# Proyecto - 15
+# Registrar el usuario en el admin
+
+`El admin de Django es un CRUD generado a partir de los modelos.`
+Como cambiamos el usuario, hay que decirle cómo mostrarlo: heredamos de `UserAdmin`, que ya sabe manejar contraseñas hasheadas, y redefinimos los fieldsets porque los del original mencionan el campo username, que en nuestro modelo no existe.
+
+`add_fieldset`s es el formulario de alta, con password1 y password2 para la confirmación. Sin este archivo el admin directamente rompe al abrir la ficha de un usuario.
+
+
+## Teoría - 15
+## El panel de administración
+
+
+# Proyecto - 16
+# Primera migración
+
+> [!NOTE] Note | Migraciones
+> Una migración es un archivo de Python donde Django describe un cambio de esquema: crear una tabla, agregar una columna, cambiar un índice. Son dos comandos y hacen cosas distintas, así que conviene tenerlos separados en la cabeza.
+
+Cómo se hace el archivo. python manage.py makemigrations lee los modelos, los compara contra el estado que describen las migraciones que ya existen y escribe la diferencia en un archivo numerado dentro de migrations/: el primero siempre se llama 0001_initial.py. Este comando no toca la base: solo escribe un archivo, y por eso se puede leer y corregir antes de aplicarlo. Si le pasás el nombre de una app (makemigrations accounts) mira solo esa; sin argumentos las mira todas, que es lo que conviene cuando hay relaciones entre apps de por medio.
+
+Cómo se aplica. python manage.py migrate agarra las migraciones pendientes, las ordena según sus dependencias, ejecuta el SQL de cada una y anota su nombre en una tabla interna llamada django_migrations. Esa tabla es la que hace que el comando sea repetible: correrlo de nuevo no vuelve a aplicar lo que ya está anotado, simplemente dice que no hay nada pendiente.
+
+Para mirar sin ejecutar nada tenés dos comandos que valen oro: python manage.py showmigrations lista todas las migraciones con una [X] en las aplicadas, y python manage.py sqlmigrate accounts 0001 te muestra el SQL exacto que va a correr, sin correrlo.
+
+Por qué esto se versiona. Las migraciones se suben al repositorio igual que el código, y ahí está todo el punto: con ese historial cualquiera puede reconstruir la base desde cero y llegar exactamente al mismo esquema, en su máquina, en la de un compañero o en el servidor. Sin migraciones, la base pasa a ser algo que alguien tocó a mano alguna vez y que nadie sabe reproducir. De ahí sale la regla más importante: una migración que ya se aplicó y se compartió no se edita, se corrige con una nueva. En la guía teórica hay una sección entera sobre esto.
+
+Esta primera corrida crea la tabla del usuario y todas las de Django (permisos, sesiones, admin). Es el momento donde se comprueba que AUTH_USER_MODEL estaba bien puesto desde el principio.
+
+```cmd
+python manage.py makemigrations accounts
+python manage.py sqlmigrate accounts 0001
+python manage.py migrate
+python manage.py showmigrations
+```
+
+![alt text](image-11.png)
+![alt text](image-12.png)
+![alt text](image-13.png)
+
+
+## Teoría - 16
+## Migraciones: el historial de la base
+
+
+Los modelos son Python; las tablas son SQL. Las migraciones son el puente: archivos de Python, generados por Django, que describen cómo llegar de la base como está hoy a la base que tus modelos necesitan.
+
+Son dos comandos y hacen cosas distintas, y confundirlos es el error más común del principio. makemigrations compara tus modelos con el estado que describen las migraciones que ya existen y escribe un archivo nuevo con la diferencia: no toca la base. migrate aplica a la base las migraciones que todavía no corrieron: no mira tus modelos.
+
+Para saber qué falta aplicar, Django lleva una tabla propia, django_migrations, donde anota cada migración que corrió. Por eso migrate se puede ejecutar mil veces sin romper nada: las que ya están anotadas las saltea.
+
+Las migraciones forman un grafo, no una fila: cada una declara de cuál depende (dependencies), incluidas las de otras apps cuando hay relaciones entre ellas. Django ordena el grafo antes de aplicar, así que una tabla nunca se crea antes que aquella a la que apunta.
+
+De ahí sale una consecuencia importante: las migraciones se versionan con el código, como cualquier otro archivo. Son parte del proyecto: es lo que permite que tu compañero se baje el repositorio, corra migrate y tenga exactamente tu misma base. Borrar una migración que otros ya aplicaron rompe esa cadena, y ahí empiezan los problemas difíciles.
+
+No todas mueven columnas. Una migración de datos ejecuta código Python para transformar filas: partir un campo en dos, completar un valor que antes no existía, corregir algo cargado mal. Se generan con makemigrations --empty y viven en el mismo historial, con la ventaja de que corren en el momento exacto en que corresponde.
+
+Un detalle que aparece siempre al agregar un campo obligatorio a una tabla con filas: Django pregunta qué poner en las que ya existen, porque no puede inventarlo. Ahí las opciones son darle un valor por defecto, permitir nulo, o (mientras el proyecto todavía no tiene datos reales) rehacer la migración inicial.
+
+Comando útil
+python manage.py makemigrations --check --dry-run no escribe nada y falla si hay cambios sin migrar. Es la forma de saber, antes de entregar, que los modelos y las migraciones dicen lo mismo.
+
+# Proyecto - 17
+# Emitir y validar tokens JWT
+
+Un JWT (JSON Web Token) es un texto firmado que el cliente manda en cada pedido dentro del header Authorization: Bearer …. A diferencia de una sesión clásica, el servidor no guarda nada: verifica la firma con su clave secreta y confía en lo que el token declara. Por eso el contenido viaja legible: nunca hay que poner datos sensibles adentro.
+
+El payload que armamos incluye sub (el id del usuario), su email y su rol, más iat y exp, que son las marcas de emisión y vencimiento. Se emiten dos tokens: el de acceso, de vida corta, es el que viaja en cada pedido; el de refresco, de vida larga, sirve únicamente para pedir un acceso nuevo sin volver a mandar la contraseña. El campo type los distingue, y decode_token lo verifica para que un refresh no pueda usarse como si fuera un access.
+
+
+## Teoría - 17
+## Cómo se sostiene una sesión sin sesiones
+
+HTTP no tiene memoria: cada pedido llega solo, sin ningún recuerdo del anterior. Todo mecanismo de login existe para resolver eso, y hay dos familias. La clásica guarda una sesión en el servidor y le da al navegador una cookie con el identificador; es lo que usa el admin de Django. La otra le entrega al cliente un token firmado que él manda en cada pedido, y el servidor no guarda nada.
+
+Para una API, la segunda suele ser más cómoda: no hay estado que compartir entre varios servidores, y el cliente puede ser una app de celular o un programa, no sólo un navegador. El formato más difundido es el JWT (JSON Web Token).
+
+Un JWT son tres partes separadas por puntos: encabezado.contenido.firma. El encabezado dice con qué algoritmo está firmado; el contenido son los datos (los claims); la firma es lo que hace que todo esto funcione.
+
+Lo que hay adentro del contenido de un token
+json
+Copiar
+{
+  "sub": 42,              // subject: de quien es este token
+  "role": "TEACHER",     // lo que la API necesita para decidir
+  "iat": 1770000000,     // issued at: cuando se emitio
+  "exp": 1770086400      // expiration: hasta cuando vale
+}
+Acá está el malentendido más frecuente y hay que decirlo con todas las letras: un JWT no está cifrado. Las dos primeras partes son base64url, que es una codificación, no un secreto: cualquiera que tenga el token puede leer su contenido. Lo que protege la firma no es la privacidad sino la integridad: si alguien cambia un solo carácter del contenido, la firma deja de coincidir y el servidor lo rechaza. De ahí la consecuencia práctica: adentro de un token no van contraseñas ni datos sensibles, sólo lo mínimo para identificar y decidir.
+
+La firma se calcula con HMAC y la SECRET_KEY del proyecto: es una función que combina el contenido con la clave, así que sólo puede generarla (y verificarla) quien tenga la clave. Por eso la clave secreta es secreta de verdad: con ella se pueden fabricar tokens válidos de cualquier usuario.
+
+El exp merece atención porque es la única defensa real. Como el servidor no guarda nada, no hay dónde ir a «cancelar» un token: mientras no expire, vale. Por eso los tokens de acceso son cortos, y por eso hay que tratarlos como una credencial: no se pegan en un chat, no van en la URL y no se escriben en los logs.
+
+Idea clave
+La firma responde «¿esto lo emití yo y llegó intacto?». No responde «¿quién lo está usando?». Un token robado funciona igual de bien que uno propio: por eso valen poco tiempo y viajan siempre por HTTPS.
+
+
+# Proyecto - 18
+# Autenticación: quién hace el pedido
+
+Conviene separar dos preguntas que se confunden todo el tiempo. Autenticación es quién sos: verificar el token y saber qué usuario está del otro lado. Autorización es qué podés hacer: decidir si ese usuario tiene permiso para esta operación. Son dos momentos distintos y tienen dos respuestas HTTP distintas: 401 Unauthorized cuando no sabemos quién sos (falta el token, venció, el usuario está inactivo) y 403 Forbidden cuando sí sabemos quién sos pero esto no te corresponde. Devolver 401 donde va 403 es un error clásico: le dice al cliente "volvé a loguearte" cuando en realidad nunca va a alcanzarle con eso.
+
+HttpBearer es la clase de Ninja para autenticación con token: lee el header Authorization: Bearer … y nos pasa el token ya extraído. Nuestro authenticate lo decodifica, busca el usuario activo y lo devuelve; lo que devuelve queda disponible como request.auth dentro de cada endpoint. Ninja también aceptaría devolver None para rechazar, pero eso da un 401 mudo: preferimos levantar HttpError con un mensaje que diga qué pasó.
+
+La autorización por rol vive en el mismo lugar, en check_roles(), y la subclase RoleAuth permite crear variantes que exigen un rol determinado. La ventaja de resolverlo acá y no adentro de cada función es que el permiso se declara una vez para todo un grupo de endpoints y no se puede olvidar en uno.
+
+Fijate que no importa nada de apps/: el mecanismo no sabe qué roles existen, se los pasan por parámetro.
+
+
+## Teoría - 18
+## Cómo la API sabe quién está pidiendo
+
+El token viaja en un encabezado estándar de HTTP: Authorization: Bearer <token>. La palabra Bearer («portador») es el esquema: significa literalmente que quien presenta el token es tratado como su dueño, sin más preguntas.
+
+Del lado del servidor, autenticar es una cadena corta y siempre igual: sacar el encabezado, verificar la firma, controlar que no haya expirado, leer de quién es y traer esa cuenta de la base. Si algo de eso falla, el pedido se corta ahí con 401 y no llega nunca al endpoint.
+
+django-ninja resuelve el enganche con un objeto de autenticación: una clase que recibe el pedido y devuelve el usuario, o None si no pudo. Lo que devuelve queda en request.auth, y desde ahí el endpoint sabe quién está del otro lado sin volver a mirar el encabezado.
+
+El punto fino es dónde se declara. Se puede poner en cada endpoint, pero conviene al revés: declararlo en el router, para que valga en todos y no haya forma de olvidarse en uno. Un endpoint que quede sin autenticación por descuido no da ningún error: simplemente queda abierto, y eso no se nota hasta que alguien lo encuentra.
+
+Lo público, en cambio, se declara público a propósito. Este proyecto tiene bastante: el catálogo de proyectos aprobados con su ficha, las instituciones, las carreras y las tecnologías. Que se puedan leer sin cuenta es una decisión del producto, no un descuido, y por eso viven en routers separados.
+
+Vale distinguir dos códigos que se confunden todo el tiempo. 401 Unauthorized quiere decir «no sé quién sos»: falta el token o no sirve. 403 Forbidden quiere decir «sé quién sos y no podés»: la identidad está bien, lo que falta es el permiso. El primero se arregla iniciando sesión; el segundo, no.
+
+Buena práctica
+Cerrado por defecto, abierto por decisión. Es más fácil detectar que algo que debía ser público está pidiendo token que descubrir que algo privado estaba abierto.
+
+# Proyecto - 19
+# Los permisos de la API
+Este archivo chiquito es el que evita que los roles se mezclen. En vez de preguntar if user.role == ... repartido por cuarenta endpoints, quedan declarados cuatro permisos con nombre y cada router elige uno.
+
+authenticated pide solamente un token válido, sirva el rol que sirva: es lo que usa /auth/me. admin_only exige rol ADMIN. Y después hay uno por actor (institution_or_admin y teacher_or_admin), siempre con el administrador acompañando, porque un admin puede hacer todo lo que hace cualquiera.
+
+Ojo con lo que estos permisos no responden: el rol dice qué tipo de cuenta sos, no si esta cursada es tuya ni si tu institución es la del proyecto. Esas preguntas son a nivel de objeto y se responden después, en cada API. En el docente se ve clarísimo: teacher_or_admin solo abre la puerta del router, y el permiso real va a ser su membresía aceptada en una institución.
+
+Vive en apps/accounts/ y no en core/ a propósito: los roles son parte del dominio de las cuentas. core/ aporta el mecanismo, accounts aporta la política.
+
+
+## Teoría - 19
+## Autenticación y autorización no son lo mismo
+
+Son dos preguntas distintas y se responden en momentos distintos. Autenticación es «¿quién sos?»: la resuelve el token, una sola vez, al principio del pedido. Autorización es «¿podés hacer esto?»: depende de la operación, del rol y muchas veces del dato concreto que se está tocando.
+
+El esquema más común para responder la segunda es RBAC (control de acceso basado en roles): cada cuenta tiene un rol y cada operación declara qué roles la pueden ejecutar. Acá los roles son cuatro (administrador, institución, alumno y entidad interesada) y viajan adentro del token, así que chequearlos no cuesta una consulta.
+
+El rol solo no alcanza casi nunca, y este proyecto es un buen ejemplo. Que seas alumno te habilita a editar un proyecto: el tuyo. Que seas institución te habilita a aprobar proyectos: los de tu institución. A esa segunda mitad se la llama permiso a nivel de objeto, y es la que suele olvidarse, porque el endpoint «funciona» igual. Si la API acepta /projects/7 sin verificar de quién es el 7, cualquier alumno edita el proyecto de cualquier otro con sólo cambiar un número.
+
+El docente muestra un matiz más: en este sistema no es un rol general sino una relación con una institución (InstitutionTeacher, aceptada). Sus permisos no salen de lo que dice el token sino de esa membresía, que se consulta. Es la señal de que la autorización a veces es una pregunta al dominio, no una etiqueta.
+
+Dos principios cierran el tema. Mínimo privilegio: cada cuenta puede hacer lo justo y necesario, y lo que no está permitido explícitamente está prohibido. Y no confiar nunca en el cliente: que la pantalla esconda un botón no protege nada, porque el pedido se puede armar a mano. La interfaz oculta lo que no corresponde por comodidad; el servidor lo impide.
+
+Cómo probarlo
+La prueba que más vale de un permiso no es que el dueño pueda: es que otro no pueda. En el paso de tests vas a ver varias escritas justamente así.
+
+# Proyecto - 20
+# Lecturas y escrituras de cuentas, fuera de la API
+
+Dos archivos cortos que son el primer ejemplo de la regla. selectors.py tiene las lecturas: users(search) arma la lista aplicando el filtro del queryset solo si vino un texto, y user(id) devuelve uno o corta con un 404.
+
+services.py tiene las escrituras: create_user, update_user y register_teacher. Ahí adentro está lo que si no viviría suelto en el endpoint: validar que el rol exista, no asignar nunca la contraseña directo sino con set_password, y aplicar solo los campos que llegaron. register_teacher merece una pausa: es un alta pública, cualquiera se registra como docente, y aún así no es un agujero de seguridad, porque la cuenta sola no habilita nada. Todo lo que un docente puede hacer va a salir de que una institución lo acepte, unos pasos más adelante.
+
+Fijate en el detalle de los errores. El manager avisa con ValueError, pero el service lo vuelve a levantar como ValidationError. Es a propósito: hacia afuera, todos los errores de negocio del proyecto tienen la misma forma, y por eso la API los puede traducir a un 400 en un solo lugar, que es core/errors.py.
+
+## Teoría - 
+## 
+
+```cmd
+python3 manage.py run server 0.0.0.0.1233
+```
+![alt text](image-14.png)
+
+
 
 # Proyecto - 
 # 
@@ -514,6 +853,7 @@ En `api.py` no va ninguna consulta. Si aparece una, es que falta un selector.
 
 ## Teoría - 
 ## 
+
 ```cmd
 
 ```
