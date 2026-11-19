@@ -1,3 +1,6 @@
+# Documento 
+# https://docs.google.com/document/d/1Phfddbyp_od5yuoimuJMNjrEY92xZRny9V_4TZc3N_Q/edit?tab=t.0
+
 El propósito de esta actividad es comprender los conceptos fundamentales de Docker, su arquitectura, componentes y aplicaciones en entornos de desarrollo, así como adquirir habilidades prácticas básicas en el uso de contenedores. Se adjunta una hoja de consultas rápidas con el glosario, y comandos principales para la practica.
 
 # Consignas de Investigación

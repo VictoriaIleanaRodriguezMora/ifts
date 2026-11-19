@@ -108,7 +108,7 @@ entonces generamos otro registro con otro nombre donde va a ir asociado a otra i
 hago lo mismo en otro servidor, con estos mismos roles activos que va a tener otra ip. le ponemos el mismo nombre y lo asociamos a una nueva ip
 
 si uno está colapsado, lo va a redireccionar al otro.
-va a funcionar como un balanceador, va a repartir la carga 
+va a funcionar como un 1balanceador, va a repartir la carga 
 
 ```cmd
 ping facturacion
